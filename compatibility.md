@@ -8,7 +8,7 @@ permalink: /compat/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emulator Compatibility List</title>
+    <title>felix86 Compatibility List</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
@@ -16,7 +16,8 @@ permalink: /compat/
         .tab.active { background: darkgray; }
         .search { margin-bottom: 10px; }
         .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; }
+        .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; }
+        .game img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
         .status { font-weight: bold; }
         .green { color: green; }
         .yellow { color: orange; }
@@ -24,7 +25,7 @@ permalink: /compat/
     </style>
 </head>
 <body>
-    <h1>Emulator Compatibility List</h1>
+    <h1>felix86 Compatibility List</h1>
     
     <div class="tabs">
         <div class="tab active" onclick="filterCategory('all')">All</div>
