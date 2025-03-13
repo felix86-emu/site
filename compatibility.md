@@ -37,7 +37,10 @@ permalink: /compat/
     <input class="search" type="text" placeholder="Search games..." onkeyup="searchGames()">
     
     <div class="game-list" id="games">
-        <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Papers, Please" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/9">Papers, Please</a></p><p class="status red">Not Working</p></div>
+        
+        
+<div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/445718f0-b535-4661-8fb1-a1323d739911" alt="The Binding of Isaac: Rebirth" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/10">The Binding of Isaac: Rebirth</a></p><p class="status yellow">Partially Working</p></div>
+<div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Papers, Please" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/9">Papers, Please</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/b8fe2570-8026-4372-993d-539da67d7fb9" alt="Don't Starve" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/8">Don't Starve</a></p><p class="status yellow">Partially Working</p></div>
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/fd3ff722-6e68-4db5-b7bb-fbd35b53e6c4" alt="Dimension Tripper Neptune: TOP NEP" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/7">Dimension Tripper Neptune: TOP NEP</a></p><p class="status yellow">Partially Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/ce5c5813-977f-4f43-a371-add71944800d" alt="World of Goo" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/6">World of Goo</a></p><p class="status green">Working</p></div>
@@ -46,6 +49,8 @@ permalink: /compat/
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/13bbd99a-3b53-46bf-84e1-c854e664f315" alt="SuperTuxKart" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/3">SuperTuxKart</a></p><p class="status yellow">Partially Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/ae9186c3-8777-40ae-b26b-3a0461ca0b47" alt="VVVVVV" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/2">VVVVVV</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/47ff1b5f-4d15-45dd-8dfb-bfa512b881f7" alt="Balatro" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/1">Balatro</a></p><p class="status green">Working</p></div>
+
+
 
     </div>
     
