@@ -38,7 +38,10 @@ permalink: /compat/
     
     <div class="game-list" id="games">
         
-        
+
+<div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Cuphead" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/13">Cuphead</a></p><p class="status red">Not Working</p></div>
+<div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Untitled Goose Game" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/12">Untitled Goose Game</a></p><p class="status red">Not Working</p></div>
+<div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Hotline Miami 2: Wrong Number" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/11">Hotline Miami 2: Wrong Number</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/445718f0-b535-4661-8fb1-a1323d739911" alt="The Binding of Isaac: Rebirth" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/10">The Binding of Isaac: Rebirth</a></p><p class="status yellow">Partially Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Papers, Please" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/9">Papers, Please</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/b8fe2570-8026-4372-993d-539da67d7fb9" alt="Don't Starve" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/8">Don't Starve</a></p><p class="status yellow">Partially Working</p></div>
