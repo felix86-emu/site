@@ -38,7 +38,7 @@ permalink: /compat/
     
     <div class="game-list" id="games">
         <div class="game" data-category="working">
-            <img src="game1.jpg" alt="Game 1" width="100%">
+            <img src="https://github.com/user-attachments/assets/fd3ff722-6e68-4db5-b7bb-fbd35b53e6c4" alt="Game 1" width="100%">
             <p>Name: Game 1</p>
             <p class="status green">Working</p>
         </div>
