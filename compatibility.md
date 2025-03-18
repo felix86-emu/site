@@ -38,7 +38,8 @@ permalink: /compat/
     
     <div class="game-list" id="games">
         
-
+<div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Doom 64" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/15">Doom 64</a></p><p class="status red">Not Working</p></div>
+<div class="game" data-category="not-working"><img src="https://github.com/user-attachments/assets/e67f8e2b-3343-41d0-9d29-bd18017d6de4" alt="Outlast" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/14">Outlast</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Cuphead" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/13">Cuphead</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Untitled Goose Game" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/12">Untitled Goose Game</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Hotline Miami 2: Wrong Number" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/11">Hotline Miami 2: Wrong Number</a></p><p class="status red">Not Working</p></div>
@@ -52,8 +53,6 @@ permalink: /compat/
 <div class="game" data-category="partial"><img src="https://github.com/user-attachments/assets/13bbd99a-3b53-46bf-84e1-c854e664f315" alt="SuperTuxKart" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/3">SuperTuxKart</a></p><p class="status yellow">Partially Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/ae9186c3-8777-40ae-b26b-3a0461ca0b47" alt="VVVVVV" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/2">VVVVVV</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/47ff1b5f-4d15-45dd-8dfb-bfa512b881f7" alt="Balatro" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/1">Balatro</a></p><p class="status green">Working</p></div>
-
-
 
     </div>
     
