@@ -110,9 +110,9 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                         "VMV.V.I         v0, 0b11",
                         "VMV.V.I         v23, 0",
                         "VSETIVLI        zero, 4, e32, m1, tu, mu",
-                        "VRGATHEREI16.VV v23, v3, v22, v0.t",
+                        "VRGATHEREI16.VV v23, v3, v22, v0",
                         "VMV.V.I         v0, 0b1100",
-                        "VRGATHEREI16.VV v23, v3, v22, v0.t",
+                        "VRGATHEREI16.VV v23, v3, v22, v0",
                         "VMV.V.V         v3, v23"
                     ],
                     "disassembly": "shufps xmm2, xmm2, 0x00"
