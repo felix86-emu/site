@@ -161,6 +161,8 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
 </body>
 </html>
 
+Some of these translations may be suboptimal! [Contributions are welcome](https://felix86.com/contrib/#i-want-to-optimize-instructions)! Alternatively, you can open an issue.
+
 ### x87
 
 Currently x87 is probably the least optimized part of the translation. There's no register allocation and registers are loaded from memory and stored back at the end of each instruction. Luckily, most games rarely use x87 instructions. In the future, optimizations need to happen as older games use much more x87, especially ones compiled for x86.
