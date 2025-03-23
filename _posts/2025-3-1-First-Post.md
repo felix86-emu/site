@@ -48,7 +48,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
     <select id="instruction">
     </select>
     
-    <h2>felix86 RISC-V translation:</h2>
+    <h2>felix86's RISC-V translation:</h2>
     <pre id="codeBox">Select an instruction to view its equivalent code.</pre>
     
     <script>
@@ -91,7 +91,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                         "VMIN.VV         v22, v2, v29, none",
                         "VMAX.VV         v23, v2, v29, none",
                         "VSUB.VV         v24, v23, v22, none",
-                        "VSLIDEDOWN.VI   v25, v24, 0x8(8), none",
+                        "VSLIDEDOWN.VI   v25, v24, 8, none",
                         "VSETIVLI        zero, 8, e8, mf2, tu, mu",
                         "VWREDSUMU.VS    v26, v24, v26, none",
                         "VWREDSUMU.VS    v27, v25, v27, none",
@@ -107,11 +107,11 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                         "VSETIVLI        zero, 1, e64, m1, tu, mu",
                         "ADDIW           ra, zero, 0",
                         "VMV.S.X         v22, ra",
-                        "VMV.V.I         v0, 0x3(3)",
+                        "VMV.V.I         v0, 0b11",
                         "VMV.V.I         v23, 0",
                         "VSETIVLI        zero, 4, e32, m1, tu, mu",
                         "VRGATHEREI16.VV v23, v3, v22, v0.t",
-                        "VMV.V.I         v0, 0xc(12)",
+                        "VMV.V.I         v0, 0b1100",
                         "VRGATHEREI16.VV v23, v3, v22, v0.t",
                         "VMV.V.V         v3, v23"
                     ],
