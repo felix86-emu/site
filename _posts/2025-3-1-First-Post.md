@@ -58,7 +58,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "instruction_count": 2,
                     "expected_asm": [
                         "VSETIVLI        zero, 1, e32, m1, tu, mu",
-                        "VFADD.VV        v4, v4, v5, none"
+                        "VFADD.VV        v4, v4, v5"
                     ],
                     "disassembly": "addss xmm3, xmm4"
                 },
@@ -68,8 +68,8 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                         "VSETIVLI        zero, 4, e32, m1, tu, mu",
                         "LUI             ra, 0x3f800000(1.0)",
                         "VMV.V.X         v23, ra",
-                        "VFSQRT.V        v22, v5, none",
-                        "VFDIV.VV        v4, v23, v22, none"
+                        "VFSQRT.V        v22, v5",
+                        "VFDIV.VV        v4, v23, v22"
                     ],
                     "disassembly": "rsqrtps xmm3, xmm4"
                 },
@@ -77,7 +77,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "instruction_count": 2,
                     "expected_asm": [
                         "VSETIVLI        zero, 8, e16, m1, tu, mu",
-                        "VMULHU.VV       v3, v3, v3, none"
+                        "VMULHU.VV       v3, v3, v3"
                     ],
                     "disassembly": "pmulhuw xmm2, xmm2"
                 },
@@ -85,19 +85,19 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "instruction_count": 14,
                     "expected_asm": [
                         "VSETIVLI        zero, 16, e8, m1, tu, mu",
-                        "VLE8.V          v29, a0, none, 1",
+                        "VLE8.V          v29, a0, 1",
                         "VMV.V.I         v26, 0",
                         "VMV.V.I         v27, 0",
-                        "VMIN.VV         v22, v2, v29, none",
-                        "VMAX.VV         v23, v2, v29, none",
-                        "VSUB.VV         v24, v23, v22, none",
-                        "VSLIDEDOWN.VI   v25, v24, 8, none",
+                        "VMIN.VV         v22, v2, v29",
+                        "VMAX.VV         v23, v2, v29",
+                        "VSUB.VV         v24, v23, v22",
+                        "VSLIDEDOWN.VI   v25, v24, 8",
                         "VSETIVLI        zero, 8, e8, mf2, tu, mu",
-                        "VWREDSUMU.VS    v26, v24, v26, none",
-                        "VWREDSUMU.VS    v27, v25, v27, none",
+                        "VWREDSUMU.VS    v26, v24, v26",
+                        "VWREDSUMU.VS    v27, v25, v27",
                         "VSETIVLI        zero, 2, e64, m1, tu, mu",
-                        "VSLIDE1UP.VX    v28, v27, zero, none",
-                        "VOR.VV          v2, v28, v26, none"
+                        "VSLIDE1UP.VX    v28, v27, zero",
+                        "VOR.VV          v2, v28, v26"
                     ],
                     "disassembly": "psadbw xmm1, [rdi]"
                 },
@@ -126,7 +126,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                 return code
                     .replace(keywordRegex, '<span class="keyword">$1</span>')
                     .replace(/\b(v\d+|zero|ra|a0)\b/g, '<span class="register">$1</span>')
-                    .replace(/\b(\d+|0x[0-9A-Fa-f]+)\b/g, '<span class="immediate">$1</span>');
+                    .replace(/\b(\d+|0x[0-9A-Fa-f]+|0b[01]+)\b/g, '<span class="immediate">$1</span>');
             }
 
             function updateCode() {
