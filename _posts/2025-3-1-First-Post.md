@@ -1,9 +1,7 @@
 ---
 layout: post
-title: A new x86-64 emulator is on the horizon
+title: April 2025 update
 ---
-
-# felix86 - April 2025 update
 
 felix86 is a new x86-64 userspace emulator for RISC-V. It is aimed at achieving good performance in games, and as of now is in relatively early development. [A few games](https://felix86.com/compat/) are already fully working. As this is the first post, we are going to go through a brief introduction
 
@@ -31,7 +29,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
 <head>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: monospace;
             margin: 20px;
         }
         pre {
@@ -40,6 +38,9 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
             border-radius: 5px;
             white-space: pre-wrap;
         }
+        .keyword { color: blue; font-weight: bold; }
+        .register { color: green; }
+        .immediate { color: red; }
     </style>
 </head>
 <body>
@@ -65,7 +66,7 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "instruction_count": 5,
                     "expected_asm": [
                         "VSETIVLI        zero, 4, e32, m1, tu, mu",
-                        "LUI             ra, 0x3f800000(1065353216)",
+                        "LUI             ra, 0x3f800000(1.0)",
                         "VMV.V.X         v23, ra",
                         "VFSQRT.V        v22, v5, none",
                         "VFDIV.VV        v4, v23, v22, none"
@@ -85,8 +86,8 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "expected_asm": [
                         "VSETIVLI        zero, 16, e8, m1, tu, mu",
                         "VLE8.V          v29, a0, none, 1",
-                        "VMV.V.I         v26, 0x0(0)",
-                        "VMV.V.I         v27, 0x0(0)",
+                        "VMV.V.I         v26, 0",
+                        "VMV.V.I         v27, 0",
                         "VMIN.VV         v22, v2, v29, none",
                         "VMAX.VV         v23, v2, v29, none",
                         "VSUB.VV         v24, v23, v22, none",
@@ -104,10 +105,10 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                     "instruction_count": 10,
                     "expected_asm": [
                         "VSETIVLI        zero, 1, e64, m1, tu, mu",
-                        "ADDIW           ra, zero, 0x0(0)",
+                        "ADDIW           ra, zero, 0",
                         "VMV.S.X         v22, ra",
                         "VMV.V.I         v0, 0x3(3)",
-                        "VMV.V.I         v23, 0x0(0)",
+                        "VMV.V.I         v23, 0",
                         "VSETIVLI        zero, 4, e32, m1, tu, mu",
                         "VRGATHEREI16.VV v23, v3, v22, v0.t",
                         "VMV.V.I         v0, 0xc(12)",
@@ -118,15 +119,26 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                 }
             };
 
+            const riscVKeywords = ["VSETIVLI", "VFADD.VV", "LUI", "VMV.V.X", "VFSQRT.V", "VFDIV.VV", "VMULHU.VV", "VLE8.V", "VMV.V.I", "VMIN.VV", "VMAX.VV", "VSUB.VV", "VSLIDEDOWN.VI", "VWREDSUMU.VS", "VSLIDE1UP.VX", "VOR.VV", "ADDIW", "VMV.S.X", "VRGATHEREI16.VV", "VMV.V.V"];
+
+            function highlightCode(code) {
+                const keywordRegex = new RegExp(`\\b(${riscVKeywords.join('|')})\\b`, 'g');
+                return code
+                    .replace(keywordRegex, '<span class="keyword">$1</span>')
+                    .replace(/\b(v\d+|zero|ra|a0)\b/g, '<span class="register">$1</span>')
+                    .replace(/\b(\d+|0x[0-9A-Fa-f]+)\b/g, '<span class="immediate">$1</span>');
+            }
+
             function updateCode() {
                 const select = document.getElementById("instruction");
                 const codeBox = document.getElementById("codeBox");
                 const selectedKey = select.value;
-                
+
                 if (selectedKey && jsonData[selectedKey]) {
-                    codeBox.textContent = jsonData[selectedKey].expected_asm.join("\n");
+                    const highlightedCode = jsonData[selectedKey].expected_asm.map(line => highlightCode(line)).join("<br>");
+                    codeBox.innerHTML = highlightedCode;
                 } else {
-                    codeBox.textContent = "Select an instruction to view its equivalent code.";
+                    codeBox.innerHTML = "Select an instruction to view its equivalent code.";
                 }
             }
 
