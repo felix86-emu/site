@@ -38,6 +38,7 @@ permalink: /compat/
     
     <div class="game-list" id="games">
         
+<div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/f49cdb0e-c0ab-4637-b3e9-a7cf00a31f2f" alt="Baba Is You" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/16">Baba Is You</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Doom 64" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/15">Doom 64</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="https://github.com/user-attachments/assets/e67f8e2b-3343-41d0-9d29-bd18017d6de4" alt="Outlast" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/14">Outlast</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Cuphead" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/13">Cuphead</a></p><p class="status red">Not Working</p></div>
