@@ -13,7 +13,7 @@ Currently, translation happens during execution time, also known as just-in-time
 
 ### Flags
 
-The RISC-V architecture, unlike x86-64, has no flags -- thus flag calculations must be performed after some instructions. In most cases however, flags go unused, so felix86 will not emit unnecessary flag calculations. This is performed by doing a forward scan of the instruction sequence it is about to compile (the basic block) and finding at which points flags are needed and at which points they are defined, effectively finding liveness ranges for each flag. Instructions that would emit flags check if the flags are actually used before doing so.
+The RISC-V architecture, unlike x86-64, has no flags -- thus flag calculations must be performed for some x86 instructions like `add`. In most cases flags go unused, so felix86 will not emit unnecessary flag calculations. This is performed by doing a forward scan of the instruction sequence it is about to compile (the basic block) and finding at which points flags are needed and at which points they are defined, effectively finding liveness ranges for each flag. Instructions that would emit flags check if the flags are actually used before doing so.
 
 ### Registers
 
