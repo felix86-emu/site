@@ -54,6 +54,22 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const jsonData = {
+                "0fc6d200": {
+                    "instruction_count": 10,
+                    "expected_asm": [
+                        "VSETIVLI        zero, 1, e64, m1, tu, mu",
+                        "ADDIW           ra, zero, 0",
+                        "VMV.S.X         v22, ra",
+                        "VMV.V.I         v0, 0b11",
+                        "VMV.V.I         v23, 0",
+                        "VSETIVLI        zero, 4, e32, m1, tu, mu",
+                        "VRGATHEREI16.VV v23, v3, v22, v0",
+                        "VMV.V.I         v0, 0b1100",
+                        "VRGATHEREI16.VV v23, v3, v22, v0",
+                        "VMV.V.V         v3, v23"
+                    ],
+                    "disassembly": "shufps xmm2, xmm2, 0x00"
+                },
                 "f30f58dc": {
                     "instruction_count": 2,
                     "expected_asm": [
@@ -100,22 +116,6 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
                         "VOR.VV          v2, v28, v26"
                     ],
                     "disassembly": "psadbw xmm1, [rdi]"
-                },
-                "0fc6d200": {
-                    "instruction_count": 10,
-                    "expected_asm": [
-                        "VSETIVLI        zero, 1, e64, m1, tu, mu",
-                        "ADDIW           ra, zero, 0",
-                        "VMV.S.X         v22, ra",
-                        "VMV.V.I         v0, 0b11",
-                        "VMV.V.I         v23, 0",
-                        "VSETIVLI        zero, 4, e32, m1, tu, mu",
-                        "VRGATHEREI16.VV v23, v3, v22, v0",
-                        "VMV.V.I         v0, 0b1100",
-                        "VRGATHEREI16.VV v23, v3, v22, v0",
-                        "VMV.V.V         v3, v23"
-                    ],
-                    "disassembly": "shufps xmm2, xmm2, 0x00"
                 }
             };
 
@@ -179,4 +179,4 @@ Currently I am working on thunking, using host libraries in place of guest ones 
 
 Thanks for reading the April post! That's all for now! See you in a month or two.
 
-Make sure to checkout the repo: [https://github.com/OFFTKP/felix86](https://github.com/OFFTKP/felix86)
+Make sure to check out (and star) the repo: [https://github.com/OFFTKP/felix86](https://github.com/OFFTKP/felix86)
