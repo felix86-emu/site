@@ -29,10 +29,10 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
 <head>
     <style>
         body {
-            font-family: monospace;
             margin: 20px;
         }
         pre {
+            font-family: monospace;
             background: #f4f4f4;
             padding: 10px;
             border-radius: 5px;
