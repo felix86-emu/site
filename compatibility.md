@@ -16,7 +16,7 @@ permalink: /compat/
     .search { margin-bottom: 10px; }
     .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; }
-    .game img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
+    .game img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
     .status { font-weight: bold; }
     .green { color: green; }
     .yellow { color: orange; }
