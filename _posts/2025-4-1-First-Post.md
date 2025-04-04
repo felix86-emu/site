@@ -3,11 +3,11 @@ layout: post
 title: April 2025 update
 ---
 
-felix86 is a new x86-64 userspace emulator for RISC-V. It is aimed at achieving good performance in games, and as of now is in relatively early development. [A few games](https://felix86.com/compat/) are already fully working. As this is the first post, we are going to go through a brief introduction
+felix86 is a new x86-64 userspace emulator for RISC-V. It is aimed at achieving good performance in games, and as of now is in relatively early development. [A few games](https://felix86.com/compat/) are already fully working. As this is the first post, we are going to go through a brief introduction.
 
 ## Inner workings
 
-felix86 emulates an x86-64 CPU running in userspace, which is to say it is not a virtual machine like VMware, rather it directly translates the instructions of an application and uses the host Linux kernel to handle syscalls.
+felix86 emulates an x86-64 CPU running in userspace, which is to say it is not a virtual machine like VMware, rather it directly translates the instructions of an application and mostly uses the host Linux kernel to handle syscalls.
 
 Currently, translation happens during execution time, also known as just-in-time (JIT) recompilation. The JIT recompiler in felix86 is focused on fast compilation speed and performs minimal optimizations. It utilizes extensions found on the host system such as the vector extension for SIMD operations, or the `B` extension for emulating bit manipulation extensions like BMI. The only mandatory extensions for felix86 are `G`,  which every RISC-V general purpose computer should already have, and v1.0 of the standard vector extension.
 
