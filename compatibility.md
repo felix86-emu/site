@@ -4,40 +4,50 @@ title: Compatibility
 permalink: /compat/
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>felix86 Compatibility List</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
-        .tab { cursor: pointer; padding: 10px; background: lightgray; border-radius: 5px; }
-        .tab.active { background: darkgray; }
-        .search { margin-bottom: 10px; }
-        .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; }
-        .game img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
-        .status { font-weight: bold; }
-        .green { color: green; }
-        .yellow { color: orange; }
-        .red { color: red; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>felix86 Compatibility List</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+    .tab { cursor: pointer; padding: 10px; background: lightgray; border-radius: 5px; }
+    .tab.active { background: darkgray; }
+    .search { margin-bottom: 10px; }
+    .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; }
+    .game img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
+    .status { font-weight: bold; }
+    .green { color: green; }
+    .yellow { color: orange; }
+    .red { color: red; }
+    .pagination { margin-top: 20px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .pagination button { padding: 5px 10px; border: none; background: lightgray; border-radius: 5px; cursor: pointer; }
+    .pagination button.active { background: darkgray; color: white; }
+  </style>
 </head>
 <body>
-    <h1>felix86 Compatibility List</h1>
-    
-    <div class="tabs">
-        <div class="tab active" onclick="filterCategory('all')">All</div>
-        <div class="tab" onclick="filterCategory('working')">Working</div>
-        <div class="tab" onclick="filterCategory('partial')">Partially Working</div>
-        <div class="tab" onclick="filterCategory('not-working')">Not Working</div>
-    </div>
-    
-    <input class="search" type="text" placeholder="Search games..." onkeyup="searchGames()">
-    
-    <div class="game-list" id="games">
-        
+  <h1>felix86 Compatibility List</h1>
+
+  <div class="tabs">
+    <div class="tab active" onclick="filterCategory('all', this)">All</div>
+    <div class="tab" onclick="filterCategory('working', this)">Working</div>
+    <div class="tab" onclick="filterCategory('partial', this)">Partially Working</div>
+    <div class="tab" onclick="filterCategory('not-working', this)">Not Working</div>
+  </div>
+
+  <input class="search" type="text" placeholder="Search games..." onkeyup="applyFilters()">
+
+  <div class="game-list" id="games"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <div id="all-games" style="display: none">
+          
+
+
+<div class="game" data-category="not-working"><img src="https://github.com/user-attachments/assets/9344500c-eaf2-494a-bc78-367d4ac078d2" alt="Rogue Legacy" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/18">Rogue Legacy</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="60 Seconds" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/17">60 Seconds</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/f49cdb0e-c0ab-4637-b3e9-a7cf00a31f2f" alt="Baba Is You" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/16">Baba Is You</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="not-working"><img src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Doom 64" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/15">Doom 64</a></p><p class="status red">Not Working</p></div>
@@ -56,25 +66,67 @@ permalink: /compat/
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/ae9186c3-8777-40ae-b26b-3a0461ca0b47" alt="VVVVVV" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/2">VVVVVV</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="working"><img src="https://github.com/user-attachments/assets/47ff1b5f-4d15-45dd-8dfb-bfa512b881f7" alt="Balatro" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/1">Balatro</a></p><p class="status green">Working</p></div>
 
-    </div>
-    
-    <script>
-        function filterCategory(category) {
-            let games = document.querySelectorAll('.game');
-            games.forEach(game => {
-                game.style.display = (category === 'all' || game.dataset.category === category) ? 'block' : 'none';
-            });
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-        
-        function searchGames() {
-            let search = document.querySelector('.search').value.toLowerCase();
-            document.querySelectorAll('.game').forEach(game => {
-                let name = game.querySelector('p').innerText.toLowerCase();
-                game.style.display = name.includes(search) ? 'block' : 'none';
-            });
-        }
-    </script>
+
+
+  </div>
+
+  <script>
+    const allGames = Array.from(document.querySelectorAll('#all-games .game'));
+    const gameContainer = document.getElementById('games');
+    const pagination = document.getElementById('pagination');
+    let filteredGames = allGames;
+    let currentPage = 1;
+    const gamesPerPage = 9;
+    let currentCategory = 'all';
+
+    function filterCategory(category, tabElement) {
+      currentCategory = category;
+      currentPage = 1;
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      tabElement.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const search = document.querySelector('.search').value.toLowerCase();
+
+      filteredGames = allGames.filter(game => {
+        const matchesCategory = currentCategory === 'all' || game.dataset.category === currentCategory;
+        const matchesSearch = game.querySelector('p').innerText.toLowerCase().includes(search);
+        return matchesCategory && matchesSearch;
+      });
+
+      renderGames();
+      renderPagination();
+    }
+
+    function renderGames() {
+      gameContainer.innerHTML = '';
+      const start = (currentPage - 1) * gamesPerPage;
+      const end = start + gamesPerPage;
+      const gamesToShow = filteredGames.slice(start, end);
+      gamesToShow.forEach(game => gameContainer.appendChild(game.cloneNode(true)));
+    }
+
+    function renderPagination() {
+      pagination.innerHTML = '';
+      const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.classList.toggle('active', i === currentPage);
+        btn.onclick = () => {
+          currentPage = i;
+          renderGames();
+          renderPagination();
+        };
+        pagination.appendChild(btn);
+      }
+    }
+
+    window.onload = () => {
+      applyFilters();
+    };
+  </script>
 </body>
 </html>
