@@ -1,15 +1,13 @@
 ---
 layout: page
-title: Compatibility
+title: felix86 Compatibility List
 permalink: /compat/
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>felix86 Compatibility List</title>
   <style>
     body { font-family: Arial, sans-serif; }
     .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
@@ -29,8 +27,6 @@ permalink: /compat/
   </style>
 </head>
 <body>
-  <h1>felix86 Compatibility List</h1>
-
   <div class="tabs">
     <div class="tab active" onclick="filterCategory('all', this)">All</div>
     <div class="tab" onclick="filterCategory('working', this)">Working</div>
