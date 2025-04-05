@@ -9,7 +9,6 @@ permalink: /compat/
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    body { font-family: Arial, sans-serif; }
     .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
     .tab { cursor: pointer; padding: 10px; background: lightgray; border-radius: 5px; }
     .tab.active { background: darkgray; }
