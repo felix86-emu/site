@@ -125,3 +125,5 @@ permalink: /compat/
   </script>
 </body>
 </html>
+
+Generated from [https://github.com/felix86-emu/compatibility-list](https://github.com/felix86-emu/compatibility-list)

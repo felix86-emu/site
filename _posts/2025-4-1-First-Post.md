@@ -28,9 +28,6 @@ You can use the dropdown below to get an idea of some SIMD translations. Some ar
 <html lang="en">
 <head>
     <style>
-        body {
-            margin: 20px;
-        }
         pre {
             font-family: monospace;
             background: #f4f4f4;
