@@ -19,6 +19,7 @@ Still, here's some tips:
 - When in JIT code, the `s11` RISC-V register holds the x86-64 state
   - You can view the value individual registers like so: `p/x ((ThreadState*)$s11)->gprs[0]` or `p/x ((ThreadState*)$s11)->xmm[0]`
   - You can get the RIP value: `p/x ((ThreadState*)$s11)->rip`
+- Need to know at what offset and which library an address corresponds to? Use print_address from gdb, example: `call print_address(0x10050c)`
 - The `FELIX86_CALLTRACE=1` environment variable is very useful when debugging. You can execute `call dump_states()` from gdb to print the calltraces. It should have symbols if it can find them and should tell you what binary the code is in
 - If you are not in JIT code, you can get the `ThreadState` object using `p/x ThreadState::Get()`
 - The `FELIX86_STRACE=1` environment variable makes the emulator produce a trace of all emulated syscalls it runs
