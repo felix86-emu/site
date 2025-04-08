@@ -24,6 +24,7 @@ Still, here's some tips:
 - The `FELIX86_STRACE=1` environment variable makes the emulator produce a trace of all emulated syscalls it runs
 - Logs are saved in `/tmp/felix86-<PID>-XXXXXX.log` for every run
 - Verbose logging can be helpful sometimes, set `FELIX86_VERBOSE=1`
+- The `FELIX86_SLEEP_ERROR` environment variable or the `sleep_on_error` option on `config.toml` can make it so a crashing program sleeps for 40 seconds after printing its PID, giving enough time to attach a debugger. This is particularily useful in situations with many `fork` and `execve` instructions, where debugging with gdb attached from the start can get messy
 
 Feel free to report any findings in the compatibility list!
 
