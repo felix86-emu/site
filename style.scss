@@ -21,9 +21,6 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 
 .container {
@@ -243,9 +240,6 @@ nav {
 //
 // .main
 //
-.my_content {
-  flex: 1;
-}
 
 .posts > .post {
   padding-bottom: 2em;
