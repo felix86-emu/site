@@ -24,8 +24,40 @@
       <header class="masthead clearfix">
         <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
+        <style>
+          .image-hover-wrapper {
+            display: inline-block;
+            position: relative;
+          }
+        
+          .image-hover-wrapper img {
+            display: block;
+            transition: opacity 0.3s ease-in-out;
+          }
+        
+          .image-hover-wrapper .hover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+          }
+        
+          .image-hover-wrapper:hover .hover-image {
+            opacity: 1;
+          }
+        
+          .image-hover-wrapper:hover .default-image {
+            opacity: 0;
+          }
+        </style>
+        
         <div class="site-info">
-          <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+          <div class="image-hover-wrapper">
+            <a href="{{ site.baseurl }}/">
+              <img src="{{ site.baseurl }}/images/text.png" class="default-image" />
+              <img src="{{ site.baseurl }}/images/text_hover.png" class="hover-image" />
+            </a>
+          </div>
           <p class="site-description">{{ site.description }}</p>
         </div>
 
