@@ -78,13 +78,6 @@ _Windows 7 Solitaire now runs under felix86_
 
 A few things have been added that will enhance user experience and get us closer to a proper release
 
-### apt support
-
-The necessary syscalls for the `apt` command have been implemented. This means that the guest `apt` command can be used to directly install files in the rootfs if your OS is Debian. This can be very helpful when installing packages that have multiple libraries, binaries, data and configuration files. In the past we had to move everything with `scp` which was especially tiresome when installing certain libraries.
-
-That being said, it may be preferrable to use the host `apt` command to install x86-64 executables on a specific path.
-For example, `sudo apt -o Dir=/rootfs -o Architecture=amd64 install myPackage` seems to be able to achieve such a thing. In some cases both the host and guest version may need to be installed, for example if an application needs to interact with a systemd service.
-
 ### Config files
 
 The emulator now has two ways of configuration:
