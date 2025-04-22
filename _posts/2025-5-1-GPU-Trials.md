@@ -54,6 +54,25 @@ Detecting self-modifying code happens by disallowing write access to pages that 
 <img src="{{ site.baseurl }}/images/celeste.png" width="700" style="display: block; margin: 10px auto"/>
 _After fixing a couple more bugs, Celeste now gets in game, and at ~25 FPS!_
 
+## Context saving rework
+
+The x86-64 registers are statically allocated to RISC-V registers. When entering the recompiled code we load them from memory, when we exit we store them in memory.
+
+Before, this would happen at the basic block level. When a basic block is entered, the registers used in that basic block will be loaded from memory as they are needed, and at the end of the block we write everything to memory. However this approach brings up a couple problems:
+
+- When multiple blocks are linked together, there's multiple loads/stores that could've been otherwise avoided
+- When a signal happens, we don't know which registers are loaded with a correct value (which represents an x86-64 register), or with garbage
+
+The first problem is more of an assumption. One could assume that this would be expensive, however the alternative, which is loading/storing them in the dispatcher, could also be a performance bottleneck in scenarios where the dispatcher is hit often.
+
+The second problem is worse. To cope with that problem in the past we would walk the instructions from the start of the block until the PC at the time of the signal and decode the instructions. Any instructions that would modify a statically allocated register would thus mean the register has an updated value that is not yet reflected in memory, and we need to pull it out of the `ucontext_t` struct.
+
+However, if we load all the registers in the dispatcher, and ensure whenever recompiled code is executed that the statically allocated registers hold correct values, we can simply pull the values from `ucontext_t` at all times and the values will not be garbage!
+
+This is what [this pull request](https://github.com/OFFTKP/felix86/pull/48) achieves.
+
+Another issue with our former approach is that walking instructions in a block is fine, but what if we wanted to include some control flow in our blocks at some point? Then everything could break.
+
 ## 8-bit and 16-bit atomic implementations
 
 While RISC-V has atomic operations like `amoadd`, `amoxor`, `amoswap` (and more) to match x86-64's `lock add`, `lock xor`, `lock xchg` (and others) by default it only supports 32-bit and 64-bit operations. An extension named `Zabha` adds 8-bit and 16-bit support, however no RISC-V hardware implements it right now. To emulate 8-bit and 16-bit atomics we need to use `lr.w` and `sc.w` and do some shifting and masking to perform the operation on an 8-bit or 16-bit value within the 32-bit word.
