@@ -5,19 +5,17 @@ title: May 2025 update
 
 A lot of progress was made during the month of April!
 
-Before we dive in, I want to thank our donors on Ko-Fi who helped me raise funds for hardware and games. In particular, I'd like to thank [Sonicadvance1](https://github.com/Sonicadvance1) from [FEX-Emu](https://github.com/FEX-Emu/FEX)<a href="https://github.com/FEX-Emu/FEX"><img class="inline-icon" src="https://avatars.githubusercontent.com/u/61863475"></a> for his significant $1000 donation!
-
-You can learn more [at the project's Ko-fi page](https://ko-fi.com/felix86)!
+Before we dive in, I want to thank our donors on Ko-Fi who helped me raise funds for hardware and games. In particular, I'd like to thank [Sonicadvance1](https://github.com/Sonicadvance1) from [FEX-Emu](https://github.com/FEX-Emu/FEX)<a href="https://github.com/FEX-Emu/FEX"><img class="inline-icon" src="https://avatars.githubusercontent.com/u/61863475"></a> for his significant $1000 donation! Thanks so much!
 
 # The GPU trials
 Using a proper GPU with a RISC-V board is... tricky currently.
 
-Initially I tried an NVIDIA GTX 1050 Ti, but I quickly realized that Bianbu OS lacks `nouveau` driver support. Next, an AMD Radeon HD 7790 was tried, [however that brought up errors](https://forum.banana-pi.org/t/amd-hd-7790-gpu-initialization-failed/22846) during initialization. Finally, I picked up an AMD HD 7350, as the Bianbu wiki claimed it was supported -- and thankfully, it was.
+Initially I tried an NVIDIA GTX 1050 Ti, but I quickly realized that Bianbu lacks `nouveau` driver support. Next, an AMD Radeon HD 7790 was tried, [however that brought up errors](https://forum.banana-pi.org/t/amd-hd-7790-gpu-initialization-failed/22846) during initialization. Finally, I picked up an AMD HD 7350, as the Bianbu wiki claimed it was supported -- and thankfully, it was.
 
 <img src="{{ site.baseurl }}/images/hd7350.jpg" width="300" style="display: block; margin: 10px auto"/>
-_The BPI-F3 has no PCIe slot, the mPCIe has to be used with an adapter_
+_The BPI-F3 has no PCIe slot, the mPCIe had to be used with an adapter_
 
-Being able to use a GPU has been very helpful. All games prior to this point were running with llvmpipe, which is a software GPU fallback that draws graphics using your CPU. This is extremely expensive, and exponentially so for any game that does anything other than copy a framebuffer to the screen. Some games managed to cope, like VVVVVV at "decent" framerates, while others like World of Goo would run at a staggering 0.5 frames per second. Other games like SuperTuxKart would freeze during the compilation of certain shaders, which would happen both on actual x86-64 hardware and under felix86. Having a GPU present allowed SuperTuxKart to get us into a race at an acceptable 20 frames per second, which we hope to raise in the future!
+Being able to use a GPU has been very helpful. All games prior to this point were running with llvmpipe, which is a software GPU fallback that draws graphics using your CPU. This is extremely expensive, and exponentially so for any game that does anything other than copy a framebuffer to the screen. Some games managed to cope, like VVVVVV at "decent" framerates, while others like World of Goo would run at a staggering 0.5 frames per second. Other games like SuperTuxKart would freeze during the compilation of certain shaders, which would happen both on actual x86-64 hardware and under felix86. Having a GPU present allowed SuperTuxKart to get us into a race at 10 frames per second, which we hope to raise in the future!
 
 <img src="{{ site.baseurl }}/images/stk.jpg" width="700" style="display: block; margin: 10px auto"/>
 _We can finally race!_
@@ -28,16 +26,16 @@ Getting a GPU to work provided a great performance boost in most games. Some gam
 
 During April, initial support for self-modifying code was added.
 
-Self-modifying code is code that modifies itself. This can take many forms:
+Self-modifying code can take many forms:
 - A library being loaded at an address, unloaded, and a different library being loaded at the same address
 - A recompiler making modifications to its own code for performance, such as block linking
-- Anti-emulator tactics such as modifying the next instruction, this can trip up recompilers
+- Anti-emulator/anti-debugger tactics for DRM or anti-cheat
 
 The reason self-modifying code is a problem is because recompilers compile chunks of code at a time (called basic blocks) and cache them to prevent future recompilations. This caching happens based on the address. If there's self-modifying code however, the underlying guest code has changed but the cached host code is still the same. In those scenarios, we need to mark those blocks as invalid and recompile them. This is the basic idea, there's other techniques that deal with other types of self-modifying code for better performance.
 
 Without self-modifying code support, **Celeste** would run, but *very, very slowly*. The loading times were the worst part, the game took around 100 seconds just to load the graphics, getting to the menu could take up to 10 minutes or more. The menu would render at less than 2 FPS, **with or without a GPU**.
 
-With self-modifying code support, these loading times were vastly reduced and the game could run at around **25 FPS** with some stutter when loading new areas. This is a massive boost in performance and was quite unprecedented!
+With self-modifying code support, these loading times were vastly reduced and the game could run at around **20 FPS** with some stutter when loading new areas. This is a massive boost in performance and was quite unprecedented!
 
 The reason here is that Celeste is a game written in C#. This game runs under a C# runtime environment with a JIT that translates [CIL](https://en.wikipedia.org/wiki/Common_Intermediate_Language) to host machine code. This environment, called Mono, has a lot of self-modifying code where the originally slow recompiled code gets gradually optimized to perform faster. Now, if there's no self-modifying code support, these optimizations never get realized by our emulator, as it keeps running the cached code without realizing the guest code has changed, thus performing a lot worse.
 
@@ -45,7 +43,7 @@ Not all types of self-modifying code are supported yet, but library loading/unlo
 
 
 <img src="{{ site.baseurl }}/images/celeste.png" width="700" style="display: block; margin: 10px auto"/>
-_After fixing a couple more bugs, Celeste now gets in game, and at ~25 FPS!_
+_After fixing a couple more bugs, Celeste now gets in game, and at ~20 FPS!_
 
 
 ### Implementation details
@@ -86,12 +84,12 @@ Afterwards, `invalidate_caller_thunk` is going to save the context and jump to a
 
 The x86-64 registers are statically allocated to RISC-V registers. When entering the recompiled code we load them from memory, when we exit we store them in memory.
 
-Before, this would happen at the basic block level. When a basic block is entered, the registers used in that basic block will be loaded from memory as they are needed, and at the end of the block we write everything to memory. However this approach brings up a couple problems:
+Previously, this would happen at the basic block level. When a basic block is entered, the registers used in that basic block will be loaded from memory as they are needed, and at the end of the block we write everything to memory. However this approach brings up a couple problems:
 
 - When multiple blocks are linked together, there's multiple loads/stores that could've been otherwise avoided
 - When a signal happens, we don't know which registers are loaded with a correct value (which represents an x86-64 register), or with garbage
 
-The first problem is more of an assumption. One could assume that this would be expensive, however the alternative, which is loading/storing them in the dispatcher, could also be a performance bottleneck in scenarios where the dispatcher is hit often.
+The first problem is more of an *assumption*. One could assume that this would be expensive, however the alternative, which is loading/storing them in the dispatcher, could also be a performance bottleneck in scenarios where the dispatcher is hit often.
 
 The second problem is worse. To handle that issue in the past, we used to walk through the instructions from the start of the block until the PC at the time of the signal and decode the instructions. Any instructions modifying a statically allocated register would mean the register has an updated value that is not yet reflected in memory, and we need to pull it out of the `ucontext_t` struct.
 
@@ -121,7 +119,7 @@ _Windows 7 Solitaire now runs under felix86_
 
 ## Better user experience
 
-A few things have been added that will enhance user experience and get us closer to a proper release
+A few things have been added that will enhance user experience.
 
 ### Config files
 
@@ -151,7 +149,7 @@ As we are moving towards supporting 32-bit programs, some previously irrelevant 
 For example, the `cmpxchg8b` instruction, which was used in the pre-x86_64 era to perform a 64-bit atomic compare exchange, is needed for some 32-bit programs. Thankfully, this can be implemented with an `lr.d`/`sc.d` loop, unlike the `cmpxchg16b` which is currently impossible to emulate in an atomic way apart from some ugly workarounds. The `Zacas` extension is going to make proper `cmpxchg16b` emulation possible, but it's not in the RVA23 profile so that may take a while. Regardless, felix86 will take advantage of the `Zacas` extension, if available.
 
 ### New 32-bit syscalls
-Along with instructions, new syscalls need to be supported for 32-bit programs. Unlike 64-bit programs, the syscalls here are more tricky to implement. Since pointers are 32 bits, there's a mismatch with structs used in many host syscalls and marshalling needs to occur. For some syscalls like `sendmsg` this is trickier, as multiple structs need to be marshalled and lengths adjusted. There's many syscalls that don't occur in 64-bit mode and need to be emulated with more modern versions.
+Along with instructions, new syscalls need to be supported for 32-bit programs. Unlike 64-bit programs, the syscalls here are more tricky to implement. Since pointers are 32 bits, there's a mismatch with structs used in many host syscalls and marshalling needs to occur. For some syscalls like `sendmsg` this is trickier, as multiple structs need to be marshalled and lengths adjusted. There's many syscalls that don't occur in 64-bit mode and need to be emulated with modern syscalls.
 
 ### MMX support
 The MMX instructions are largely unused in modern programs because you have SSE instructions that can do the same things on larger registers. Still, modern programs sometimes use them.
@@ -166,8 +164,10 @@ Most MMX instructions are implemented using the already existing SSE handlers, w
 
 ---
 
-That was it for the May post! See you in a month!
+That was it for the May post! See you in a month or two!
 
 There's still a lot of work to be done -- don’t hesitate to join us!
 
-[Contributions are welcome!](https://github.com/OFFTKP/felix86)
+[Contributions are welcome!](https://felix86.com/contrib/)
+
+If you find this project interesting, please [star the repository](https://github.com/OFFTKP/felix86).
