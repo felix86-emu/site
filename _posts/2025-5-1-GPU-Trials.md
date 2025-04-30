@@ -160,7 +160,7 @@ There's now MMX support, and 8 of the 15 remaining vector registers were statica
 
 Because MMX and x87 FPU instructions operate on the same registers, the `emms` instruction is used before running any x87 instructions and after running any MMX instructions. This is great, because we have an easy switch point to flush our allocated MMX registers.
 
-Most MMX instructions are implemented using the already existing SSE handlers, while some like `punpckh` have differences due to the smaller register size, so they were handled a little more specially.
+Most MMX instructions are implemented using the already existing SSE handlers, while some like `punpckh` have differences due to the smaller register size, so they were handled with a little more care.
 
 ---
 
