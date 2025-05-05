@@ -5,7 +5,7 @@ title: felix86 25.05
 
 A lot of progress was made during the month of April!
 
-Before we dive in, I want to thank our donors on Ko-Fi who helped me raise funds for hardware and games. In particular, I'd like to thank [Sonicadvance1](https://github.com/Sonicadvance1) from [FEX-Emu](https://github.com/FEX-Emu/FEX)<a href="https://github.com/FEX-Emu/FEX"><img class="inline-icon" src="https://avatars.githubusercontent.com/u/61863475"></a> for his significant $1000 donation! Thanks so much!
+Before we dive in, I want to thank the donors on Ko-Fi who helped me raise funds for hardware and games. In particular, I'd like to thank [Sonicadvance1](https://github.com/Sonicadvance1) from [FEX-Emu](https://github.com/FEX-Emu/FEX)<a href="https://github.com/FEX-Emu/FEX"><img class="inline-icon" src="https://avatars.githubusercontent.com/u/61863475"></a> for his significant $1000 donation! Thanks so much!
 
 # The GPU trials
 Using a proper GPU with a RISC-V board is... tricky currently.
