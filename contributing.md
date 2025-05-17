@@ -41,7 +41,7 @@ Three different modes exist:
 - Name each library -- enable via `FELIX86_PERF_LIBS`
   - Can be used to identify hot libraries
 
-I use `perf top -e cpu-cycles -d5 -p <PID>` to get a constantly refreshing view of hotspots.
+I use `perf top -e cpu-clock -d5 -p <PID>` to get a constantly refreshing view of hotspots.
 
 # I want to report an issue with a game
 Check out [https://github.com/felix86-emu/compatibility-list](https://github.com/felix86-emu/compatibility-list). Try to follow the format of other issues and use the template!
