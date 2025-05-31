@@ -37,6 +37,8 @@ OpenGL thunk libraries now work! Games can load an overlay `libGL.so`/`libGLX.so
 
 If you installed felix86 using the script, you can enable thunking using `export FELIX86_ENABLED_THUNKS=glx`. It is currently disabled by default, as it needs more testing.
 
+If you compiled felix86 make sure to set `FELIX86_THUNKS` to `/path/to/felix86/source/src/felix86/hle/guest_libs`.
+
 ### Technical ramble
 One benefit of userspace emulators is they are allowed to employ some tricks for performance gains. For example, many libraries have a stable API across architectures. This means that if a program runs `glDrawArrays` for example, the host `glDrawArrays` *could* be used.
 
@@ -61,6 +63,8 @@ _Balatro went from 2 FPS to 30 FPS and 100% GPU usage, so a GPU upgrade could pu
 LuaJIT can call C code from quite a few places, which means our host code needs to wrap the callbacks. You can see this happening in `thunks_luajit.cpp`. Whenever a C function is registered to be callable from Lua, we wrap it in code that will invoke the recompiler and fix up the arguments from the x86-64 ABI to the RISC-V ABI.
 
 Enabling this needs you to compile [LuaJIT for RISC-V](https://github.com/plctlab/LuaJIT/commits/riscv64-v2.1-branch/), install it, and run `export FELIX86_ENABLED_THUNKS=lua`.
+
+You can also thunk multiple libraries like we did for the Balatro image: `export FELIX86_ENABLED_THUNKS=glx,lua`
 
 ---
 
