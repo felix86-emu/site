@@ -14,7 +14,8 @@ permalink: /compat/
     .tab.active { background: darkgray; }
     .search { margin-bottom: 10px; }
     .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; }
+    .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+    .game:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,0,0,0.3); }
     .game img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
     .status { font-weight: bold; }
     .green { color: green; }
