@@ -117,6 +117,8 @@ permalink: /compat/
         return matchesCategory && matchesSearch;
       });
 
+      currentPage = 1;
+
       renderGames();
       renderPagination();
     }
