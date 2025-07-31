@@ -42,7 +42,7 @@ On RISC-V, if you want to check if, for example, register A is less than registe
 
 On x86, you use the `cmp` instruction. The `cmp` instruction does a generic comparison between two registers and sets the flags accordingly. If you wanted to then set a register if A is *less than* B, you'd use the `setl` instruction after the `cmp`. The real operation of the `setl` instruction is checking if the overflow flag is not equal with the negative flag.
 
-RISC-V doesn't have flags, so felix86 computes them in software. This is expensive, particularly for the overflow flag, which takes numerous instructions to calculate. Luckily, `cmp` has no side-effects other than flags. If we know that the flags are only used for the `setl` and then overwritten, we could emit the `cmp` and `setl` combo as a single `slt` RISC-V instruction. This is currently the only case where we can emit RISC-V assembly that is **shorter in instruction count than the original x86 code!**
+RISC-V doesn't have flags, so felix86 computes them in software. This is expensive, particularly for the overflow flag, which takes numerous instructions to calculate. Luckily, `cmp` has no side-effects other than flags. If we know that the flags are only used for the `setl` and then overwritten, we could emit the `cmp` and `setl` combo as a single `slt` RISC-V instruction.
 
 This is currently only done for `cmp` and `cmovcc`, but in the future we will expand it to work with `setcc`. The most used combo would probably be `cmp` and `jcc`, but supporting this would require analyzing more than one block at once, which we currently don't do.
 
