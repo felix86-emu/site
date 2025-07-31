@@ -39,6 +39,8 @@ Since we now install felix86 in binfmt_misc, the emulator should inherit the set
 
 ## Better filesystem emulation
 
+{% include warning.html content="The following has since been reworked - we now do our own path resolution" %}
+
 We try to restrict all guest file accesses inside the rootfs. In recent PRs we improved a few things.
 
 `/dev`, `/proc`, `/sys`, `/run` and `/tmp` were symlinks. The reason for this is that mounting requires superuser privileges. Using namespaces doesn't cut it, because then we wouldn't be able to run apps like `sudo` or `mount`. Additionally, using namespaces to get mount privileges means that other instances of felix86 won't see the same mounts as that instance.
