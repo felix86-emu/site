@@ -28,7 +28,7 @@ If you'd like to try Steam, check out the [Steam setup guide](https://github.com
 There's also a quick installation guide for felix86 and Steam:
 
 <div class="video-container">
-    <iframe src="http://www.youtube.com/embed/SDTbd76VWws" height="315" width="560" allowfullscreen="" frameborder="0">
+    <iframe src="https://www.youtube.com/embed/SDTbd76VWws" height="315" width="560" allowfullscreen="" frameborder="0">
     </iframe>
 </div>
 
