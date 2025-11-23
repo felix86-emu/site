@@ -1,1 +1,0 @@
-https://nightly.link/OFFTKP/felix86/workflows/build/master/linux_artifact.zip
