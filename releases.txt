@@ -1,5 +1,0 @@
-25.11 https://github.com/OFFTKP/felix86/releases/download/25.11/felix86.25.11.zip
-25.10 https://github.com/OFFTKP/felix86/releases/download/25.10/felix86.25.10.zip
-25.09 https://github.com/OFFTKP/felix86/releases/download/25.09/felix86.25.09.zip
-25.08 https://github.com/OFFTKP/felix86/releases/download/25.08/felix86.25.08.zip
-25.07 https://github.com/OFFTKP/felix86/releases/download/25.07/felix86.25.07.zip
