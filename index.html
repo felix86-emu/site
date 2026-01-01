@@ -55,10 +55,8 @@ layout: default
 </style>
 
 <div style="text-align: center;">
-  <b>felix86</b> is an x86 and x86-64 userspace emulator for RISC-V Linux.
-  </br></br>
-  To install on your RISC-V device, execute the following command:
-  </br>
+  <p><b>felix86</b> is an x86 and x86-64 userspace emulator for RISC-V Linux.</p>
+  <p>To install on your RISC-V device, execute the following command:</p>
   <pre>
     <code class="language-bash">bash <(curl -s https://install.felix86.com)</code>
     <button class="copy-btn">
@@ -70,42 +68,42 @@ layout: default
 <hr>
 
 <script>
-document.querySelectorAll('.copy-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const code = button.previousElementSibling.innerText;
-    navigator.clipboard.writeText(code);
-    button.innerHTML = `
+  document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const code = button.previousElementSibling.innerText;
+      navigator.clipboard.writeText(code);
+      button.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12">
         <path d="M13.485 1.929a1.5 1.5 0 0 1 0 2.122L7.061 10.475a.75.75 0 0 1-1.06 0L2.515 7a1.5 1.5 0 1 1 2.122-2.122l1.848 1.848 5.303-5.303a1.5 1.5 0 0 1 2.122 0z"/>
       </svg>
     `;
-    button.classList.add('copied');
-    setTimeout(() => {
-      button.classList.remove('copied');
-      button.innerHTML = `
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d="M10 1.5a.5.5 0 0 1 .5.5v1H4a1 1 0 0 0-1 1v9H2a1 1 0 0 1-1-1V2.5A1.5 1.5 0 0 1 2.5 1h7.5z"/>
           <path d="M4.5 4A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 11.5 4h-7z"/>
         </svg>
       `;
-    }, 1000);
+      }, 1000);
+    });
   });
-});
 </script>
 
 
 <div class="posts">
   {% for post in site.posts %}
-    <article class="post">
+  <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+    <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+    <div class="entry">
+      {{ post.excerpt }}
+    </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
+    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+  </article>
   {% endfor %}
 </div>
 
