@@ -8,29 +8,29 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/">
+        <link rel="canonical" href="https://felix86.com/docs/devs/allocations/">
       
       
+        <link rel="prev" href="../debugging/">
       
-        <link rel="next" href="general/glossary/">
       
       
         
       
       
-      <link rel="icon" href="assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>felix86 Documentation</title>
+        <title>Allocations - felix86 Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,11 +73,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#home" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -90,9 +85,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Allocations
             
           </span>
         </div>
@@ -235,9 +230,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     felix86 Documentation
@@ -261,19 +256,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -289,7 +275,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -348,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/glossary/" class="md-nav__link">
+      <a href="../../general/glossary/" class="md-nav__link">
         
   
   
@@ -376,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/rootfs-information/" class="md-nav__link">
+      <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
   
@@ -458,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/supported-devices/" class="md-nav__link">
+      <a href="../../users/supported-devices/" class="md-nav__link">
         
   
   
@@ -486,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/installation-guide/" class="md-nav__link">
+      <a href="../../users/installation-guide/" class="md-nav__link">
         
   
   
@@ -514,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/usage-guide/" class="md-nav__link">
+      <a href="../../users/usage-guide/" class="md-nav__link">
         
   
   
@@ -542,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/troubleshooting/" class="md-nav__link">
+      <a href="../../users/troubleshooting/" class="md-nav__link">
         
   
   
@@ -574,18 +559,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -606,7 +593,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -624,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/building-instructions/" class="md-nav__link">
+      <a href="../building-instructions/" class="md-nav__link">
         
   
   
@@ -652,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/debugging/" class="md-nav__link">
+      <a href="../debugging/" class="md-nav__link">
         
   
   
@@ -677,10 +664,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="devs/allocations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -696,6 +690,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -725,8 +720,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -746,15 +739,171 @@
   
 
 
-<h1 id="home">Home</h1>
-<p>Welcome to the felix86 documentation.</p>
-<p>This documentation will help you <a href="users/installation-guide/">install felix86</a> and <a href="users/usage-guide/">use it with various configurations and programs</a>.</p>
+  <h1>Allocations</h1>
+
+<p>GPRs and XMMs are statically allocated. This is faster, less bug-prone and easier, and we can afford to do it because x86-64 has 16 GPRs/XMMs while RISC-V has 32 GPRs/Vecs.</p>
+<p>The four most used x86 flags (CF/ZF/SF/OF) are also statically allocated to a GPR. While it may seem wasteful, there seems to be a noticeable performance improvement over storing all flags in one register and unpacking them when they need to be used.</p>
+<p>The AF/PF and other flags are not allocated to a register and immediately written to memory when their value changes.</p>
+<p>The x87 registers are not statically allocated. Instead, we assign FPRs to them as they get loaded and keep track of push/pop operations to avoid having to do excessive loading/storing. Same applies to MMX registers, as their data is shared with x87 registers we do not statically allocate them.</p>
+<p>When in JIT code, the following allocation scheme takes place:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Representation</th>
+<th style="text-align: center;">RISC-V register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>rax</code></td>
+<td style="text-align: center;"><code>x5</code> / <code>t0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rcx</code></td>
+<td style="text-align: center;"><code>x26</code> / <code>s10</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rdx</code></td>
+<td style="text-align: center;"><code>x12</code> / <code>a2</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rbx</code></td>
+<td style="text-align: center;"><code>x8</code> / <code>s0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rsp</code></td>
+<td style="text-align: center;"><code>x9</code> / <code>s1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rbp</code></td>
+<td style="text-align: center;"><code>x18</code> / <code>s2</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rdi</code></td>
+<td style="text-align: center;"><code>x11</code> / <code>a1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rsi</code></td>
+<td style="text-align: center;"><code>x10</code> / <code>a0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r8</code></td>
+<td style="text-align: center;"><code>x14</code> / <code>a4</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r9</code></td>
+<td style="text-align: center;"><code>x15</code> / <code>a5</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r10</code></td>
+<td style="text-align: center;"><code>x13</code> / <code>a3</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r11</code></td>
+<td style="text-align: center;"><code>x16</code> / <code>a6</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r12</code></td>
+<td style="text-align: center;"><code>x17</code> / <code>a7</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r13</code></td>
+<td style="text-align: center;"><code>x22</code> / <code>s6</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r14</code></td>
+<td style="text-align: center;"><code>x19</code> / <code>s3</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r15</code></td>
+<td style="text-align: center;"><code>x20</code> / <code>s4</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>rip</code> (start of current block)</td>
+<td style="text-align: center;"><code>x3</code> / <code>gp</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>cf</code></td>
+<td style="text-align: center;"><code>x21</code> / <code>s5</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>zf</code></td>
+<td style="text-align: center;"><code>x23</code> / <code>s7</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>sf</code></td>
+<td style="text-align: center;"><code>x24</code> / <code>s8</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>of</code></td>
+<td style="text-align: center;"><code>x25</code> / <code>s9</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>xmm0</code> - <code>xmm15</code></td>
+<td style="text-align: center;"><code>v16</code> - <code>v31</code><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ThreadState*</code></td>
+<td style="text-align: center;"><code>x27</code> / <code>s11</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">TLS</td>
+<td style="text-align: center;"><code>x4</code> / <code>tp</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Host stack</td>
+<td style="text-align: center;"><code>x2</code> / <code>sp</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Vector mask register</td>
+<td style="text-align: center;"><code>v0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Allocatable FPRs for x87</td>
+<td style="text-align: center;"><code>ft0</code> - <code>ft7</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Allocatable Vecs for MMX</td>
+<td style="text-align: center;"><code>v8</code> - <code>v15</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">GPR temporaries</td>
+<td style="text-align: center;"><code>x1</code>, <code>x6</code>, <code>x28</code>, <code>x29</code>, <code>x7</code>, <code>x30</code>, <code>x31</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">Vec temporaries</td>
+<td style="text-align: center;"><code>v1</code>, <code>v2</code>, <code>v3</code>, <code>v4</code>, <code>v5</code>, <code>v6</code>, <code>v7</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">FPR temporaries</td>
+<td style="text-align: center;"><code>ft8</code>, <code>ft9</code>, <code>ft10</code>, <code>ft11</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the GPR related allocations don&rsquo;t have a meaning behind their allocated RISC-V register and are purely random, except for <code>rdi</code>/<code>rsi</code>/<code>rdx</code>/<code>r10</code>/<code>r8</code>/<code>r9</code> which are allocated to <code>a0</code> - <code>a5</code>, following the x86-64 syscall ABI. This is currently unused but in a future version will allow saving some instructions when inlining certain syscalls.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>We compile felix86 with <code>-mno-relax</code>, which frees up the <code>gp</code> register for us to use in the JIT.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Using sequential registers starting with a number divisible by eight allows us to do grouping with eight registers for operations that need it.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -793,10 +942,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/">
+        <link rel="canonical" href="https://felix86.com/docs/general/rootfs-information/">
       
       
+        <link rel="prev" href="../glossary/">
       
-        <link rel="next" href="general/glossary/">
+      
+        <link rel="next" href="../../users/supported-devices/">
       
       
         
       
       
-      <link rel="icon" href="assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>felix86 Documentation</title>
+        <title>Rootfs information - felix86 Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Rootfs information
             
           </span>
         </div>
@@ -235,9 +237,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     felix86 Documentation
@@ -261,19 +263,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -289,7 +282,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -298,18 +290,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -330,7 +324,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -348,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/glossary/" class="md-nav__link">
+      <a href="../glossary/" class="md-nav__link">
         
   
   
@@ -373,10 +367,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="general/rootfs-information/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is a rootfs?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -392,6 +411,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a rootfs and how is it used?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does this mean I can only run applications that are inside the rootfs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-change-my-rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I change my rootfs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -458,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/supported-devices/" class="md-nav__link">
+      <a href="../../users/supported-devices/" class="md-nav__link">
         
   
   
@@ -486,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/installation-guide/" class="md-nav__link">
+      <a href="../../users/installation-guide/" class="md-nav__link">
         
   
   
@@ -514,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/usage-guide/" class="md-nav__link">
+      <a href="../../users/usage-guide/" class="md-nav__link">
         
   
   
@@ -542,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/troubleshooting/" class="md-nav__link">
+      <a href="../../users/troubleshooting/" class="md-nav__link">
         
   
   
@@ -624,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/building-instructions/" class="md-nav__link">
+      <a href="../../devs/building-instructions/" class="md-nav__link">
         
   
   
@@ -652,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/debugging/" class="md-nav__link">
+      <a href="../../devs/debugging/" class="md-nav__link">
         
   
   
@@ -680,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/allocations/" class="md-nav__link">
+      <a href="../../devs/allocations/" class="md-nav__link">
         
   
   
@@ -725,8 +795,47 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a rootfs and how is it used?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does this mean I can only run applications that are inside the rootfs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-change-my-rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I change my rootfs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -746,15 +855,40 @@
   
 
 
-<h1 id="home">Home</h1>
-<p>Welcome to the felix86 documentation.</p>
-<p>This documentation will help you <a href="users/installation-guide/">install felix86</a> and <a href="users/usage-guide/">use it with various configurations and programs</a>.</p>
+  <h1>What is a rootfs?</h1>
+
+<h2 id="what-is-a-rootfs-and-how-is-it-used">What is a rootfs and how is it used?</h2>
+<p>In order to use felix86, you need a rootfs &ndash; a directory that contains all the x86 libraries that your programs may need. Upon running, felix86 will perform a fake, <strong>rootless</strong> mount of folders such as <code>/dev</code>, <code>/proc</code>, <code>/sys</code> and others inside the rootfs. Any guest application will solely exist inside the rootfs. For example, if your rootfs is at <code>/opt/felix86/rootfs</code> and a program accesses <code>/home/ubuntu/myfile</code>, this access will be translated to <code>/opt/felix86/rootfs/home/ubuntu/myfile</code> inside the rootfs. This is accomplished by doing full path resolution in userspace, before passing the final resolved and symlink-free path to the kernel. As a consequence, filesystem accesses such as <code>/..</code>, or symlinks that point backwards will not escape the rootfs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> From the prespective of the application, it is equivalent to being chrooted inside the rootfs.</p>
+<p>This means that the rootfs will also contain all the data that applications produce. For example, if a game normally saves to <code>/home/ubuntu/.config/MyGame/data.toml</code>, when ran through felix86 the actual location will be at <code>/opt/felix86/rootfs/home/ubuntu/.config/MyGame/data.toml</code>.</p>
+<p>You can easily install new packages inside the rootfs. Once inside the felix86 shell (run <code>felix86 --shell</code>) you can use the package manager as normal. For example, if you installed the Ubuntu rootfs, <code>apt</code> can be used.</p>
+<h2 id="does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs">Does this mean I can only run applications that are inside the rootfs?</h2>
+<p>No. Recent versions of felix86 implement the concept of &ldquo;trusted directories&rdquo;. The first time you run an application outside the rootfs you will be prompted to trust the parent directory. Doing so will allow you to run the application and any subdirectories and files will be visible to the application. Since guest programs can truly only see inside the rootfs, the fake mount mechanism used for <code>/dev</code> &amp; co is used for trusted directories as well.</p>
+<h2 id="how-can-i-change-my-rootfs">How can I change my rootfs?</h2>
+<p>As with most configurations, there&rsquo;s two options:</p>
+<ul>
+<li>Set the <code>rootfs</code> option in <code>$HOME/.config/felix86/config.toml</code><ul>
+<li>Can be done using <code>felix86 -s /path/to/rootfs</code></li>
+</ul>
+</li>
+<li>Set the <code>FELIX86_ROOTFS</code> environment variable (overrides config value)</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>That being said, felix86 is not a security application. Only run applications you trust, not malware. VM escapes are possible.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -793,10 +927,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

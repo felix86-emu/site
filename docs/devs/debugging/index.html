@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/">
+        <link rel="canonical" href="https://felix86.com/docs/devs/debugging/">
       
       
+        <link rel="prev" href="../building-instructions/">
       
-        <link rel="next" href="general/glossary/">
+      
+        <link rel="next" href="../allocations/">
       
       
         
       
       
-      <link rel="icon" href="assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>felix86 Documentation</title>
+        <title>Debugging - felix86 Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#important-info" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Debugging
             
           </span>
         </div>
@@ -235,9 +237,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     felix86 Documentation
@@ -261,19 +263,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -289,7 +282,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -348,7 +340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/glossary/" class="md-nav__link">
+      <a href="../../general/glossary/" class="md-nav__link">
         
   
   
@@ -376,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/rootfs-information/" class="md-nav__link">
+      <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
   
@@ -458,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/supported-devices/" class="md-nav__link">
+      <a href="../../users/supported-devices/" class="md-nav__link">
         
   
   
@@ -486,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/installation-guide/" class="md-nav__link">
+      <a href="../../users/installation-guide/" class="md-nav__link">
         
   
   
@@ -514,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/usage-guide/" class="md-nav__link">
+      <a href="../../users/usage-guide/" class="md-nav__link">
         
   
   
@@ -542,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/troubleshooting/" class="md-nav__link">
+      <a href="../../users/troubleshooting/" class="md-nav__link">
         
   
   
@@ -574,18 +566,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -606,7 +600,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -624,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/building-instructions/" class="md-nav__link">
+      <a href="../building-instructions/" class="md-nav__link">
         
   
   
@@ -649,10 +643,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="devs/debugging/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -668,6 +687,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#important-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -680,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/allocations/" class="md-nav__link">
+      <a href="../allocations/" class="md-nav__link">
         
   
   
@@ -725,8 +795,47 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#important-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -746,15 +855,45 @@
   
 
 
-<h1 id="home">Home</h1>
-<p>Welcome to the felix86 documentation.</p>
-<p>This documentation will help you <a href="users/installation-guide/">install felix86</a> and <a href="users/usage-guide/">use it with various configurations and programs</a>.</p>
+  <h1>Debugging</h1>
+
+<p>Debugging is inherently more difficult than most apps, as most of the time you are trying to debug the guest application that is running through an emulator.</p>
+<h2 id="important-info">Important info</h2>
+<p>The emulated state of each process exists in the struct <code>ThreadState</code>. &ldquo;Process&rdquo; here refers to all cloned/forked processes, whether they are an actual &ldquo;thread&rdquo; or not.</p>
+<p>This state is statically allocated in the GPR <code>s11</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To inspect the current thread&rsquo;s ThreadState object, you can run <code>p/x *ThreadState::Get()</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The register state in this struct may not be fully up to date, if the currently executing code is recompiled code. Some data may be modified in their respective RISC-V registers. To get their value you&rsquo;d have to inspect the corresponding statically allocated host register. See <a href="../allocations/">allocations</a>.</p>
+</div>
+<p>When in JIT code, the current block <code>rip</code> is stored in <code>gp</code> register, viewed as <code>p/x $gp</code>. When not in JIT code, it can be viewed as <code>p/x ThreadState::Get()-&gt;rip</code>.</p>
+<p>Logs for every run are stored in <code>/tmp</code>. If felix86 is started with <code>FELIX86_QUIET</code> or through <code>felix86 --shell</code>, no logs will be generated. You can enter a shell with <code>felix86 /path/to/rootfs/bin/bash</code> to enable logging.</p>
+<h2 id="useful-functions">Useful functions</h2>
+<p>When built as <code>RelWithDebInfo</code>, some functions can be called from gdb to assist with debugging.</p>
+<p>The <code>disassemble(u64)</code> function can disassemble x86 code at an address. When in JIT code, you can view the disassembly of the current block using <code>disassemble($gp)</code>.</p>
+<p>The <code>print_address(u64)</code> function can print the symbol, if any, at an address.</p>
+<h2 id="useful-configurations">Useful configurations</h2>
+<p>The <code>FELIX86_CALLTRACE=1</code> environment variable can generate a calltrace (pushing on calls, popping on rets) that can be printed through the function <code>dump_states()</code>, or when an error happens.</p>
+<p>The <code>FELIX86_SLEEP_ERROR=1</code> environment variable will sleep the thread and print the PID on exit to allow for gdb to attach and get a backtrace.</p>
+<p>The <code>FELIX86_CAPTURE_SIGSEGV=1</code> and <code>FELIX86_CAPTURE_SIGABRT=1</code> environment variables work similarly. Some applications rely on guest SIGSEGV signals being handled correctly.</p>
+<p>The <code>FELIX86_ABORT_SIGSEGV=1</code> environment variable will raise a SIGABRT on guest SIGSEGV. This is useful for generating a core dump if core dumps are enabled.</p>
+<p>The <code>FELIX86_ALIGNMENT_CHECK=1</code> environment variable will insert alignment checks on every atomic instruction to catch unaligned atomics that aren&rsquo;t properly handled.</p>
+<p>The <code>FELIX86_PRINT_SIGNALS</code> environment variable will print all guest signals.</p>
+<p>The <code>FELIX86_PRINT_ALL_SIGNALS</code> environment variable will print all signals, including ones used by felix86.</p>
+<p>The <code>FELIX86_STRACE</code> environment variable will print info about all syscalls.</p>
+<p>The <code>FELIX86_STRACE_ERRORS</code> environment variable will print info about all syscalls that return an error.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -793,10 +932,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

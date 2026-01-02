@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/">
+        <link rel="canonical" href="https://felix86.com/docs/devs/building-instructions/">
       
       
+        <link rel="prev" href="../../users/troubleshooting/">
       
-        <link rel="next" href="general/glossary/">
+      
+        <link rel="next" href="../debugging/">
       
       
         
       
       
-      <link rel="icon" href="assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>felix86 Documentation</title>
+        <title>Building instructions - felix86 Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#building" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-header__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Building instructions
             
           </span>
         </div>
@@ -235,9 +237,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
+    <a href="../.." title="felix86 Documentation" class="md-nav__button md-logo" aria-label="felix86 Documentation" data-md-component="logo">
       
-  <img src="assets/favicon.png" alt="logo">
+  <img src="../../assets/favicon.png" alt="logo">
 
     </a>
     felix86 Documentation
@@ -261,19 +263,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -289,7 +282,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -348,7 +340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/glossary/" class="md-nav__link">
+      <a href="../../general/glossary/" class="md-nav__link">
         
   
   
@@ -376,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="general/rootfs-information/" class="md-nav__link">
+      <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
   
@@ -458,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/supported-devices/" class="md-nav__link">
+      <a href="../../users/supported-devices/" class="md-nav__link">
         
   
   
@@ -486,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/installation-guide/" class="md-nav__link">
+      <a href="../../users/installation-guide/" class="md-nav__link">
         
   
   
@@ -514,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/usage-guide/" class="md-nav__link">
+      <a href="../../users/usage-guide/" class="md-nav__link">
         
   
   
@@ -542,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="users/troubleshooting/" class="md-nav__link">
+      <a href="../../users/troubleshooting/" class="md-nav__link">
         
   
   
@@ -574,18 +566,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -606,7 +600,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -621,10 +615,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="devs/building-instructions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building instructions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -640,6 +659,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binfmt_misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        binfmt_misc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rootfs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -652,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/debugging/" class="md-nav__link">
+      <a href="../debugging/" class="md-nav__link">
         
   
   
@@ -680,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devs/allocations/" class="md-nav__link">
+      <a href="../allocations/" class="md-nav__link">
         
   
   
@@ -725,8 +812,64 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binfmt_misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        binfmt_misc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rootfs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -746,15 +889,91 @@
   
 
 
-<h1 id="home">Home</h1>
-<p>Welcome to the felix86 documentation.</p>
-<p>This documentation will help you <a href="users/installation-guide/">install felix86</a> and <a href="users/usage-guide/">use it with various configurations and programs</a>.</p>
+  <h1>Building instructions</h1>
+
+<p>The installation script will properly install felix86 and a rootfs for you. These instructions are for developers and users who want to compile felix86 manually.</p>
+<h2 id="building">Building</h2>
+<p>On a RISC-V machine, you can build same as any other CMake project:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div></p>
+<p>On an x86 machine, install the <code>riscv64-linux-gnu-gcc</code> cross-compiler and set the toolchain file:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>./riscv.cmake
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div></p>
+<p>By default, this build will be <code>RelWithDebInfo</code> to assist with development.</p>
+<h3 id="binfmt_misc">binfmt_misc</h3>
+<p>felix86 can work without being registered to binfmt_misc, but AppImage files and setuid applications like <code>sudo</code> won&rsquo;t work.</p>
+<p>To register to binfmt_misc run the following command:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>-E<span class="w"> </span>./build/felix86<span class="w"> </span>-b
+</span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since we use the <code>F</code> flag in binfmt_misc, each new compilation needs a new binfmt_misc registration. As such, always run <code>sudo -E ./build/felix86 -b</code> after compiling to make sure the binfmt_misc version gets updated.</p>
+</div>
+<h2 id="tests">Tests</h2>
+<p>You can build the tests by setting the <code>BUILD_TESTS</code> flag during configuration:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DBUILD_TESTS<span class="o">=</span>ON
+</span></code></pre></div></p>
+<p>These include the single instruction tests from <a href="https://github.com/FEX-Emu/FEX/tree/main/unittests/ASM">FEX-Emu</a>, some unit tests for syscalls and some binary tests.</p>
+<p>The felix86 CI runs more binary tests than that. If you want to run the binary tests, clone the binary_tests repo:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/felix86-emu/binary_tests
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>binary_tests
+</span></code></pre></div></p>
+<p>You can use the <code>install_tests.sh</code> script to download the binary tests:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./install_tests.sh<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/binaries
+</span></code></pre></div></p>
+<p>Then to run the tests, temporarily disable binfmt_misc usage and use the <code>run_tests.sh</code> script:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_BINFMT_MISC_INSTALLED</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>./run_tests.sh<span class="w"> </span>/path/to/felix86<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/binaries
+</span></code></pre></div></p>
+<h2 id="rootfs">Rootfs</h2>
+<p>If you don&rsquo;t want to install a rootfs <a href="../../users/installation-guide/">using the installation script</a>, you can build one using Docker.</p>
+<p>First, you need a Dockerfile:
+<div class="language-dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">COPY</span><span class="w"> </span>Run.sh<span class="w"> </span>/tmp/Run.sh
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">RUN</span><span class="w"> </span>bash<span class="w"> </span>/tmp/Run.sh
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p>You also need a script to run inside the container:
+<div class="language-bash highlight"><span class="filename">Run.sh</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>apt<span class="w"> </span>update
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Install whatever packages you want your rootfs to have</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># apt install hello</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Create a .tar.gz inside the container while excluding the tempfs directories</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>touch<span class="w"> </span>archive.tar.gz
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>tar<span class="w">  </span>--exclude<span class="o">=</span>archive.tar.gz<span class="w"> </span>--exclude<span class="o">=</span>./media<span class="w"> </span>--exclude<span class="o">=</span>./mnt<span class="w"> </span>--exclude<span class="o">=</span>./root<span class="w"> </span>--exclude<span class="o">=</span>./srv<span class="w"> </span>--exclude<span class="o">=</span>./boot<span class="w"> </span>--exclude<span class="o">=</span>./home<span class="w"> </span>--exclude<span class="o">=</span>./run<span class="w"> </span>--exclude<span class="o">=</span>./proc<span class="w"> </span>--exclude<span class="o">=</span>./sys<span class="w"> </span>--exclude<span class="o">=</span>./dev<span class="w"> </span>--exclude<span class="o">=</span>./tmp<span class="w"> </span>--exclude<span class="o">=</span>./.dockerenv<span class="w"> </span>-czf<span class="w"> </span>archive.tar.gz<span class="w"> </span>.
+</span></code></pre></div></p>
+<p>Now create your rootfs:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>rootfs<span class="w"> </span>.
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>rootfs<span class="w"> </span>rootfs
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span>cp<span class="w"> </span>rootfs:/archive.tar.gz<span class="w"> </span>./rootfs.tar.gz
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>rootfs
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>rootfs
+</span></code></pre></div></p>
+<p>This will create an archived and minimal x86-64 Ubuntu rootfs.</p>
+<p>Extract it using <code>tar -xzf rootfs.tar.gz -C /path/to/rootfs</code> and set it using <code>felix86 -s /absolute/path/to/rootfs</code>.</p>
+<p>You can install packages inside the rootfs through felix86, or during rootfs creation by changing the <code>Run.sh</code> script.</p>
+<p>For an idea of what sort of packages you might need, check out <a href="https://github.com/felix86-emu/rootfs">the rootfs generator repository</a>.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -793,10 +1012,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
