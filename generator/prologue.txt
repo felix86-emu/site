@@ -1,0 +1,42 @@
+---
+layout: page
+title: felix86 Compatibility List
+permalink: /compat/
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+    .tab { cursor: pointer; padding: 10px; background: lightgray; border-radius: 5px; }
+    .tab.active { background: darkgray; }
+    .search { margin-bottom: 10px; }
+    .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+    .game:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,0,0,0.3); }
+    .game img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
+    .status { font-weight: bold; }
+    .green { color: green; }
+    .yellow { color: orange; }
+    .red { color: red; }
+    .pagination { margin-top: 20px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .pagination button { padding: 5px 10px; border: none; background: lightgray; border-radius: 5px; cursor: pointer; }
+    .pagination button.active { background: darkgray; color: white; }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" onclick="filterCategory('all', this)">All</div>
+    <div class="tab" onclick="filterCategory('working', this)">Working</div>
+    <div class="tab" onclick="filterCategory('partial', this)">Partially Working</div>
+    <div class="tab" onclick="filterCategory('not-working', this)">Not Working</div>
+  </div>
+
+  <input class="search" type="text" placeholder="Search games..." onkeyup="applyFilters()">
+
+  <div class="game-list" id="games"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <div id="all-games" style="display: none">

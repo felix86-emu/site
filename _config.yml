@@ -86,5 +86,10 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - generate-static-content.sh
+  - generator
+
+include:
+  - docs
 
 future: true

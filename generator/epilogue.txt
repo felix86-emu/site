@@ -1,0 +1,68 @@
+
+
+  </div>
+
+  <script>
+    const allGames = Array.from(document.querySelectorAll('#all-games .game'));
+    const gameContainer = document.getElementById('games');
+    const pagination = document.getElementById('pagination');
+    let filteredGames = allGames;
+    let currentPage = 1;
+    const gamesPerPage = 9;
+    let currentCategory = 'all';
+
+    function filterCategory(category, tabElement) {
+      currentCategory = category;
+      currentPage = 1;
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      tabElement.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const search = document.querySelector('.search').value.toLowerCase();
+
+      filteredGames = allGames.filter(game => {
+        const matchesCategory = currentCategory === 'all' || game.dataset.category === currentCategory;
+        const matchesSearch = game.querySelector('p').innerText.toLowerCase().includes(search);
+        return matchesCategory && matchesSearch;
+      });
+
+      currentPage = 1;
+
+      renderGames();
+      renderPagination();
+    }
+
+    function renderGames() {
+      gameContainer.innerHTML = '';
+      const start = (currentPage - 1) * gamesPerPage;
+      const end = start + gamesPerPage;
+      const gamesToShow = filteredGames.slice(start, end);
+      gamesToShow.forEach(game => gameContainer.appendChild(game.cloneNode(true)));
+    }
+
+    function renderPagination() {
+      pagination.innerHTML = '';
+      const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.classList.toggle('active', i === currentPage);
+        btn.onclick = () => {
+          currentPage = i;
+          renderGames();
+          renderPagination();
+        };
+        pagination.appendChild(btn);
+      }
+    }
+
+    window.onload = () => {
+      applyFilters();
+    };
+  </script>
+</body>
+</html>
+
+Generated from [https://github.com/felix86-emu/compatibility-list](https://github.com/felix86-emu/compatibility-list)
