@@ -40,6 +40,8 @@ permalink: /compat/
   <div class="pagination" id="pagination"></div>
 
   <div id="all-games" style="display: none">
+<div class="game" data-category="working"><img loading="lazy" src="https://github.com/user-attachments/assets/5e9ce2e4-4e26-41e2-a01c-945683843c80" alt="Unreal Tournament 99" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/128">Unreal Tournament 99</a></p><p class="status green">Working</p></div>
+<div class="game" data-category="working"><img loading="lazy" src="https://github.com/user-attachments/assets/df20202c-e915-4fc7-b36f-bf013e004bff" alt="Insane 2" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/127">Insane 2</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="working"><img loading="lazy" src="https://github.com/user-attachments/assets/45c650d8-9072-44eb-9000-aa8a53b607fa" alt="Getting Over It with Bennett Foddy" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/126">Getting Over It with Bennett Foddy</a></p><p class="status green">Working</p></div>
 <div class="game" data-category="not-working"><img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Heroic Games Launcher" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/125">Heroic Games Launcher</a></p><p class="status red">Not Working</p></div>
 <div class="game" data-category="partial"><img loading="lazy" src="https://github.com/user-attachments/assets/641d738f-7cb9-45ba-a094-c0cadaf00e79" alt="Genshin Impact" width="100%"><p><a href="https://github.com/felix86-emu/compatibility-list/issues/124">Genshin Impact</a></p><p class="status yellow">Partially Working</p></div>

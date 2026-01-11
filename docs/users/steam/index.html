@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/users/installation-guide/">
+        <link rel="canonical" href="https://felix86.com/docs/users/steam/">
       
       
-        <link rel="prev" href="../supported-devices/">
+        <link rel="prev" href="../usage-guide/">
       
       
-        <link rel="next" href="../usage-guide/">
+        <link rel="next" href="../troubleshooting/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Installation guide - felix86 Documentation</title>
+        <title>Steam - felix86 Documentation</title>
       
     
     
@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -106,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation guide
+              Steam
             
           </span>
         </div>
@@ -472,17 +477,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../installation-guide/" class="md-nav__link">
         
   
   
@@ -498,7 +496,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -536,10 +533,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../steam/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steam
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -555,6 +577,46 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -751,6 +813,36 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -769,14 +861,20 @@
   
 
 
-  <h1>Installation guide</h1>
+  <h1>Steam</h1>
 
-<p>Installing felix86 is easiest done with the installation script. Simply paste this into a terminal and press Enter.
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://install.felix86.com<span class="o">)</span>
-</span></code></pre></div></p>
-<p>This script will guide you through choosing a felix86 version and a rootfs.</p>
-<p>Consult the <a href="../usage-guide/">usage guide</a> for further info.</p>
-<p>For manual installation, see the <a href="../../devs/building-instructions/">building instructions</a>.</p>
+<p>Installing Steam using felix86 is easy!</p>
+<h3 id="installation">Installation</h3>
+<p>Download the <code>steam_latest.deb</code> package from Steam&rsquo;s website.</p>
+<p>Enter <code>felix86 --shell</code> and install it via dpkg: <code>sudo dpkg -i /path/to/steam_latest.deb</code></p>
+<h3 id="running">Running</h3>
+<p>Run as <code>steam -no-cef-sandbox</code>.</p>
+<p>If you&rsquo;re having GPU issues, you can also disable the GPU with <code>-cef-disable-gpu</code></p>
+<p>If you&rsquo;re having issues on Wayland, you may need <code>SDL_VIDEODRIVER=x11</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since felix86 can use <code>apt</code>, it may be possible to install through the package manager. This is untested.</p>
+</div>
 
 
 
