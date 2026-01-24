@@ -4,37 +4,226 @@ title: felix86 Compatibility List
 permalink: /compat/
 ---
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<div class="compat-container">
   <style>
-    .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
-    .tab { cursor: pointer; padding: 10px; background: lightgray; border-radius: 5px; }
-    .tab.active { background: darkgray; }
-    .search { margin-bottom: 10px; }
-    .game-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .game { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; text-align: center; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-    .game:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,0,0,0.3); }
-    .game img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
-    .status { font-weight: bold; }
-    .green { color: green; }
-    .yellow { color: orange; }
-    .red { color: red; }
-    .pagination { margin-top: 20px; display: flex; gap: 5px; flex-wrap: wrap; }
-    .pagination button { padding: 5px 10px; border: none; background: lightgray; border-radius: 5px; cursor: pointer; }
-    .pagination button.active { background: darkgray; color: white; }
-  </style>
-</head>
-<body>
-  <div class="tabs">
-    <div class="tab active" onclick="filterCategory('all', this)">All</div>
-    <div class="tab" onclick="filterCategory('working', this)">Working</div>
-    <div class="tab" onclick="filterCategory('partial', this)">Partially Working</div>
-    <div class="tab" onclick="filterCategory('not-working', this)">Not Working</div>
-  </div>
+    :root {
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-main: #333333;
+      --text-muted: #666666;
+      --status-working: #28a745;
+      --status-partial: #ffc107;
+      --status-not-working: #dc3545;
+      --status-untested: #6c757d;
+      --accent-color: #007bff;
+      --transition-speed: 0.3s;
+    }
 
-  <input class="search" type="text" placeholder="Search games..." onkeyup="applyFilters()">
+    #main.container {
+      max-width: 1400px !important;
+      width: 95% !important;
+    }
+
+    .compat-container {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      max-width: none;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 30px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab {
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #e9ecef;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all var(--transition-speed);
+      border: none;
+      font-size: 14px;
+    }
+
+    .tab:hover {
+      background: #dee2e6;
+    }
+
+    .tab.active {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .search-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color var(--transition-speed);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .game-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .game-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .game-image-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #f0f0f0;
+    }
+
+    .game-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .game-info {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 8px;
+    }
+
+    .game-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .game-title a {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .game-title a:hover {
+      color: var(--accent-color);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .status.green { background: #d4edda; color: var(--status-working); }
+    .status.yellow { background: #fff3cd; color: #856404; }
+    .status.red { background: #f8d7da; color: var(--status-not-working); }
+    .status.gray { background: #e2e3e5; color: var(--status-untested); }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      padding: 8px 16px;
+      border: 1px solid #dee2e6;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all var(--transition-speed);
+      font-weight: 500;
+    }
+
+    .pagination button:hover {
+      background: #f8f9fa;
+      border-color: #adb5bd;
+    }
+
+    .pagination button.active {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 50px;
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .game-list {
+        grid-template-columns: 1fr;
+      }
+      .controls {
+        padding: 15px;
+      }
+    }
+  </style>
+
+  <div class="controls">
+    <div class="tabs">
+      <button class="tab active" onclick="filterCategory('all', this)">All</button>
+      <button class="tab" onclick="filterCategory('working', this)">Working</button>
+      <button class="tab" onclick="filterCategory('partial', this)">Partial</button>
+      <button class="tab" onclick="filterCategory('not-working', this)">Broken</button>
+    </div>
+    <div class="search-container">
+      <input class="search-input" type="text" placeholder="Search games..." onkeyup="applyFilters()">
+    </div>
+  </div>
 
   <div class="game-list" id="games"></div>
   <div class="pagination" id="pagination"></div>

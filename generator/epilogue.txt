@@ -1,68 +1,112 @@
 
-
   </div>
 
   <script>
-    const allGames = Array.from(document.querySelectorAll('#all-games .game'));
+    const allGames = Array.from(document.querySelectorAll('#all-games .game-card'));
     const gameContainer = document.getElementById('games');
-    const pagination = document.getElementById('pagination');
-    let filteredGames = allGames;
+    const paginationContainer = document.getElementById('pagination');
+    
+    let filteredGames = [...allGames];
     let currentPage = 1;
-    const gamesPerPage = 9;
+    const gamesPerPage = 12;
     let currentCategory = 'all';
 
     function filterCategory(category, tabElement) {
       currentCategory = category;
       currentPage = 1;
+      
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      tabElement.classList.add('active');
+      if (tabElement) tabElement.classList.add('active');
+      
       applyFilters();
     }
 
     function applyFilters() {
-      const search = document.querySelector('.search').value.toLowerCase();
+      const searchInput = document.querySelector('.search-input');
+      const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
       filteredGames = allGames.filter(game => {
         const matchesCategory = currentCategory === 'all' || game.dataset.category === currentCategory;
-        const matchesSearch = game.querySelector('p').innerText.toLowerCase().includes(search);
+        const title = game.querySelector('.game-title').innerText.toLowerCase();
+        const matchesSearch = title.includes(searchTerm);
         return matchesCategory && matchesSearch;
       });
 
       currentPage = 1;
-
-      renderGames();
-      renderPagination();
+      render();
     }
 
-    function renderGames() {
+    function render() {
       gameContainer.innerHTML = '';
-      const start = (currentPage - 1) * gamesPerPage;
-      const end = start + gamesPerPage;
-      const gamesToShow = filteredGames.slice(start, end);
-      gamesToShow.forEach(game => gameContainer.appendChild(game.cloneNode(true)));
+      
+      if (filteredGames.length === 0) {
+        gameContainer.innerHTML = '<div class="no-results">No games found matching your criteria.</div>';
+        paginationContainer.innerHTML = '';
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * gamesPerPage;
+      const endIndex = startIndex + gamesPerPage;
+      const gamesToShow = filteredGames.slice(startIndex, endIndex);
+
+      gamesToShow.forEach(game => {
+        gameContainer.appendChild(game.cloneNode(true));
+      });
+      renderPagination();
+      if (currentPage > 1) {
+        document.querySelector('.controls').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function renderPagination() {
-      pagination.innerHTML = '';
+      paginationContainer.innerHTML = '';
       const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        btn.classList.toggle('active', i === currentPage);
-        btn.onclick = () => {
-          currentPage = i;
-          renderGames();
-          renderPagination();
-        };
-        pagination.appendChild(btn);
+      
+      if (totalPages <= 1) return;
+
+      const maxVisibleButtons = 5;
+      let startPage = Math.max(1, currentPage - Math.floor(maxVisibleButtons / 2));
+      let endPage = Math.min(totalPages, startPage + maxVisibleButtons - 1);
+
+      if (endPage - startPage + 1 < maxVisibleButtons) {
+        startPage = Math.max(1, endPage - maxVisibleButtons + 1);
       }
+
+      if (currentPage > 1) {
+        const prevBtn = createPageButton('←', () => goToPage(currentPage - 1));
+        paginationContainer.appendChild(prevBtn);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        const btn = createPageButton(i, () => goToPage(i), i === currentPage);
+        paginationContainer.appendChild(btn);
+      }
+
+      if (currentPage < totalPages) {
+        const nextBtn = createPageButton('→', () => goToPage(currentPage + 1));
+        paginationContainer.appendChild(nextBtn);
+      }
+    }
+
+    function createPageButton(text, onClick, isActive = false) {
+      const btn = document.createElement('button');
+      btn.textContent = text;
+      if (isActive) btn.classList.add('active');
+      btn.onclick = onClick;
+      return btn;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      render();
     }
 
     window.onload = () => {
       applyFilters();
     };
   </script>
-</body>
-</html>
+</div>
 
-Generated from [https://github.com/felix86-emu/compatibility-list](https://github.com/felix86-emu/compatibility-list)
+<footer style="margin-top: 50px; text-align: center; color: #666; font-size: 14px;">
+  Generated from <a href="https://github.com/felix86-emu/compatibility-list">the felix86 compatibility list.</a>
+</footer>

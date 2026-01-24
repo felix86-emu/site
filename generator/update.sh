@@ -5,30 +5,27 @@ set -e
 
 TEMP_DIR=$(mktemp -d)
 
-# TODO: when not lazy, make this check the number of pages automatically
-curl --silent -L \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  "https://api.github.com/repos/felix86-emu/compatibility-list/issues?per_page=100&page=1" >> $TEMP_DIR/in1.txt
-
-curl --silent -L \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  "https://api.github.com/repos/felix86-emu/compatibility-list/issues?per_page=100&page=2" >> $TEMP_DIR/in2.txt
-
+# Fetch up to 400 issues (4 pages)
 g++ parser.cpp -o $TEMP_DIR/a.out
 
-$TEMP_DIR/a.out $TEMP_DIR/in1.txt > $TEMP_DIR/out1.txt
-$TEMP_DIR/a.out $TEMP_DIR/in2.txt > $TEMP_DIR/out2.txt
+for p in {1..4}; do
+  curl --silent -L \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "https://api.github.com/repos/felix86-emu/compatibility-list/issues?per_page=100&page=$p" > $TEMP_DIR/page.json
+  
+  # Check if page is empty array [] or invalid
+  if [ ! -s $TEMP_DIR/page.json ] || [ "$(cat $TEMP_DIR/page.json)" == "[]" ]; then
+    continue
+  fi
+  
+  $TEMP_DIR/a.out $TEMP_DIR/page.json >> $TEMP_DIR/games_body.txt
+done
 
-cat prologue.txt
-cat $TEMP_DIR/out1.txt
-cat $TEMP_DIR/out2.txt
-cat epilogue.txt
+cat prologue.txt > ../compatibility.md
+if [ -f $TEMP_DIR/games_body.txt ]; then
+  cat $TEMP_DIR/games_body.txt >> ../compatibility.md
+fi
+cat epilogue.txt >> ../compatibility.md
 
-rm $TEMP_DIR/in1.txt
-rm $TEMP_DIR/in2.txt
-rm $TEMP_DIR/out1.txt
-rm $TEMP_DIR/out2.txt
-rm $TEMP_DIR/a.out
-rmdir $TEMP_DIR
+rm -rf $TEMP_DIR

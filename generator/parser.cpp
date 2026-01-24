@@ -20,45 +20,48 @@ int main(int argc, const char **argv) {
     std::string working;
     std::string image = "";
     std::string category;
+    // Category mapping
     for (auto &label : labels) {
       std::string lname = label["name"];
       if (lname == "only menu" || lname == "sorta working") {
-        working = "<p class=\"status yellow\">Partially Working</p>";
+        working = "<span class=\"status yellow\">Partially Working</span>";
         category = "partial";
         break;
       } else if (lname == "not working") {
-        working = "<p class=\"status red\">Not Working</p>";
+        working = "<span class=\"status red\">Not Working</span>";
         category = "not-working";
         break;
       } else if (lname == "working") {
-        working = "<p class=\"status green\">Working</p>";
+        working = "<span class=\"status green\">Working</span>";
         category = "working";
         break;
       }
     }
 
-    // length after url is 36 ie: ce5c5813-977f-4f43-1111-11171944800d
-    int k = sizeof("https://github.com/user-attachments/assets/") + 36 - 1;
-    std::string body = issue["body"];
-    int x = body.find("https://github.com/user-attachments/assets/");
+    if (category.empty()) {
+        category = "untested";
+        working = "<span class=\"status gray\">Untested</span>";
+    }
+
+    std::string body = issue["body"].is_null() ? "" : issue["body"].get<std::string>();
+    std::string image_prefix = "https://github.com/user-attachments/assets/";
+    size_t x = body.find(image_prefix);
     if (x == std::string::npos) {
       image = "{{ site.baseurl }}/images/felixNoThoughts.png";
     } else {
-      image = body.substr(x, k);
-      //   printf("image: %s\n", image.c_str());
+      // Find the end of the GUID (36 chars)
+      image = body.substr(x, image_prefix.length() + 36);
     }
 
-    // <div class = "game" data - category = "working">
-    //     <img src="game1.jpg" alt="Game 1" width="100%">
-    //     <p>Name: Game 1</p>
-    //     <p class="status green">Working</p>
-    // </div>
-
-    printf("<div class=\"game\" data-category=\"%s\">", category.c_str());
-    printf("<img loading=\"lazy\" src=\"%s\" alt=\"%s\" width=\"100%%\">",
+    printf("<div class=\"game-card\" data-category=\"%s\">\n", category.c_str());
+    printf("  <div class=\"game-image-container\">\n");
+    printf("    <img loading=\"lazy\" src=\"%s\" alt=\"%s\" class=\"game-image\">\n",
            image.c_str(), name.c_str());
-    printf("<p><a href=\"%s\">%s</a></p>", url.c_str(), name.c_str());
-    printf("%s", working.c_str());
+    printf("  </div>\n");
+    printf("  <div class=\"game-info\">\n");
+    printf("    <h3 class=\"game-title\"><a href=\"%s\">%s</a></h3>\n", url.c_str(), name.c_str());
+    printf("    %s\n", working.c_str());
+    printf("  </div>\n");
     printf("</div>\n");
   }
 }
