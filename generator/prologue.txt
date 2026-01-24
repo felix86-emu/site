@@ -76,6 +76,7 @@ permalink: /compat/
 
     .search-input {
       width: 100%;
+      max-width: 500px;
       padding: 12px 20px;
       border: 2px solid #e9ecef;
       border-radius: 8px;
