@@ -368,6 +368,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../general/socials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
@@ -579,6 +607,17 @@
     <span class="md-ellipsis">
       
         Thunking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiles
       
     </span>
   </a>
@@ -881,6 +920,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dxvk" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -929,37 +979,50 @@
 <p>If you want to run a program outside the rootfs, you will be prompted to trust the parent directory:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/path/to/some/dir/MyGame.AppImage
 </span></code></pre></div></p>
+<p>If not prompted for whatever reason, create <code>$HOME/.config/felix86/trusted.txt</code> and add the absolute path to the trusted directory.</p>
 <h2 id="compatibility">Compatibility</h2>
 <p>There&rsquo;s a compatibility list:</p>
 <p><a href="https://felix86.com/compat/">https://felix86.com/compat/</a></p>
 <p>If you want to try a game that is not listed, you can make a compatibility report here:</p>
 <p><a href="https://github.com/felix86-emu/compatibility-list/issues">https://github.com/felix86-emu/compatibility-list/issues</a></p>
 <h2 id="thunking">Thunking</h2>
-<p>There&rsquo;s thunking support for GLX (OpenGL on X11) and Vulkan. You can enable it using <code>FELIX86_ENABLED_THUNKS=glx,vk</code>. This should improve performance for games.</p>
+<p>There&rsquo;s thunking support for GLX (OpenGL on X11) and Vulkan. You can enable it using <code>FELIX86_ENABLED_THUNKS=glx,vk</code>. This should improve performance in games.</p>
+<h2 id="profiles">Profiles</h2>
+<p>You can use different execution profiles that set multiple configurations at once.</p>
+<p>Usage:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>FELIX86_PROFILE=extreme felix86 --shell
+</span></code></pre></div></p>
+<p>There&rsquo;s currently the following profiles:    </p>
+<ul>
+<li><code>extreme</code> - Enables all optimizations, may break some games that rely on TSO.</li>
+<li><code>safe</code> - Enables safe optimizations and TSO mode.</li>
+<li><code>paranoid</code> - Disable almost all optimizations and enable some slow safety checks.</li>
+</ul>
+<p>Each profile is a .toml file in <code>$HOME/.config/felix86/profiles</code>. Each profile is a partial or full version of the <code>$HOME/.config/felix86/config.toml</code> file, with some configurations changed.</p>
 <h2 id="dxvk">DXVK</h2>
 <p>Installing DXVK is as simple as installing it on your host system:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Set $ROOTFS to the rootfs absolute path for convenience</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ROOTFS</span><span class="o">=</span><span class="k">$(</span>felix86<span class="w"> </span>-g<span class="k">)</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Copy DXVK release inside rootfs</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>cp<span class="w"> </span>-r<span class="w"> </span>/path/to/dxvk-release<span class="w"> </span><span class="nv">$ROOTFS</span>/tmp/
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Enter felix86 shell</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>felix86<span class="w"> </span>--shell
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>winecfg
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Set $ROOTFS to the rootfs absolute path for convenience</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ROOTFS</span><span class="o">=</span><span class="k">$(</span>felix86<span class="w"> </span>-g<span class="k">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Copy DXVK release inside rootfs</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>cp<span class="w"> </span>-r<span class="w"> </span>/path/to/dxvk-release<span class="w"> </span><span class="nv">$ROOTFS</span>/tmp/
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Enter felix86 shell</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>felix86<span class="w"> </span>--shell
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>winecfg
 </span></code></pre></div></p>
 <p>Make sure to enable Vulkan thunking for better performance:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Needs to be exported before entering felix86 shell</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>vk
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>felix86<span class="w"> </span>--shell
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Needs to be exported before entering felix86 shell</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>vk
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>felix86<span class="w"> </span>--shell
 </span></code></pre></div></p>
 
 

@@ -368,6 +368,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../general/socials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
@@ -871,7 +899,7 @@
 
 <h2 id="glitching-graphics-with-amd-gpus-and-the-amdgpu-module">Glitching graphics with AMD GPUs and the <code>amdgpu</code> module</h2>
 <p>There may be problems due to differences in memory models in userspace and kernel drivers, in particular with 64-bit OpenGL applications running with AMD GPUs that use the <code>amdgpu</code> kernel module.</p>
-<p>Either enable <code>FELIX86_ENABLED_THUNKS=glx</code>, or if running into issues with that, enable TSO with <code>FELIX86_ALWAYS_TSO=1</code>.</p>
+<p>Either enable thunking (<code>FELIX86_ENABLED_THUNKS=glx,vk</code>), or, if running into issues with that, enable TSO with <code>FELIX86_ALWAYS_TSO=1</code>.</p>
 
 
 

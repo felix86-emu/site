@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#devices-that-dont-support-felix86" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -363,6 +368,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../general/socials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
@@ -454,6 +487,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supported devices
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -470,6 +521,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#devices-that-dont-support-felix86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Devices that don&rsquo;t support felix86
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -779,6 +858,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#devices-that-dont-support-felix86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Devices that don&rsquo;t support felix86
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -799,8 +897,8 @@
 
   <h1>Supported devices</h1>
 
-<p>Felix86 requires <code>rv64gv_zba_zbb_zbc_zbs</code> to work. RVA23 supports all of these extensions, so boards with RVA23 such as future Spacemit K3 boards will be supported.</p>
-<p>Spacemit K1 boards are also supported.</p>
+<p>Felix86 requires <code>rv64gv_zba_zbb_zbc_zbs</code> to work. RVA23 supports all of these extensions, so boards with RVA23 such as future SpacemiT K3 boards will be supported.</p>
+<p>SpacemiT K1 boards are also supported.</p>
 <p>Some examples:</p>
 <ul>
 <li>Banana Pi F3 (has mPCIe slot)</li>
@@ -810,6 +908,10 @@
 <li>Orange Pi RV2</li>
 </ul>
 <p>A board with a PCIe slot is preferred for connecting a discrete GPU.</p>
+<h2 id="devices-that-dont-support-felix86">Devices that don&rsquo;t support felix86</h2>
+<p>Devices with no vector extension (RVV 1.0), or with the old &ldquo;XTheadVector&rdquo;/RVV 0.7.1 won&rsquo;t be supported.</p>
+<p>Devices with no bit-manipulation extensions are no longer supported. This is to reduce maintenance burden and because any upcoming core that is RVA23 will have bit-manipulation extensions and non-RVA23 SoCs like SpacemiT K1 have bit-manipulation extensions.</p>
+<p>Some instructions may assume you&rsquo;re running on VLEN &lt; 2048 hardware for better translations. Any possible future devices with higher VLEN are not supported.</p>
 
 
 

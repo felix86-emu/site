@@ -14,7 +14,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../rootfs-information/">
+        <link rel="next" href="../socials/">
       
       
         
@@ -453,6 +453,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#r" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -485,10 +507,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -969,6 +1041,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#r" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1001,6 +1095,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1026,7 +1142,8 @@
 <p>Some of these terms have specific meanings for felix86 that may not carry over to other projects.</p>
 <h4 id="a">A</h4>
 <ul>
-<li><strong>Address cache</strong>: A faster guest-to-host translation method that is implemented in RISC-V assembly. The following pseudocode explains how it works:
+<li>
+<p><strong>Address cache</strong>: A faster guest-to-host translation method that is implemented in RISC-V assembly. The following pseudocode explains how it works:
     <div class="language-c++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Translation</span><span class="w"> </span><span class="n">trans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address_cache</span><span class="p">[</span><span class="n">guest_address</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="p">];</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">trans</span><span class="p">.</span><span class="n">guest_address</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">guest_address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">trans</span><span class="p">.</span><span class="n">host_address</span><span class="p">;</span>
@@ -1034,7 +1151,11 @@
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="c1">// Perform an unordered_map lookup and fill address cache entry</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">slow_translation</span><span class="p">(</span><span class="n">guest_address</span><span class="p">);</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
-</span></code></pre></div></li>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>AVX</strong>: Advanced Vector Extensions, the successor to the SSE extensions.</p>
+</li>
 </ul>
 <h4 id="b">B</h4>
 <ul>
@@ -1056,7 +1177,7 @@
 </ul>
 <h4 id="f">F</h4>
 <ul>
-<li><strong>Fake mount</strong>: A mechanism within felix86 that allows directories to appear as mounted without actually mounting them or using root permissions. See <a href="../rootfs-information/">rootfs</a>.</li>
+<li><strong>Fake mount</strong>: A mechanism within felix86 that allows directories to appear as mounted without actually mounting them or using root permissions. See <a href="../rootfs-information/">rootfs information</a>.</li>
 </ul>
 <h4 id="i">I</h4>
 <ul>
@@ -1066,6 +1187,14 @@
 <li>
 <p><strong>Inline SMC</strong>: SMC that changes instructions in the current block. Needs extra work to properly handle.</p>
 </li>
+</ul>
+<h4 id="m">M</h4>
+<ul>
+<li><strong>MMX</strong>: Older and less frequently used way to do SIMD in x86, replaced by SSE. Uses the same registers as x87 registers. Rarely used but we need to emulate it regardless.</li>
+</ul>
+<h4 id="p">P</h4>
+<ul>
+<li><strong>Profiles</strong>: A way to fully or partially override a specific set of configurations in felix86. Set using the <code>FELIX86_PROFILE</code> environment variable as a path to a configuration file.</li>
 </ul>
 <h4 id="r">R</h4>
 <ul>
@@ -1081,7 +1210,15 @@
 </ul>
 <h4 id="s">S</h4>
 <ul>
-<li><strong>SMC</strong>: Self-modifying code. A recompiler (such as Mono found in Unity games) may modify it&rsquo;s own code to improve it. Felix86 uses SMC to perform block linking. SMC is detected with page protection of recompiled code.</li>
+<li>
+<p><strong>SIMD</strong>: Single instruction multiple data. A type of extension that defines instructions that operate on multiple packed values at once. Examples include SSE and RVV.</p>
+</li>
+<li>
+<p><strong>SMC</strong>: Self-modifying code. A recompiler (such as Mono found in Unity games) may modify it&rsquo;s own code to improve it. Felix86 uses SMC to perform block linking. SMC is detected with page protection of recompiled code.</p>
+</li>
+<li>
+<p><strong>SSE</strong>: Streaming SIMD Extensions, an x86 extension that adds XMM registers and SIMD instructions.</p>
+</li>
 </ul>
 <h4 id="t">T</h4>
 <ul>
@@ -1094,6 +1231,14 @@
 <li>
 <p><strong>TSO</strong>: Total store ordering, the x86 memory model. RISC-V by default has a weak memory model, except in the presence of RVTSO (which doesn&rsquo;t exist in hardware).</p>
 </li>
+</ul>
+<h4 id="v">V</h4>
+<ul>
+<li><strong>VDSO</strong>: The kernel maps some frequently used and simple syscalls like <code>gettimeofday</code> on the process address space. This speeds up syscall time. Some programs (notably Go) depend on this feature, so we emulate it.</li>
+</ul>
+<h4 id="x">X</h4>
+<ul>
+<li><strong>x87</strong>: Older and less frequently used way to do floats in x86, replaced by SSE. Annoying to implement, as it uses 80-bit floats and the registers are structured as a stack.</li>
 </ul>
 
 

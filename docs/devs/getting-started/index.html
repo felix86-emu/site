@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/general/rootfs-information/">
+        <link rel="canonical" href="https://felix86.com/docs/devs/getting-started/">
       
       
-        <link rel="prev" href="../socials/">
-      
-      
-        <link rel="next" href="../../users/supported-devices/">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Rootfs information - felix86 Documentation</title>
+        <title>Getting started - felix86 Documentation</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-skip">
+        <a href="#communication" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rootfs information
+              Getting started
             
           </span>
         </div>
@@ -290,20 +286,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -324,7 +318,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -342,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../glossary/" class="md-nav__link">
+      <a href="../../general/glossary/" class="md-nav__link">
         
   
   
@@ -370,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../socials/" class="md-nav__link">
+      <a href="../../general/socials/" class="md-nav__link">
         
   
   
@@ -395,35 +389,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    What is a rootfs?
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../general/rootfs-information/" class="md-nav__link">
         
   
   
@@ -439,57 +408,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is a rootfs and how is it used?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Does this mean I can only run applications that are inside the rootfs?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-can-i-change-my-rootfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How can I change my rootfs?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -778,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devs/building-instructions/" class="md-nav__link">
+      <a href="../building-instructions/" class="md-nav__link">
         
   
   
@@ -806,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devs/debugging/" class="md-nav__link">
+      <a href="../debugging/" class="md-nav__link">
         
   
   
@@ -834,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devs/allocations/" class="md-nav__link">
+      <a href="../allocations/" class="md-nav__link">
         
   
   
@@ -887,10 +805,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
+  <a href="#communication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a rootfs and how is it used?
+        Communication
       
     </span>
   </a>
@@ -898,10 +816,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
+  <a href="#good-first-issues" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Does this mean I can only run applications that are inside the rootfs?
+        Good first issues
       
     </span>
   </a>
@@ -909,10 +827,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-can-i-change-my-rootfs" class="md-nav__link">
+  <a href="#instruction-optimizations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How can I change my rootfs?
+        Instruction optimizations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiling-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiling games
       
     </span>
   </a>
@@ -939,31 +879,30 @@
   
 
 
-  <h1>What is a rootfs?</h1>
+  <h1>Getting started</h1>
 
-<h2 id="what-is-a-rootfs-and-how-is-it-used">What is a rootfs and how is it used?</h2>
-<p>In order to use felix86, you need a rootfs &ndash; a directory that contains all the x86 libraries that your programs may need. Upon running, felix86 will perform a fake, <strong>rootless</strong> mount of folders such as <code>/dev</code>, <code>/proc</code>, <code>/sys</code> and others inside the rootfs. Any guest application will solely exist inside the rootfs. For example, if your rootfs is at <code>/opt/felix86/rootfs</code> and a program accesses <code>/home/ubuntu/myfile</code>, this access will be translated to <code>/opt/felix86/rootfs/home/ubuntu/myfile</code> inside the rootfs. This is accomplished by doing full path resolution in userspace, before passing the final resolved and symlink-free path to the kernel. As a consequence, filesystem accesses such as <code>/..</code>, or symlinks that point backwards will not escape the rootfs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> From the prespective of the application, it is equivalent to being chrooted inside the rootfs.</p>
-<p>This means that the rootfs will also contain all the data that applications produce. For example, if a game normally saves to <code>/home/ubuntu/.config/MyGame/data.toml</code>, when ran through felix86 the actual location will be at <code>/opt/felix86/rootfs/home/ubuntu/.config/MyGame/data.toml</code>.</p>
-<p>You can easily install new packages inside the rootfs. Once inside the felix86 shell (run <code>felix86 --shell</code>) you can use the package manager as normal. For example, if you installed the Ubuntu rootfs, <code>apt</code> can be used.</p>
-<h2 id="does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs">Does this mean I can only run applications that are inside the rootfs?</h2>
-<p>No. Recent versions of felix86 implement the concept of &ldquo;trusted directories&rdquo;. The first time you run an application outside the rootfs you will be prompted to trust the parent directory. Doing so will allow you to run the application and any subdirectories and files will be visible to the application. Since guest programs can truly only see inside the rootfs, the fake mount mechanism used for <code>/dev</code> &amp; co is used for trusted directories as well.</p>
-<h2 id="how-can-i-change-my-rootfs">How can I change my rootfs?</h2>
-<p>As with most configurations, there&rsquo;s two options:</p>
-<ul>
-<li>Set the <code>rootfs</code> option in <code>$HOME/.config/felix86/config.toml</code><ul>
-<li>Can be done using <code>felix86 -s /path/to/rootfs</code></li>
-</ul>
-</li>
-<li>Set the <code>FELIX86_ROOTFS</code> environment variable (overrides config value)</li>
-</ul>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>That being said, felix86 is not a security application. Only run applications you trust, not malware. VM escapes are possible.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+<p>felix86 is an emulator, and emulators have endless amount of work to be done.</p>
+<p>If you&rsquo;ve never used felix86 before, I recommend starting by testing it out. <a href="../../users/installation-guide/">Use the installation script</a> or <a href="./building_instructions.md">check out the building instructions</a> and try to run a simple program such as <code>glxgears</code>.</p>
+<p>There&rsquo;s multiple ways to contribute.</p>
+<h2 id="communication">Communication</h2>
+<p>Join <a href="https://discord.felix86.com">our discord server</a> to ask development questions.</p>
+<h2 id="good-first-issues">Good first issues</h2>
+<p>There&rsquo;s a <code>good-first-issues</code> label on <a href="https://github.com/OFFTKP/felix86/issues">our issue tracker</a> which contains easy bugs or feature requests for first time contributors.</p>
+<h2 id="instruction-optimizations">Instruction optimizations</h2>
+<p>We use an IR-less JIT and we go through a lot of work to try to minimize the amount of RISC-V instructions needed to emulate an x86 instruction.</p>
+<p>A good starting point is building with REPL support (set <code>BUILD_REPL=1</code> during CMake configuration) and testing what the emitted code for each instruction is.</p>
+<p>The REPL environment accepts x86 instructions and prints the generated RISC-V assembly. It can accept multiple instructions separated by semicolons.</p>
+<p>Example:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>felix86 --repl
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&gt; mov rdi, rsi
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>MV a0, a1
+</span></code></pre></div></p>
+<p>Try to find a non-optimal instruction sequence and optimize it!</p>
+<h2 id="debugging-tips">Debugging tips</h2>
+<p>As of right now, felix86 cannot emulate programs that use <code>ptrace</code>, such as <code>gdb</code> or <code>strace</code>. As such, you need to use the host versions of these commands. <a href="../debugging/">There&rsquo;s some tips to make your life easier</a>.</p>
+<p>Sometimes the host <code>strace</code> is useful when chasing bugs in the emulator itself, or want a more complete trace. Make sure to filter out some syscalls that are frequently use and spammy, such as <code>riscv_flush_icache</code> and <code>rt_sigprocmask</code>. Make sure to capture all processes, using the <code>-f</code> argument in <code>strace</code>.</p>
+<h2 id="profiling-games">Profiling games</h2>
+<p>You can make felix86 emit metadata for <code>perf</code> using <code>FELIX86_PERF_BLOCKS=1</code>.</p>
 
 
 
