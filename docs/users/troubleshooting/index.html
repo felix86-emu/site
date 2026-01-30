@@ -658,6 +658,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sub-process-apt-key-exited-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-process apt-key exited unexpectedly
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -875,6 +886,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sub-process-apt-key-exited-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-process apt-key exited unexpectedly
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -900,6 +922,8 @@
 <h2 id="glitching-graphics-with-amd-gpus-and-the-amdgpu-module">Glitching graphics with AMD GPUs and the <code>amdgpu</code> module</h2>
 <p>There may be problems due to differences in memory models in userspace and kernel drivers, in particular with 64-bit OpenGL applications running with AMD GPUs that use the <code>amdgpu</code> kernel module.</p>
 <p>Either enable thunking (<code>FELIX86_ENABLED_THUNKS=glx,vk</code>), or, if running into issues with that, enable TSO with <code>FELIX86_ALWAYS_TSO=1</code>.</p>
+<h2 id="sub-process-apt-key-exited-unexpectedly">Sub-process apt-key exited unexpectedly</h2>
+<p>Ensure the rootfs is installed in a path accessible by every user. For example, <code>/home/myuser/rootfs</code> is not such a path, as <code>/home/myuser</code> is only accessible to <code>myuser</code>. Programs like <code>apt</code> will switch uid/gid and try to open <code>apt-key</code>, which will try to get a file descriptor to the rootfs and fail. Recommended rootfs install directory: <code>/opt/felix86/rootfs</code>, default by the install script.</p>
 
 
 
