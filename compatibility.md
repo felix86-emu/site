@@ -230,6 +230,15 @@ permalink: /compat/
   <div class="pagination" id="pagination"></div>
 
   <div id="all-games" style="display: none">
+<div class="game-card" data-category="not-working">
+  <div class="game-image-container">
+    <img loading="lazy" src="https://github.com/user-attachments/assets/5782e5c5-35d2-4fd6-b13c-4de1ce0f1294" alt="Hytale" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/129">Hytale</a></h3>
+    <span class="status red">Not Working</span>
+  </div>
+</div>
 <div class="game-card" data-category="working">
   <div class="game-image-container">
     <img loading="lazy" src="https://github.com/user-attachments/assets/5e9ce2e4-4e26-41e2-a01c-945683843c80" alt="Unreal Tournament 99" class="game-image">
