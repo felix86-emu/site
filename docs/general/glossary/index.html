@@ -431,6 +431,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#f" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1036,6 +1047,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1094,6 +1133,17 @@
     <span class="md-ellipsis">
       
         C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
       
     </span>
   </a>
@@ -1259,6 +1309,10 @@
 <li>
 <p><strong>Code cache</strong>: A buffer containing the recompiled code.</p>
 </li>
+</ul>
+<h4 id="d">D</h4>
+<ul>
+<li><strong>Dispatcher</strong>: A loop written in assembly that translates guest addresses to host addresses that point to recompiled blocks of code and runs them. Since it&rsquo;s written in assembly, we get to control the ABI and we get to jump to it from any point inside JIT code or from <a href="../../devs/signals/">safepoints</a>. See <a href="../../devs/allocations/">allocations</a>.</li>
 </ul>
 <h4 id="f">F</h4>
 <ul>
