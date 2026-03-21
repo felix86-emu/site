@@ -128,6 +128,11 @@ permalink: /compat/
       object-fit: cover;
     }
 
+    .game-image[src*="felixNoThoughts"] {
+      object-fit: contain;
+      object-position: center;
+    }
+
     .game-info {
       padding: 12px;
       display: flex;
