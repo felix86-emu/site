@@ -964,6 +964,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Current solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effective-deferred-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective deferred signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1132,6 +1149,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Current solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effective-deferred-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective deferred signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1258,12 +1292,32 @@ If a guest signal happens after the <code>add</code> and before the <code>seqz</
 <p>If a signal happens during a syscall like <code>sigsuspend</code>, the host <code>sigsuspend</code> syscall will return <code>-EINTR</code>. We still defer as usual. Right after the syscall, we insert a safepoint and update the <code>rip</code>. If a signal happened during the <code>sigsuspend</code>, the safepoint will trigger. The <code>sigsuspend</code> will have set <code>rax</code> to <code>-EINTR</code> already inside the syscall function. Since we update the <code>rip</code> before the safepoint, from the guest signal handlers perspective the behavior is correct. The <code>rip</code> in <code>ucontext_t</code> points to right after the x86 syscall instruction, and <code>rax</code> is <code>-EINTR</code>.</p>
 <p>When a signal handler is finished, it returns using the <code>rt_sigreturn</code> syscall. We handle this syscall by setting <code>ThreadState</code> values using the <code>ucontext_t</code> in the stack. Register values and the signal mask are restored, and the <code>rip</code> is set too. After each <code>syscall</code> or <code>int 0x80</code> instruction we check if the <code>rip</code> changed inside the syscall (which only happens in sigreturn) and if so, jump to the dispatcher.</p>
 <p>With this solution, there&rsquo;s no problem of state being torn because the signal happened during recompiled code. There&rsquo;s also no problems when we are in host code, as asynchronous signals are always deferred and only handled in safepoints. Finally, there&rsquo;s no issues if a signal handler uses <code>longjmp</code>, as we always handle signals outside the host signal handler or C++ code.</p>
+<h4 id="effective-deferred-signals">Effective deferred signals</h4>
+<p>When an asynchronous signal is deferred, we set a bit in the <code>deferred_signals</code> variable in <code>ThreadState</code>. However, what happens if that signal is masked? If we activate safepoints, every basic block would fault, only for us to notice that the deferred signals are masked and must not be serviced. For this reason, we have a second variable, <code>effective_deferred_signals</code>, which essentially becomes <code>deferred_signals &amp; ~signal_mask</code>. Thus, <code>effective_deferred_signals</code> gets changed when a signal is deferred, or when the mask changes.</p>
+<p>There&rsquo;s an important note about this: if a signal happens during a <code>sigsuspend</code>, it needs to be handled. If a signal happens during a guest <code>sigsuspend</code>, we handle it at a safepoint right after the syscall. This works fine because we update the RIP to point to the guest instruction after the syscall and the host <code>sigsuspend</code> returns <code>-EINTR</code>, so the emulated RAX register has <code>-EINTR</code>, so all is fine. However, we need to make sure <code>effective_deferred_signals</code> uses the <code>sigsuspend</code> signal mask, not the thread signal mask. For this reason, before entering the host <code>sigsuspend</code>, we set <code>signal_mask</code> to the mask passed to the guest <code>sigsuspend</code>, and restore it right after. When the safepoint is reached, the guest signal will be prepared, and the guest mask will change for what it needs to be to enter the signal handler, which means <code>effective_deferred_signals</code> will be updated to what it should be using the thread signal mask. This ensures that a <code>sigsuspend</code> doesn&rsquo;t allow more than one otherwise blocked signal to be serviced.</p>
+<p><strong>But when would a masked signal be deferred?</strong></p>
+<p>One could assume that if a signal is masked on the host, there shouldn&rsquo;t be a scenario where a masked signal can be in <code>deferred_signals</code>, thus making <code>effective_deferred_signals</code> not useful.</p>
+<p>However, here&rsquo;s two examples of where this could happen:</p>
+<p>Example 1:
+- Signal handlers installed for <code>SIGRT40</code> and <code>SIGRT41</code>
+- <code>sa_mask</code> for those signal handlers blocks every signal
+- Block all signals temporarily
+- <code>raise(SIGRT40)</code>, <code>raise(SIGRT41)</code>
+- Unblock all signals
+- Signal handler is reached for <code>SIGRT40</code>, <code>sa_mask</code> blocks all signals
+- <code>SIGRT41</code> is still deferred
+- Without <code>effective_deferred_signals</code>, safepoints would continue to fault for a deferred-but-blocked signal
+- With <code>effective_deferred_signals</code>, safepoints don&rsquo;t fault until the signal handler returns to unblock <code>SIGRT41</code></p>
+<p>Example 2:
+- We use <code>SIGSEGV</code>, <code>SIGBUS</code> and <code>SIGILL</code> for internal emulator operations
+- We can&rsquo;t block these in the host
+- Thus leading to a situation where deferred signals exist, but they are blocked</p>
 <h3 id="problems">Problems</h3>
 <p>This solution isn&rsquo;t perfect.</p>
 <h4 id="not-handling-the-signal-immediately-is-not-accurate">Not handling the signal immediately is not accurate</h4>
 <p>If a program spawns a thread, and that thread spams its parent with signals, it could be the case that the parent has a hard time reaching the safepoint. It spends a lot of time on deferring signals, and by the time it&rsquo;s finished deferring one, another one is queued. This happens because there&rsquo;s a period from receiving the signal to servicing it at the safepoint, where signals of the same variety aren&rsquo;t masked as they should be. We mask signals right before enterring the signal handler at the safepoint.</p>
 <p><strong>But why not mask them right when you defer?</strong></p>
-<p>While this might solve this particular problem, it&rsquo;s hard to properly implement. What if an asynchronous signal of another variety happens before you reach the safepoint? What if a synchronous signal happens? What if a process is spamming us with asynchronous SIGSEGV signals which we can&rsquo;t mask because we use them for emulator purposes?</p>
+<p>While this might solve this particular problem, it&rsquo;s hard to properly implement. What if an asynchronous signal of another variety happens before you reach the safepoint? What if a synchronous signal happens? What if a process is spamming us with asynchronous SIGSEGV signals which we can&rsquo;t mask because we use them for emulator purposes? Additionally, the safepoint needs to store the old <code>signal_mask</code>, so we can&rsquo;t change that variable until we are ready to service the signal.</p>
 <p><strong>What can be done about this?</strong></p>
 <p>Not much for a perfect solution.</p>
 <p>One idea could be to use a RISC-V interpreter to interpret code until a safepoint, inside the host signal handler, and immediately service the guest signal upon return from the host handler. This could work for when a signal happens during JIT code, but not when it happens outside it. For a perfect solution, we would perhaps have to mask signals during non-JIT code segments.</p>
@@ -1275,12 +1329,12 @@ If a guest signal happens after the <code>add</code> and before the <code>seqz</
 <h3 id="current-solution_1">Current solution</h3>
 <p>Currently, we use a vector that maps each x86 <code>rip</code> to a RISC-V <code>pc</code> for each block. The faulting block is fetched using a map and <code>lower_bound</code>.</p>
 <h3 id="problems_1">Problems</h3>
-<p>While this allows us to fetch the actual <code>rip</code> from the faulting <code>pc</code>, it has a memory overhead. Perhaps a better solution would be identifying all possible faulting points and updating the <code>gp</code> register right before they happen. However, this could incur a performance penalty. Another possibility would be mapping all possible faulting <code>pc</code> values to their <code>rip</code> directly. This should have lower memory overhead, at the expense of having to identify all possible faulting locations.</p>
+<p>While this allows us to fetch the actual <code>rip</code> from the faulting <code>pc</code>, it has a memory overhead. Perhaps a better solution would be identifying all possible faulting points and updating the <code>gp</code> register right before they happen. However, this could incur a performance penalty. Another possibility would be mapping all possible faulting <code>pc</code> values to their <code>rip</code> directly. This should have lower memory overhead, at the expense of having to identify all possible faulting locations. Another idea is to compile the block again in temporary memory to figure out exactly how many RISC-V instructions each x86 instruction takes to find the x86 RIP at the point of the faulting instruction.</p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>Realtime signals may have multiple of the same signal being queued. We currently don&rsquo;t handle this behavior and only queue the latest, which is the correct behavior for non-realtime signals.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Realtime signals may have multiple of the same signal being queued. For those, we use a linked list, where each node is allocated using mmap, to avoid using malloc inside the signal handler.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
