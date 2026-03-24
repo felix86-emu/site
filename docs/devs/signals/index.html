@@ -1298,20 +1298,24 @@ If a guest signal happens after the <code>add</code> and before the <code>seqz</
 <p><strong>But when would a masked signal be deferred?</strong></p>
 <p>One could assume that if a signal is masked on the host, there shouldn&rsquo;t be a scenario where a masked signal can be in <code>deferred_signals</code>, thus making <code>effective_deferred_signals</code> not useful.</p>
 <p>However, here&rsquo;s two examples of where this could happen:</p>
-<p>Example 1:
-- Signal handlers installed for <code>SIGRT40</code> and <code>SIGRT41</code>
-- <code>sa_mask</code> for those signal handlers blocks every signal
-- Block all signals temporarily
-- <code>raise(SIGRT40)</code>, <code>raise(SIGRT41)</code>
-- Unblock all signals
-- Signal handler is reached for <code>SIGRT40</code>, <code>sa_mask</code> blocks all signals
-- <code>SIGRT41</code> is still deferred
-- Without <code>effective_deferred_signals</code>, safepoints would continue to fault for a deferred-but-blocked signal
-- With <code>effective_deferred_signals</code>, safepoints don&rsquo;t fault until the signal handler returns to unblock <code>SIGRT41</code></p>
-<p>Example 2:
-- We use <code>SIGSEGV</code>, <code>SIGBUS</code> and <code>SIGILL</code> for internal emulator operations
-- We can&rsquo;t block these in the host
-- Thus leading to a situation where deferred signals exist, but they are blocked</p>
+<p>Example 1:</p>
+<ul>
+<li>Signal handlers installed for <code>SIGRT40</code> and <code>SIGRT41</code></li>
+<li><code>sa_mask</code> for those signal handlers blocks every signal</li>
+<li>Block all signals temporarily</li>
+<li><code>raise(SIGRT40)</code>, <code>raise(SIGRT41)</code></li>
+<li>Unblock all signals</li>
+<li>Signal handler is reached for <code>SIGRT40</code>, <code>sa_mask</code> blocks all signals</li>
+<li><code>SIGRT41</code> is still deferred</li>
+<li>Without <code>effective_deferred_signals</code>, safepoints would continue to fault for a deferred-but-blocked signal</li>
+<li>With <code>effective_deferred_signals</code>, safepoints don&rsquo;t fault until the signal handler returns to unblock <code>SIGRT41</code></li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>We use <code>SIGSEGV</code>, <code>SIGBUS</code> and <code>SIGILL</code> for internal emulator operations</li>
+<li>We can&rsquo;t block these in the host</li>
+<li>Thus leading to a situation where deferred signals exist, but they are blocked</li>
+</ul>
 <h3 id="problems">Problems</h3>
 <p>This solution isn&rsquo;t perfect.</p>
 <h4 id="not-handling-the-signal-immediately-is-not-accurate">Not handling the signal immediately is not accurate</h4>
