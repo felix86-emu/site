@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://felix86.com/docs/devs/signals/">
       
       
-        <link rel="prev" href="../allocations/">
+        <link rel="prev" href="../thunking/">
       
       
       
@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -863,6 +863,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../thunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1066,6 +1094,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#emulator-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emulator signals
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1251,6 +1290,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#emulator-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emulator signals
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1332,6 +1382,13 @@ If a guest signal happens after the <code>add</code> and before the <code>seqz</
 <p>Currently, we use a vector that maps each x86 <code>rip</code> to a RISC-V <code>pc</code> for each block. The faulting block is fetched using a map and <code>lower_bound</code>.</p>
 <h3 id="problems_1">Problems</h3>
 <p>While this allows us to fetch the actual <code>rip</code> from the faulting <code>pc</code>, it has a memory overhead. Perhaps a better solution would be identifying all possible faulting points and updating the <code>gp</code> register right before they happen. However, this could incur a performance penalty. Another possibility would be mapping all possible faulting <code>pc</code> values to their <code>rip</code> directly. This should have lower memory overhead, at the expense of having to identify all possible faulting locations. Another idea is to compile the block again in temporary memory to figure out exactly how many RISC-V instructions each x86 instruction takes to find the x86 RIP at the point of the faulting instruction.</p>
+<h2 id="emulator-signals">Emulator signals</h2>
+<p>Some signals are used by the emulator because they are the most efficient way to emulate some feature. These aren&rsquo;t actually masked in the host.</p>
+<ul>
+<li><code>SIGSEGV</code> for self-modifying code detection</li>
+<li><code>SIGILL</code> for breakpoints (inserting an <code>EBREAK</code> would not cause the debugger to properly break like it does with <code>int3</code>, so an illegal instruction was used for breakpoints instead)</li>
+<li>Signal #53 to send asynchronous ptrace attach/seize/traceme events</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>

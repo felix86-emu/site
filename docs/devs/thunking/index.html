@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/devs/building-instructions/">
+        <link rel="canonical" href="https://felix86.com/docs/devs/thunking/">
       
       
-        <link rel="prev" href="../../users/uninstalling/">
+        <link rel="prev" href="../allocations/">
       
       
-        <link rel="next" href="../debugging/">
+        <link rel="next" href="../signals/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Building instructions - felix86 Documentation</title>
+        <title>Thunking - felix86 Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building" class="md-skip">
+        <a href="#how-its-done-in-felix86" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Building instructions
+              Thunking
             
           </span>
         </div>
@@ -781,35 +781,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Building instructions
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../building-instructions/" class="md-nav__link">
         
   
   
@@ -825,91 +800,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#building" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Building
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binfmt_misc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        binfmt_misc
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rootfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rootfs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rootfs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#important-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Important files
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -975,10 +865,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../thunking/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thunking
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -994,6 +909,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-its-done-in-felix86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it&rsquo;s done in felix86
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1059,69 +1003,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building" class="md-nav__link">
+  <a href="#how-its-done-in-felix86" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Building
+        How it&rsquo;s done in felix86
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Building">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binfmt_misc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        binfmt_misc
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rootfs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rootfs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rootfs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#important-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Important files
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1145,107 +1033,37 @@
   
 
 
-  <h1>Building instructions</h1>
+  <h1>Thunking</h1>
 
-<p>The installation script will properly install felix86 and a rootfs for you. These instructions are for developers and users who want to compile felix86 manually.</p>
-<h2 id="building">Building</h2>
-<p>On a RISC-V machine, you can build same as any other CMake project:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+<p>Thunking in felix86 is using the host version of some libraries in place of the guest library.</p>
+<p>This has a few benefits:
+- Better performance, since code in host library is compiled with a compiler
+- Better compatibility, since now the userspace driver (USD) has the same memory model as the kernelspace driver (KSD)
+- Less stuttering, as the host library doesn&rsquo;t need to be recompiled
+- More space in code cache before it needs to be cleared</p>
+<p>But also a few considerations:
+- Functions almost always have the same signature across architectures, but may have different struct alignment or packing
+- Functions that return pointers need to return them in the 32-bit address space for 32-bit apps
+- Functions that have variadic arguments need special handling
+- If a library uses another library, in many cases both need to be thunked
+    - This may require some workarounds, for example libGLX depends on libX11, but libX11 is difficult to thunk
+- Callbacks need to be translated to RISC-V code</p>
+<h2 id="how-its-done-in-felix86">How it&rsquo;s done in felix86</h2>
+<p>In felix86, when a thunked library is <code>open</code>ed, the <code>open</code> is redirected to a special x86 <strong>overlay</strong> library. This library defines the same functions as the original library, but has special code that tells our emulator to call into host code.</p>
+<p>Here&rsquo;s an example function:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>global glBegin:function
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>align 16
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>glBegin:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>invlpg [rax]
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>db &quot;glBegin&quot;, 0
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ret
 </span></code></pre></div></p>
-<p>On an x86 machine, install the <code>riscv64-linux-gnu-gcc</code> cross-compiler and set the toolchain file:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>./riscv.cmake
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
-</span></code></pre></div></p>
-<p>By default, this build will be <code>RelWithDebInfo</code> to assist with development.</p>
-<h3 id="binfmt_misc">binfmt_misc</h3>
-<p>felix86 can work without being registered to binfmt_misc, but AppImage files and setuid applications like <code>sudo</code> won&rsquo;t work.</p>
-<p>To register to binfmt_misc run the following command:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>-E<span class="w"> </span>./build/felix86<span class="w"> </span>-b
-</span></code></pre></div></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Since we use the <code>F</code> flag in binfmt_misc, each new compilation needs a new binfmt_misc registration. As such, always run <code>sudo -E ./build/felix86 -b</code> after compiling to make sure the binfmt_misc version gets updated.</p>
-</div>
-<h2 id="tests">Tests</h2>
-<p>You can build the tests by setting the <code>BUILD_TESTS</code> flag during configuration:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DBUILD_TESTS<span class="o">=</span>ON
-</span></code></pre></div></p>
-<p>These include the single instruction tests from <a href="https://github.com/FEX-Emu/FEX/tree/main/unittests/ASM">FEX-Emu</a>, some unit tests for syscalls and some binary tests.</p>
-<p>The felix86 CI runs more binary tests than that. If you want to run the binary tests, clone the binary_tests repo:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/felix86-emu/binary_tests
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>binary_tests
-</span></code></pre></div></p>
-<p>You can use the <code>install_tests.sh</code> script to download the binary tests:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./install_tests.sh<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/binaries
-</span></code></pre></div></p>
-<p>Then to run the tests, temporarily disable binfmt_misc usage and use the <code>run_tests.sh</code> script:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_BINFMT_MISC_INSTALLED</span><span class="o">=</span><span class="m">0</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>./run_tests.sh<span class="w"> </span>/path/to/felix86<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/binaries
-</span></code></pre></div></p>
-<h2 id="rootfs">Rootfs</h2>
-<p>If you don&rsquo;t want to install a rootfs <a href="../../users/installation-guide/">using the installation script</a>, you can build one using Docker.</p>
-<p>First, you need a Dockerfile:
-<div class="language-dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">COPY</span><span class="w"> </span>Run.sh<span class="w"> </span>/tmp/Run.sh
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">RUN</span><span class="w"> </span>bash<span class="w"> </span>/tmp/Run.sh
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">]</span>
-</span></code></pre></div></p>
-<p>You also need a script to run inside the container:
-<div class="language-bash highlight"><span class="filename">Run.sh</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>apt<span class="w"> </span>update
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Install whatever packages you want your rootfs to have</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># apt install hello</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Create a .tar.gz inside the container while excluding the tempfs directories</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>touch<span class="w"> </span>archive.tar.gz
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>tar<span class="w">  </span>--exclude<span class="o">=</span>archive.tar.gz<span class="w"> </span>--exclude<span class="o">=</span>./media<span class="w"> </span>--exclude<span class="o">=</span>./mnt<span class="w"> </span>--exclude<span class="o">=</span>./root<span class="w"> </span>--exclude<span class="o">=</span>./srv<span class="w"> </span>--exclude<span class="o">=</span>./boot<span class="w"> </span>--exclude<span class="o">=</span>./home<span class="w"> </span>--exclude<span class="o">=</span>./run<span class="w"> </span>--exclude<span class="o">=</span>./proc<span class="w"> </span>--exclude<span class="o">=</span>./sys<span class="w"> </span>--exclude<span class="o">=</span>./dev<span class="w"> </span>--exclude<span class="o">=</span>./tmp<span class="w"> </span>--exclude<span class="o">=</span>./.dockerenv<span class="w"> </span>-czf<span class="w"> </span>archive.tar.gz<span class="w"> </span>.
-</span></code></pre></div></p>
-<p>Now create your rootfs:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>rootfs<span class="w"> </span>.
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>rootfs<span class="w"> </span>rootfs
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span>cp<span class="w"> </span>rootfs:/archive.tar.gz<span class="w"> </span>./rootfs.tar.gz
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>rootfs
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>rootfs
-</span></code></pre></div></p>
-<p>This will create an archived and minimal x86-64 Ubuntu rootfs.</p>
-<p>Extract it using <code>tar -xzf rootfs.tar.gz -C /path/to/rootfs</code> and set it using <code>felix86 -s /absolute/path/to/rootfs</code>.</p>
-<p>You can install packages inside the rootfs through felix86, or during rootfs creation by changing the <code>Run.sh</code> script.</p>
-<p>For an idea of what sort of packages you might need, check out <a href="https://github.com/felix86-emu/rootfs">the rootfs generator repository</a>.</p>
-<h4 id="important-files">Important files</h4>
-<p>During rootfs installation, some important files are copied to the rootfs. Currently, these are the following:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>/etc/mtab
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>/etc/passwd
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>/etc/passwd-
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>/etc/group
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>/etc/group-
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>/etc/shadow
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>/etc/shadow-
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>/etc/gshadow
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>/etc/gshadow-
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>/etc/hosts
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>/etc/hostname
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>/etc/timezone
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>/etc/localtime
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>/etc/fstab
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>/etc/subuid
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>/etc/subgid
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>/etc/machine-id
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>/etc/resolv.conf
-</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>/etc/sudoers
-</span></code></pre></div></p>
-<p>Copy these to the rootfs while retaining the host permissions like so:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-rp<span class="w"> </span>/etc/mtab<span class="w"> </span><span class="nv">$ROOTFS</span>/etc/mtab
-</span></code></pre></div></p>
+<p>The <code>invlpg [rax]</code> instruction here is the special &ldquo;call-to-host-code&rdquo; instruction. When this instruction is reached, the state is saved to memory, <code>GuestToHostMarshaller</code> produces a prologue, the call to host code is made, and an epilogue follows. Finally, the state is restored from memory. The name of the thunked function is fetched from the string right after the <code>invlpg [rax]</code>.</p>
+<p><code>GuestToHostMarshaller</code> takes the name of a function and its signature, and produces a trampoline. This trampoline will setup the arguments and stack (if necessary) and call the host function. After the host function returns, it will move the return value (if any) to the appropriate register.</p>
+<p>We keep track of what functions may take a callback. If a function takes a callback, we need to do the reverse: from host code, jump back to the dispatcher to recompile guest code. These <code>host-&gt;guest-&gt;host</code> transitions could happen multiple times. This <code>host-&gt;guest</code> trampoline is created by <code>ABIMadness::hostToGuestTrampoline</code>.</p>
+<p>Some libraries may need to do work right after they are loaded. For those, we insert a pointer to a function in the <code>.init_array</code>. If some of this work needs to happen in the felix86 side, we need to tell the emulator that the library has loaded. To do this, our <code>.init_array</code> function uses <code>invlpg [rbx]</code> which notifies the emulator that it has been reached. This is necessary because in felix86 we use the emulated <code>ld-linux.so</code> instead of loading the libraries manually.</p>
+<p>These overlays are stored by default in <code>/opt/felix86/lib/x86_64-linux-gnu</code> and, in the future, in <code>/opt/felix86/lib/i386-linux-gnu</code> too. The path to the overlays can be changed with <code>felix86 -S /path/to/overlays</code>.</p>
+<p>Some libraries are very cumbersome to fully thunk, but we could benefit from thunking only a few independent functions. One such example is <code>libc.so.6</code>. Thunking the entirety of libc is an enormous effort, but if we just thunk <code>memcpy</code> we could see improved performance in some games. In the future, we can produce an overlay library on the fly, that is a copy of the original library but thunks a few important functions. </p>
 
 
 
