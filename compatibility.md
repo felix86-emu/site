@@ -937,13 +937,13 @@ permalink: /compat/
     <span class="status yellow">Partially Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Among Us" class="game-image">
+    <img loading="lazy" src="https://github.com/user-attachments/assets/bb1c372d-f806-4d54-9a37-7164dc017685" alt="Among Us" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/52">Among Us</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="partial">

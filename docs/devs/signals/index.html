@@ -1095,6 +1095,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#restartable-syscalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restartable syscalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#emulator-signals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1291,6 +1302,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#restartable-syscalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restartable syscalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#emulator-signals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1382,6 +1404,9 @@ If a guest signal happens after the <code>add</code> and before the <code>seqz</
 <p>Currently, we use a vector that maps each x86 <code>rip</code> to a RISC-V <code>pc</code> for each block. The faulting block is fetched using a map and <code>lower_bound</code>.</p>
 <h3 id="problems_1">Problems</h3>
 <p>While this allows us to fetch the actual <code>rip</code> from the faulting <code>pc</code>, it has a memory overhead. Perhaps a better solution would be identifying all possible faulting points and updating the <code>gp</code> register right before they happen. However, this could incur a performance penalty. Another possibility would be mapping all possible faulting <code>pc</code> values to their <code>rip</code> directly. This should have lower memory overhead, at the expense of having to identify all possible faulting locations. Another idea is to compile the block again in temporary memory to figure out exactly how many RISC-V instructions each x86 instruction takes to find the x86 RIP at the point of the faulting instruction.</p>
+<h2 id="restartable-syscalls">Restartable syscalls</h2>
+<p>Some syscalls may be restarted in the kernel side after the signal handler. In the kernel, this is handled by setting the return RIP to point back to the syscall in the signal frame, and the RAX to the original value (which is the syscall number). We set <code>state-&gt;in_restartable_syscall</code> for some syscalls like <code>futex</code>, and if the syscall is interrupted and returns with <code>EINTR</code>, we restart it after the signal handler in a similar fashion. The host signal handler doesn&rsquo;t have <code>SA_RESTART</code> set for this reason. By checking if the syscall returned with <code>EINTR</code>, we are able to discern between syscalls that are interruptible based on their arguments, such as <code>read</code> which may be interruptible only if operating on &ldquo;slow&rdquo; devices.</p>
+<p>The reason for <code>state-&gt;in_restartable_syscall</code> is because some syscalls that are interrupted by signals that have <code>SA_RESTART</code> set <strong>do not restart</strong>, such as <code>sigsuspend</code>. For this reason, we explicitly declare which syscalls are restartable.</p>
 <h2 id="emulator-signals">Emulator signals</h2>
 <p>Some signals are used by the emulator because they are the most efficient way to emulate some feature. These aren&rsquo;t actually masked in the host.</p>
 <ul>
