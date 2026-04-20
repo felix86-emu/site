@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -592,6 +597,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -608,6 +631,95 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binfmt_misc-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        binfmt_misc installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rootfs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rootfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -787,14 +899,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devs/building-instructions/" class="md-nav__link">
+      <a href="../../devs/getting-started/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Building instructions
+    Getting started
   
 
     
@@ -920,6 +1032,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -945,6 +1085,86 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binfmt_misc-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        binfmt_misc installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rootfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rootfs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rootfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -965,24 +1185,145 @@
 
   <h1>Installation guide</h1>
 
-<p>Installing felix86 is easiest done with the installation script. Simply paste this into a terminal and press Enter.
+<p>felix86 can be installed automatically through an installation script, or manually.</p>
+<p>Make sure <a href="../supported-devices/">your RISC-V device is supported</a> before installing.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="automatic" name="__tabbed_1" type="radio" /><input id="manual" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="automatic">Automatic</label><label for="manual">Manual</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>You can install felix86 using the installation script:
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://install.felix86.com<span class="o">)</span>
 </span></code></pre></div></p>
-<p>This script will guide you through choosing a felix86 version and a rootfs.</p>
-<p>If you only need to install a rootfs, use the rootfs installer script by itself:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://install.felix86.com/rootfs.sh<span class="o">)</span>
+<p>This script will guide you through installing felix86 and a rootfs.</p>
+<div class="admonition example">
+<p class="admonition-title">Reading the script</p>
+<p>This script is hosted via GitHub Pages and its source code is available at <a href="https://github.com/felix86-emu/install">https://github.com/felix86-emu/install</a></p>
+<p>You can also read the script before running it: <code>curl -s https://install.felix86.com | less</code></p>
+<p>Or run it directly from the repository: <code>bash &lt;(curl -s https://raw.githubusercontent.com/felix86-emu/install/refs/heads/main/index.html)</code></p>
+</div>
+</div>
+<div class="tabbed-block">
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You need a C and C++ compiler like GCC or Clang, and CMake. If you want to build with thunking, and you should, you may need X11/GLX/Vulkan/Wayland header files. Linking is done at runtime using <code>dlopen</code>, so for thunking to properly work you also need the libraries themselves.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="archlinux" name="__tabbed_2" type="radio" /><input id="ubuntudebian" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="archlinux">Archlinux</label><label for="ubuntudebian">Ubuntu/Debian</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo pacman -S --needed base-devel cmake libx11 mesa vulkan-devel vulkan-tools wayland
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo apt install build-essential cmake libx11-dev libgl1-mesa-dev libglx-dev libvulkan-dev vulkan-tools libwayland-dev
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>If you&rsquo;re cross-compiling, you need to install the RISC-V build tools.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="archlinux_1" name="__tabbed_3" type="radio" /><input id="ubuntudebian_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="archlinux_1">Archlinux</label><label for="ubuntudebian_1">Ubuntu/Debian</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo pacman -S --needed riscv64-linux-gnu-gcc riscv64-linux-gnu-binutils
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo apt install gcc-riscv64-linux-gnu g++-riscv64-linux-gnu
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="configuring">Configuring</h2>
+<p>If you&rsquo;re building on a RISC-V machine, the default configuration is good enough.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cmake -B build
+</span></code></pre></div>
+If you&rsquo;re cross-compiling, you need to use the RISC-V CMake toolchain.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cmake -B build -DCMAKE_TOOLCHAIN_FILE=riscv.cmake
 </span></code></pre></div></p>
+<h2 id="building">Building</h2>
+<p>Just like any other CMake project.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cmake --build build -j$(nproc)
+</span></code></pre></div></p>
+<h2 id="binfmt_misc-installation">binfmt_misc installation</h2>
+<p>Installing in binfmt_misc allows running privileged applications, such as <code>sudo</code>, through the emulator, so it is recommended.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo ./build/felix86 -b
+</span></code></pre></div></p>
+<h2 id="rootfs">Rootfs</h2>
+<p>You can download a ready-made rootfs using the installation script.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bash &lt;(curl -s https://install.felix86.com/rootfs.sh)
+</span></code></pre></div>
+Building one yourself requires Docker.</p>
+<p>You can start using the example files below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="dockerfile" name="__tabbed_4" type="radio" /><input id="ubuntush" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="dockerfile">Dockerfile</label><label for="ubuntush">Ubuntu.sh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-Dockerfile highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">COPY</span><span class="w"> </span>Ubuntu.sh<span class="w"> </span>/tmp/Ubuntu.sh
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">RUN</span><span class="w"> </span>bash<span class="w"> </span>/tmp/Ubuntu.sh
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">]</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">set</span><span class="w"> </span>-e
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>dpkg<span class="w"> </span>--add-architecture<span class="w"> </span>i386
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>apt<span class="w"> </span>update
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Install packages you want inside your rootfs</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>sudo
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Then, run the following commands to extract your rootfs into an archive.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bsdtar<span class="w"> </span>-czf<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>--exclude<span class="o">=</span>media<span class="w"> </span>--exclude<span class="o">=</span>mnt<span class="w"> </span>--exclude<span class="o">=</span>root<span class="w"> </span>--exclude<span class="o">=</span>srv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span>--exclude<span class="o">=</span>boot<span class="w"> </span>--exclude<span class="o">=</span>home<span class="w"> </span>--exclude<span class="o">=</span>run<span class="w"> </span>--exclude<span class="o">=</span>proc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span>--exclude<span class="o">=</span>sys<span class="w"> </span>--exclude<span class="o">=</span>dev<span class="w"> </span>--exclude<span class="o">=</span>tmp<span class="w"> </span>--exclude<span class="o">=</span>.dockerenv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span>@-<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;felix86-rootfs.tar.gz&quot;</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+</span></code></pre></div></p>
+<p>Unzip this rootfs to your target directory on your RISC-V machine, and set it using <code>felix86 --set-rootfs /path/to/rootfs</code></p>
+<h3 id="important-files">Important files</h3>
+<p>During rootfs installation, some important files are copied to the rootfs. Currently, these are the following:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>/etc/mtab
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>/etc/passwd
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>/etc/passwd-
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>/etc/group
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>/etc/group-
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>/etc/shadow
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>/etc/shadow-
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>/etc/gshadow
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>/etc/gshadow-
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>/etc/hosts
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>/etc/hostname
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>/etc/timezone
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>/etc/localtime
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>/etc/fstab
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>/etc/subuid
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>/etc/subgid
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>/etc/machine-id
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>/etc/resolv.conf
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>/etc/sudoers
+</span></code></pre></div></p>
+<p>Copy these to the rootfs while retaining the host permissions.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo cp -rp /etc/mtab $ROOTFS/etc/mtab
+</span></code></pre></div></p>
+</div>
+</div>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Install the rootfs in a path accessible by root, such as the default <code>/opt/felix86/rootfs</code>. Installing the rootfs in the home directory may lead to problems.</p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Both scripts are hosted via GitHub Pages and their source code is available at <a href="https://github.com/felix86-emu/install">https://github.com/felix86-emu/install</a></p>
-</div>
+<p>After installation you can run 32-bit and 64-bit x86 apps inside the rootfs, or outside the rootfs if the directory is trusted.</p>
 <p>Consult the <a href="../usage-guide/">usage guide</a> for further info.</p>
-<p>For manual installation, see the <a href="../../devs/building-instructions/">building instructions</a>.</p>
-<p>If you want to build your own rootfs, see <a href="../../devs/building-instructions/#rootfs">the rootfs section in building instructions</a>.</p>
 
 
 
@@ -1003,6 +1344,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1030,7 +1373,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
