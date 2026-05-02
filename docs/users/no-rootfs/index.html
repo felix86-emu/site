@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#containers" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -704,6 +709,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using felix86 without a rootfs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -720,6 +743,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1001,6 +1052,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1025,15 +1095,11 @@
 <p class="admonition-title">Warning</p>
 <p>Using felix86 without a rootfs isn&rsquo;t the recommended way, but it exists for users or developers who are willing to tinker.</p>
 </div>
-<p>felix86 is designed to <a href="../../general/rootfs-information/">use a rootfs</a> to allow for isolating an x86 environment and its files, while also not requiring root permissions for ease of use. However, the rootfs gives no security guarantees, it may be possible to escape it and modify files outside, as the chroot and mounts are purely emulated.</p>
+<p>felix86 is designed to <a href="../../general/rootfs-information/">use a rootfs</a> to allow for isolating an x86 environment and its files, while also not requiring root permissions for ease of use. The rootfs gives no security guarantees, it may be possible to escape it and modify files outside, as the chroot and mounts are purely emulated.</p>
 <p>However, you may be developing a VM environment similar to <a href="https://github.com/AsahiLinux/muvm">muvm</a> that wants to use felix86, or you are more of a power user, or you want to use some container tool. In these cases, it may be worthy to not use a rootfs.</p>
 <p>The <code>FELIX86_NO_ROOTFS</code> environment variable will make felix86 not use a rootfs and passthrough all filesystem syscalls to the kernel.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>While this works, you may run into problems if you try to run an emulated app that runs <code>chroot</code> or <code>pivot_root</code>, that you wouldn&rsquo;t run into otherwise.</p>
-<p>The reason for this is that felix86 doesn&rsquo;t statically link, and statically linking would come with a set of problems. Because felix86 is dynamically linked, if an emulated app uses <code>chroot</code>/<code>pivot_root</code> and doesn&rsquo;t copy/mount the felix86 libraries and ld.so over to the new root, it won&rsquo;t be able to run.</p>
-</div>
-<p>Or, you may want to use a rootfs, but you want to use a proper containerization tool like <code>bwrap</code>, and real <code>mount</code> syscalls.</p>
+<h2 id="containers">Containers</h2>
+<p>You may want to use a rootfs, but you want to use a proper containerization tool like <code>bwrap</code>, and real <code>mount</code> syscalls. <code>FELIX86_NO_ROOTFS</code> can help here too, as we want the containerization tool to be responsible for mounts/chroots, they should be disabled in the felix86 side.</p>
 <p>In this case, you need an existing x86 rootfs, and to copy over the felix86 libraries. On multiarch systems they probably need to go in <code>/lib/riscv64-linux-gnu</code>. On non-multiarch systems, they need some way to not conflict with the x86 libraries which may prove harder. These are the libraries felix86 loads on runtime: <code>libstdc++.so.6</code>, <code>libm.so.6</code>, <code>libgcc_s.so.1</code>, <code>libc.so.6</code>. Make sure the dynamic linker <code>ld-linux-riscv64-lp64d.so.1</code> is also copied over to the rootfs <code>/lib</code> directory.</p>
 <p>You may want to disable the config file too, otherwise felix86 might try to search in a path that it doesn&rsquo;t own and fail to load the configs.
 By disabling the config file, you may still pass configurations via environment variables.</p>
@@ -1052,6 +1118,12 @@ By disabling the config file, you may still pass configurations via environment 
 </span></code></pre></div>
 Since the configuration file isn&rsquo;t loaded, we need to notify felix86 that it should <code>execve</code> executables directly, and this is what <code>FELIX86_BINFMT_MISC_INSTALLED</code> is for.</p>
 <p>Inside this emulated shell, you can confirm felix86 is used with <code>cat /proc/cpuinfo</code>. Alternatively, you may remove <code>FELIX86_QUIET</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While these work, you may run into problems if you try to run an emulated app that runs <code>chroot</code> or <code>pivot_root</code>, that you wouldn&rsquo;t run into otherwise.</p>
+<p>The reason for this is that felix86 doesn&rsquo;t statically link, and statically linking would come with a set of problems. Because felix86 is dynamically linked, if an emulated app uses <code>chroot</code>/<code>pivot_root</code> and doesn&rsquo;t copy/mount the felix86 libraries and ld.so over to the new root, it won&rsquo;t be able to run.</p>
+<p>If you want to run programs that rely on <code>chroot</code> and <code>pivot_root</code>, the recommended way is using felix86 with a rootfs (<code>FELIX86_NO_ROOTFS=0</code>). Tools like <code>proot</code> may or may not work, and haven&rsquo;t been tested.</p>
+</div>
 
 
 
