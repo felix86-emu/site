@@ -486,6 +486,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#but-why-a-rootfs-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        But why a rootfs at all?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -758,6 +769,34 @@
     
   
     Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../users/no-rootfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using felix86 without a rootfs
   
 
     
@@ -1085,6 +1124,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#but-why-a-rootfs-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        But why a rootfs at all?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1122,6 +1172,11 @@
 </li>
 <li>Set the <code>FELIX86_ROOTFS</code> environment variable (overrides config value)</li>
 </ul>
+<h2 id="but-why-a-rootfs-at-all">But why a rootfs at all?</h2>
+<p>If we don&rsquo;t use a rootfs and passthrough all the filesystem syscalls, then <code>chroot</code> and <code>pivot_root</code> syscalls would hide the path of the emulator. This means that if from inside a chrooted environment <code>execve</code> is called, the emulator won&rsquo;t be found. <code>binfmt_misc</code> fixes this with the <code>F</code> flag, however in the case of felix86, unless if we statically link, we won&rsquo;t be able to load the shared libraries. Even if we statically link, we won&rsquo;t be able to load host dynamic libraries for thunking.</p>
+<p>While applications that <code>chroot</code>/<code>pivot_root</code> are rare, <code>bwrap</code> which is used by Steam is one of them, and we want to support it by default.</p>
+<p>Additionally, we think that isolation of the x86 and RISC-V environments is neat, especially features such as being able to update your x86 rootfs via <code>apt</code> or similar, without risk of changing stuff in your host system. Without a rootfs, this is harder to do as you need to ensure the x86 binaries get installed in a different directory to not mess with your host binaries.</p>
+<p>There&rsquo;s ways to use felix86 <a href="../../users/no-rootfs/">without a rootfs</a>.</p>
 <div class="footnote">
 <hr />
 <ol>

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/users/steam/">
+        <link rel="canonical" href="https://felix86.com/docs/users/no-rootfs/">
       
       
-        <link rel="prev" href="../usage-guide/">
+        <link rel="prev" href="../troubleshooting/">
       
       
-        <link rel="next" href="../troubleshooting/">
+        <link rel="next" href="../uninstalling/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Steam - felix86 Documentation</title>
+        <title>Using without a rootfs - felix86 Documentation</title>
       
     
     
@@ -75,11 +75,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#installation" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -111,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Steam
+              Using without a rootfs
             
           </span>
         </div>
@@ -643,35 +638,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Steam
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../steam/" class="md-nav__link">
         
   
   
@@ -687,46 +657,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -764,10 +694,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../no-rootfs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -783,6 +720,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1063,36 +1001,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1111,20 +1019,42 @@
   
 
 
-  <h1>Steam</h1>
+  <h1>Using felix86 without a rootfs</h1>
 
-<p>Installing Steam using felix86 is easy!</p>
-<h3 id="installation">Installation</h3>
-<p>Download the <code>steam_latest.deb</code> package from Steam&rsquo;s website.</p>
-<p>Enter <code>felix86 --shell</code> and install it via dpkg: <code>sudo dpkg -i /path/to/steam_latest.deb</code>.</p>
-<h3 id="running">Running</h3>
-<p>Run as <code>steam -no-cef-sandbox</code>.</p>
-<p>If you&rsquo;re having GPU issues, you can also disable the GPU with <code>-cef-disable-gpu</code>.</p>
-<p>If you&rsquo;re having issues on Wayland, you may need <code>SDL_VIDEODRIVER=x11</code>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Since felix86 can use <code>apt</code>, it may be possible to install through the package manager. This is untested.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using felix86 without a rootfs isn&rsquo;t the recommended way, but it exists for users or developers who are willing to tinker.</p>
 </div>
+<p>felix86 is designed to <a href="../../general/rootfs-information/">use a rootfs</a> to allow for isolating an x86 environment and its files, while also not requiring root permissions to allow ease of use. However, the rootfs gives no security guarantees, it may be possible to escape it and modify files outside, as the chroot and mounts are purely emulated.</p>
+<p>However, you may be developing a VM environment similar to <a href="https://github.com/AsahiLinux/muvm">muvm</a> that wants to use felix86, or you are more of a power user, or you want to use some container tool. In these cases, it may be worthy to not use a rootfs.</p>
+<p>The <code>FELIX86_NO_ROOTFS</code> environment variable will make felix86 not use a rootfs and passthrough all filesystem syscalls to the kernel.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this works, you may run into problems if you try to run an emulated app that runs <code>chroot</code> or <code>pivot_root</code>.</p>
+<p>The reason for this is that felix86 doesn&rsquo;t statically link, and statically linking would come with a set of problems. Because felix86 is dynamically linked, if an emulated app uses <code>chroot</code>/<code>pivot_root</code> and doesn&rsquo;t copy/mount the felix86 libraries and ld.so over to the new root, it won&rsquo;t be able to run.</p>
+<p>These are the libraries felix86 loads on runtime: <code>libstdc++.so.6</code>, <code>libm.so.6</code>, <code>libgcc_s.so.1</code>, <code>libc.so.6</code>.
+It also needs to find the ld.so: <code>/lib/ld-linux-riscv64-lp64d.so.1</code>.
+If a guest application chroots it needs to copy over these libraries in the new root.</p>
+</div>
+<p>You may also want to use a proper containerization tool, such as <code>bwrap</code>, to create a rootfs and do a real <code>pivot_root</code> before starting a shell instance.</p>
+<p>You need an existing x86 rootfs, and to copy over the felix86 libraries. Where they need to go depends on the <code>ld-linux-riscv64-lp64d.so.1</code>. On multiarch systems they probably need to go in <code>/lib/riscv64-linux-gnu</code>. On non-multiarch systems, they need some way to not conflict with the x86 libraries which may prove harder.</p>
+<p>You may want to disable the config file too, otherwise felix86 might try to search in a path that it doesn&rsquo;t own and fail to load the configs.
+By disabling the config file, you may still pass configurations via environment variables.</p>
+<p>Here&rsquo;s an example <code>bwrap</code> command to help, assuming a small rootfs in <code>/tmp/felix86-root</code> with the aforementioned libraries copied:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo bwrap \
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  --unshare-all \
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  --bind /tmp/felix86-root / \
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  --proc /proc \
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  --dev /dev \
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  --tmpfs /tmp
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  --setenv FELIX86_NO_ROOTFS 1 \
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  --setenv FELIX86_NO_CONFIG_FILE 1 \
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  --setenv FELIX86_BINFMT_MISC_INSTALLED 1 \
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  --setenv FELIX86_QUIET 1 \
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  -- /bin/bash
+</span></code></pre></div>
+Since the configuration file isn&rsquo;t loaded, we need to notify felix86 that it should <code>execve</code> executables directly, and this is what <code>FELIX86_BINFMT_MISC_INSTALLED</code> is for.</p>
+<p>Inside this emulated shell, you can confirm felix86 is used with <code>cat /proc/cpuinfo</code>. Alternatively, you may remove <code>FELIX86_QUIET</code>.</p>
 
 
 

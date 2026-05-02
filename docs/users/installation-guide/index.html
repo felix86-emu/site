@@ -817,6 +817,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../no-rootfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using felix86 without a rootfs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../uninstalling/" class="md-nav__link">
         
   
@@ -1248,8 +1276,8 @@ If you&rsquo;re cross-compiling, you need to use the RISC-V CMake toolchain.
 <p>You can download a ready-made rootfs using the installation script.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bash &lt;(curl -s https://install.felix86.com/rootfs.sh)
 </span></code></pre></div>
-Building one yourself requires Docker.</p>
-<p>You can start using the example files below.</p>
+There&rsquo;s many ways to create an x86 rootfs. The felix86 project uses Docker, but you can also use <a href="https://wiki.debian.org/Debootstrap">Debootstrap</a> or other similar tools.</p>
+<p>For Docker, you can start by using the example files below.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="dockerfile" name="__tabbed_4" type="radio" /><input id="ubuntush" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="dockerfile">Dockerfile</label><label for="ubuntush">Ubuntu.sh</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1315,6 +1343,7 @@ Building one yourself requires Docker.</p>
 <p>Copy these to the rootfs while retaining the host permissions.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo cp -rp /etc/mtab $ROOTFS/etc/mtab
 </span></code></pre></div></p>
+<p>It is recommended you also create a home directory for your user: <code>sudo mkdir "$ROOTFS/home/$USER" &amp;&amp; sudo chown $USER:$USER "$ROOTFS/home/$USER"</code></p>
 </div>
 </div>
 </div>
