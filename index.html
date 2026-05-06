@@ -63,8 +63,12 @@ layout: default
     </button>
   </pre>
 </div>
-</br>
-<hr>
+<div id="demo"></div>
+<script src="/js/asciinema-player.min.js"></script>
+<script>
+  AsciinemaPlayer.create('/demo.cast', document.getElementById('demo'), {
+  });
+</script>
 
 <script>
   document.querySelectorAll('.copy-btn').forEach(button => {
@@ -90,6 +94,7 @@ layout: default
   });
 </script>
 
+</br>
 
 <div class="posts">
   {% for post in site.posts %}
