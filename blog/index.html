@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+
+<div class="posts">
+  {% for post in site.posts %}
+  <article class="post">
+
+    <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+    <div class="entry">
+      {{ post.excerpt }}
+    </div>
+
+    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+  </article>
+  {% endfor %}
+</div>
+
+<meta property="og:title" content="felix86 — Run x86 and x86-64 games on RISC-V" />
+<meta property="twitter:title" content="felix86 — Run x86 and x86-64 games on RISC-V" />
+<meta property="og:image" content="{{ site.baseurl }}/images/cropped_logo.png?v=2">
