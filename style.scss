@@ -21,6 +21,17 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1 0 auto;
+}
+
+.wrapper-footer {
+  flex-shrink: 0;
 }
 
 .container {
@@ -279,8 +290,71 @@ nav {
 }
 
 footer {
-  padding: 20px 0;
-  text-align: center;
+  padding: 30px 0;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+
+  @include mobile {
+    gap: 25px;
+  }
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 140px;
+
+  h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: $darkerGray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 6px 0;
+    font-size: 15px;
+    border-bottom: 1px solid darken($lightGray, 8%);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    color: $darkGray;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid darken($lightGray, 8%);
+  font-size: 13px;
+  color: $gray;
+
+  p {
+    margin: 0;
+  }
+
+  .footer-art-notice {
+    margin-top: 4px;
+  }
 }
 
 .video-container {

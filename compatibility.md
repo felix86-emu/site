@@ -128,7 +128,7 @@ permalink: /compat/
       object-fit: cover;
     }
 
-    .game-image[src*="felixNoThoughts"] {
+    .game-image[src*="felix86NoThoughts"] {
       object-fit: contain;
       object-position: center;
     }
@@ -291,7 +291,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Heroic Games Launcher" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Heroic Games Launcher" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/125">Heroic Games Launcher</a></h3>
@@ -309,7 +309,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="LEGO Star Wars III: The Clone Wars" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="LEGO Star Wars III: The Clone Wars" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/123">LEGO Star Wars III: The Clone Wars</a></h3>
@@ -318,7 +318,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="LEGO Indiana Jones: The Original Adventures" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="LEGO Indiana Jones: The Original Adventures" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/122">LEGO Indiana Jones: The Original Adventures</a></h3>
@@ -345,7 +345,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="HuniePop" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="HuniePop" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/119">HuniePop</a></h3>
@@ -354,7 +354,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="partial">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Divinity: Original Sin - Enhanced Edition" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Divinity: Original Sin - Enhanced Edition" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/118">Divinity: Original Sin - Enhanced Edition</a></h3>
@@ -399,7 +399,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Shadowrun Returns" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Shadowrun Returns" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/113">Shadowrun Returns</a></h3>
@@ -426,7 +426,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="RimWorld" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="RimWorld" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/110">RimWorld</a></h3>
@@ -435,7 +435,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="partial">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="EVERSPACE" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="EVERSPACE" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/109">EVERSPACE</a></h3>
@@ -471,7 +471,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="BioShock" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="BioShock" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/105">BioShock</a></h3>
@@ -480,7 +480,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="PEAK" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="PEAK" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/104">PEAK</a></h3>
@@ -489,7 +489,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Garfield Kart" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Garfield Kart" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/103">Garfield Kart</a></h3>
@@ -498,7 +498,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Batman: Arkham Origins" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Batman: Arkham Origins" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/102">Batman: Arkham Origins</a></h3>
@@ -516,7 +516,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Noita" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Noita" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/100">Noita</a></h3>
@@ -552,7 +552,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Fallout New Vegas" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Fallout New Vegas" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/96">Fallout New Vegas</a></h3>
@@ -660,7 +660,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Heroes of Might and Magic 3" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Heroes of Might and Magic 3" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/84">Heroes of Might and Magic 3</a></h3>
@@ -714,7 +714,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Far Cry 2: Fortune's Edition" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Far Cry 2: Fortune's Edition" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/78">Far Cry 2: Fortune's Edition</a></h3>
@@ -1011,7 +1011,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="A Hat In Time (Windows)" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="A Hat In Time (Windows)" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/45">A Hat In Time (Windows)</a></h3>
@@ -1137,7 +1137,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Amnesia: The Dark Descent" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Amnesia: The Dark Descent" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/31">Amnesia: The Dark Descent</a></h3>
@@ -1218,7 +1218,7 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Terraria" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Terraria" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/22">Terraria</a></h3>
@@ -1270,18 +1270,9 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="working">
-  <div class="game-image-container">
-    <img loading="lazy" src="https://github.com/user-attachments/assets/f49cdb0e-c0ab-4637-b3e9-a7cf00a31f2f" alt="Baba Is You" class="game-image">
-  </div>
-  <div class="game-info">
-    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/16">Baba Is You</a></h3>
-    <span class="status green">Working</span>
-  </div>
-</div>
 <div class="game-card" data-category="not-working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felixNoThoughts.png" alt="Doom 64" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Doom 64" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/15">Doom 64</a></h3>

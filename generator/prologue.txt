@@ -128,7 +128,7 @@ permalink: /compat/
       object-fit: cover;
     }
 
-    .game-image[src*="felixNoThoughts"] {
+    .game-image[src*="felix86NoThoughts"] {
       object-fit: contain;
       object-position: center;
     }

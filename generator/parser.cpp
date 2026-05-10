@@ -39,27 +39,31 @@ int main(int argc, const char **argv) {
     }
 
     if (category.empty()) {
-        category = "untested";
-        working = "<span class=\"status gray\">Untested</span>";
+      category = "untested";
+      working = "<span class=\"status gray\">Untested</span>";
     }
 
-    std::string body = issue["body"].is_null() ? "" : issue["body"].get<std::string>();
+    std::string body =
+        issue["body"].is_null() ? "" : issue["body"].get<std::string>();
     std::string image_prefix = "https://github.com/user-attachments/assets/";
     size_t x = body.find(image_prefix);
     if (x == std::string::npos) {
-      image = "{{ site.baseurl }}/images/felixNoThoughts.png";
+      image = "{{ site.baseurl }}/images/felix86NoThoughts.png";
     } else {
       // Find the end of the GUID (36 chars)
       image = body.substr(x, image_prefix.length() + 36);
     }
 
-    printf("<div class=\"game-card\" data-category=\"%s\">\n", category.c_str());
+    printf("<div class=\"game-card\" data-category=\"%s\">\n",
+           category.c_str());
     printf("  <div class=\"game-image-container\">\n");
-    printf("    <img loading=\"lazy\" src=\"%s\" alt=\"%s\" class=\"game-image\">\n",
+    printf("    <img loading=\"lazy\" src=\"%s\" alt=\"%s\" "
+           "class=\"game-image\">\n",
            image.c_str(), name.c_str());
     printf("  </div>\n");
     printf("  <div class=\"game-info\">\n");
-    printf("    <h3 class=\"game-title\"><a href=\"%s\">%s</a></h3>\n", url.c_str(), name.c_str());
+    printf("    <h3 class=\"game-title\"><a href=\"%s\">%s</a></h3>\n",
+           url.c_str(), name.c_str());
     printf("    %s\n", working.c_str());
     printf("  </div>\n");
     printf("</div>\n");

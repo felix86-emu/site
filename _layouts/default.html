@@ -228,7 +228,6 @@
           <a href="{{ site.baseurl }}/blog">Blog</a>
           <a href="{{ site.baseurl }}/compat">Compatibility</a>
           <a href="{{ site.baseurl }}/docs">Docs</a>
-          <a href="{{ site.baseurl }}/about">About</a>
         </nav>
       </header>
     </div>
@@ -241,7 +240,39 @@
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
-        {% include svg-icons.html %}
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="{{ site.baseurl }}/docs/users/installation-guide/#automatic">Installation guide</a></li>
+              <li><a href="{{ site.baseurl }}/docs/users/installation-guide/#manual">Compilation guide</a></li>
+              <li><a href="{{ site.baseurl }}/docs/users/usage-guide/">Usage guide</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="https://github.com/{{ site.footer-links.github }}">Source
+                  code</a></li>
+              <li><a href="https://discord.com/invite/{{ site.footer-links.discord }}">Discord</a></li>
+              <li><a href="https://bsky.app/profile/felix86-emu.bsky.social">Bluesky</a></li>
+              <li><a href="https://twitter.com/{{ site.footer-links.twitter }}">Twitter</a></li>
+              <li><a href="mailto:{{ site.footer-links.email }}">Email</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contribute</h4>
+            <ul>
+              <li><a href="{{ site.baseurl }}/docs/devs/getting-started/">Get involved</a></li>
+              <li><a href="https://ko-fi.com/felix86">Donate</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">Copyright &copy; {{ 'now' | date: '%Y' }} felix86 contributors</p>
+          <p class="footer-art-notice">Artwork may be subject to separate licensing &mdash; details <a
+              href="{{ site.baseurl }}/docs/general/art/">here</a>.</p>
+        </div>
       </footer>
     </div>
   </div>

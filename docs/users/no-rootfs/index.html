@@ -368,6 +368,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../general/art/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Art
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../general/socials/" class="md-nav__link">
         
   
@@ -1122,7 +1150,7 @@ Since the configuration file isn&rsquo;t loaded, we need to notify felix86 that 
 <p class="admonition-title">Warning</p>
 <p>While these work, you may run into problems if you try to run an emulated app that runs <code>chroot</code> or <code>pivot_root</code>, that you wouldn&rsquo;t run into otherwise.</p>
 <p>The reason for this is that felix86 doesn&rsquo;t statically link, and statically linking would come with a set of problems. Because felix86 is dynamically linked, if an emulated app uses <code>chroot</code>/<code>pivot_root</code> and doesn&rsquo;t copy/mount the felix86 libraries and ld.so over to the new root, it won&rsquo;t be able to run.</p>
-<p>If you want to run programs that rely on <code>chroot</code> and <code>pivot_root</code>, the recommended way is using felix86 with a rootfs (<code>FELIX86_NO_ROOTFS=0</code>). Tools like <code>proot</code> may or may not work and haven&rsquo;t been tested.</p>
+<p>If you want to run programs that rely on <code>chroot</code> and <code>pivot_root</code>, the recommended way is using felix86 with a rootfs (<code>FELIX86_NO_ROOTFS=0</code>). Tools like <code>proot</code> for emulating <code>chroot</code> in userspace may or may not work and haven&rsquo;t been tested.</p>
 </div>
 
 

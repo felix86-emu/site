@@ -7,89 +7,510 @@ layout: default
 <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
 
 <style>
-  pre {
-    position: relative;
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  .hero {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: #eef3f8;
+    border-top: 2px solid #d0d7de;
+    border-bottom: 2px solid #d0d7de;
+    padding: 48px 0;
+    box-sizing: border-box;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
     display: flex;
     align-items: center;
-    padding: 12px;
+    gap: 48px;
+    box-sizing: border-box;
+  }
+
+  .hero-text {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .hero-text p {
+    margin: 0 0 14px 0;
+  }
+
+  .hero-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero-headline {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+  }
+
+  .rotator {
+    display: inline;
+    color: #897272;
+  }
+
+  .rotator::after {
+    content: '|';
+    font-weight: 400;
+    margin-left: 2px;
+    color: #1a1a1a;
+    opacity: 50%;
+    animation: rotator-blink 1s steps(1) infinite;
+  }
+
+  @keyframes rotator-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .hero-lead {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+    color: #4a5568;
+  }
+
+  .hero-learn-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .hero-learn-more .arrow {
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+
+  .hero-learn-more:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 720px) {
+    .hero-headline {
+      font-size: 30px;
+    }
+  }
+
+  .hero-demo {
+    flex: 1 1 0;
+    min-width: 0;
+    background: #656565;
+    border-radius: 12px;
+    padding: 14px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .hero-demo .ap-player {
+    border-radius: 4px;
     overflow: hidden;
   }
 
-  pre code {
+  .demo-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .demo-nav-btn {
+    flex: 0 0 auto;
+    width: 110px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 14px;
+    box-sizing: border-box;
+    background: #1f2937;
+    color: #fff;
+    border: 1px solid #1f2937;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .demo-nav-btn:hover:not(:disabled) {
+    background: #111827;
+    border-color: #111827;
+  }
+
+  .demo-nav-btn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .demo-nav-btn:disabled {
+    background: #4b5563;
+    border-color: #4b5563;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .demo-nav-title {
+    flex: 1 1 auto;
+    text-align: center;
+    color: #e5e7eb;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      padding: 24px 0;
+    }
+
+    .hero-inner {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0 16px;
+      gap: 20px;
+    }
+  }
+
+  .install-row {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin: 0 0 14px 0;
+  }
+
+  .install-row pre {
     flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .install-row pre,
+  .install-row pre code {
+    font-size: clamp(11px, 1.15vw, 14px);
+    line-height: 1.5;
+  }
+
+  .install-row pre code {
     display: block;
+    white-space: nowrap;
   }
 
   .copy-btn {
-    position: sticky;
-    right: 0.01%;
-    top: 50%;
-    display: flex;
+    flex: 0 0 auto;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: #007bff;
-    color: white;
-    border: none;
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+    background: #1f2937;
+    color: #fff;
+    border: 1px solid #1f2937;
+    box-sizing: border-box;
     border-radius: 6px;
-    padding: 8px 8px;
-    font-size: 12px;
     cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
+    font-size: 16px;
+    line-height: 1;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
   }
 
   .copy-btn:hover {
-    opacity: 1;
+    background: #111827;
+    border-color: #111827;
   }
 
-  .copy-btn svg {
-    width: 14px;
-    height: 14px;
-    fill: white;
+  .copy-btn:active {
+    transform: scale(0.96);
   }
 
   .copy-btn.copied {
-    background: #28a745;
+    background: #16a34a;
+    border-color: #16a34a;
+  }
+
+  .copy-btn .fa {
+    color: #fff;
+  }
+
+  .features {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 64px 0;
+    box-sizing: border-box;
+  }
+
+  .features-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    box-sizing: border-box;
+  }
+
+  .feature {
+    text-align: center;
+  }
+
+  .feature-icon-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 0px;
+    --mx: 50%;
+    --my: 50%;
+    --rx: 0deg;
+    --ry: 0deg;
+    isolation: isolate;
+    transform: perspective(700px) rotateY(var(--ry)) rotateX(var(--rx));
+    transition: transform 0.4s ease;
+  }
+
+  .feature-icon-wrap:hover {
+    transition: transform 0.08s ease-out;
+  }
+
+  .feature-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  .feature-icon-wrap:hover .feature-icon {
+    transform: scale(1.05);
+  }
+
+  @media (hover: none) {
+    .feature-icon-wrap::after {
+      display: none;
+    }
+  }
+
+  .feature h3 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+    color: #1a1a1a;
+  }
+
+  .feature p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4a5568;
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .features {
+      padding: 32px 0;
+    }
+
+    .features-inner {
+      grid-template-columns: 1fr;
+      padding: 0 16px;
+      gap: 32px;
+    }
   }
 </style>
 
-<div style="text-align: center;">
-  <p><b>felix86</b> is an x86 and x86-64 userspace emulator for RISC-V Linux.</p>
-  <p>To install on your RISC-V device, execute the following command:</p>
-  <pre>
-    <code class="language-bash">bash <(curl -s https://install.felix86.com)</code>
-    <button class="copy-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M10 1.5a.5.5 0 0 1 .5.5v1H4a1 1 0 0 0-1 1v9H2a1 1 0 0 1-1-1V2.5A1.5 1.5 0 0 1 2.5 1h7.5z"/><path d="M4.5 4A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 11.5 4h-7z"/></svg>
-    </button>
-  </pre>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 class="hero-headline">Run x86 and x86-64<br><span id="word-rotator" class="rotator">programs</span> on <span
+          class="nowrap">RISC-V</span></h1>
+      <p class="hero-lead">felix86 is a userspace emulator that lets you run x86 and x86-64 Linux programs and games on
+        <span class="nowrap">RISC-V</span>
+        devices.
+      </p>
+      <p>To install on your <span class="nowrap">RISC-V</span> device, execute the following command:</p>
+      <div class="install-row">
+        <pre><code class="language-bash">bash <(curl -fsSL https://install.felix86.com)</code></pre>
+        <button class="copy-btn" aria-label="Copy install command">
+          <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </button>
+      </div>
+      <a class="hero-learn-more" href="{{ site.baseurl }}/docs">Read the documentation <span class="arrow">↵</span></a>
+    </div>
+    <div class="hero-demo">
+      <div id="demo"></div>
+      <div class="demo-nav">
+        <button id="demo-prev" class="demo-nav-btn" type="button" aria-label="Previous demo">Previous</button>
+        <span id="demo-title" class="demo-nav-title"></span>
+        <button id="demo-next" class="demo-nav-btn" type="button" aria-label="Next demo">Next</button>
+      </div>
+    </div>
+  </div>
 </div>
-<div id="demo"></div>
+
+<section class="features">
+  <div class="features-inner">
+    <div class="feature">
+      <div class="feature-icon-wrap">
+        <img class="feature-icon" src="{{ site.baseurl }}/images/felix86GamingIcon.webp" />
+      </div>
+      <h3>Game-ready</h3>
+      <p>Our in-house just-in-time recompiler translates x86 instructions to <span class="nowrap">RISC-V</span> code on
+        the
+        fly. Using our OpenGL and Vulkan passthrough games can run with great performance.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon-wrap">
+        <img class="feature-icon" src="{{ site.baseurl }}/images/felix86ScienceIcon.webp" />
+      </div>
+      <h3>Hackable</h3>
+      <p>Free, open source, and configurable. Our <a href="{{ site.baseurl }}/docs">documentation</a> will help you use
+        the emulator in many different
+        ways, with or without a rootfs.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon-wrap">
+        <img class="feature-icon" src="{{ site.baseurl }}/images/felix86ThinkIcon.webp" />
+      </div>
+      <h3>Rigorously tested</h3>
+      <p>Validated against a wide range of Linux programs and games. Every instruction is extensively tested for
+        correctness.</p>
+    </div>
+  </div>
+</section>
+
 <script src="/js/asciinema-player.min.js"></script>
 <script>
-  AsciinemaPlayer.create('/demo.cast', document.getElementById('demo'), {
-    autoplay: true
-  });
+  (() => {
+    const movies = [
+      { src: '/movies/intro.cast', title: 'Introduction' },
+      { src: '/movies/apt.cast', title: 'Installing apps inside rootfs' },
+    ];
+
+    const container = document.getElementById('demo');
+    const prevBtn = document.getElementById('demo-prev');
+    const nextBtn = document.getElementById('demo-next');
+    const titleEl = document.getElementById('demo-title');
+    let player = null;
+    let index = 0;
+
+    const load = (i) => {
+      if (player && typeof player.dispose === 'function') player.dispose();
+      container.innerHTML = '';
+      const movie = movies[i];
+      player = AsciinemaPlayer.create(movie.src, container);
+      titleEl.textContent = movie.title || '';
+      prevBtn.disabled = i <= 0;
+      nextBtn.disabled = i >= movies.length - 1;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) load(--index);
+    });
+    nextBtn.addEventListener('click', () => {
+      if (index < movies.length - 1) load(++index);
+    });
+
+    load(index);
+  })();
+</script>
+
+<script>
+  (() => {
+    document.querySelectorAll('.feature-icon-wrap').forEach(wrap => {
+      const img = wrap.querySelector('.feature-icon');
+      if (!img) return;
+      const setMask = () => wrap.style.setProperty('--icon-mask', `url("${img.currentSrc || img.src}")`);
+      if (img.complete) setMask(); else img.addEventListener('load', setMask, { once: true });
+
+      const maxTilt = 14;
+      const updatePos = e => {
+        const r = wrap.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        wrap.style.setProperty('--mx', `${px * 100}%`);
+        wrap.style.setProperty('--my', `${py * 100}%`);
+        wrap.style.setProperty('--ry', `${(px - 0.5) * 2 * maxTilt}deg`);
+        wrap.style.setProperty('--rx', `${-(py - 0.5) * 2 * maxTilt}deg`);
+      };
+      wrap.addEventListener('pointerenter', updatePos);
+      wrap.addEventListener('pointermove', updatePos);
+      wrap.addEventListener('pointerleave', () => {
+        wrap.style.setProperty('--rx', '0deg');
+        wrap.style.setProperty('--ry', '0deg');
+      });
+    });
+  })();
+</script>
+
+<script>
+  (() => {
+    const words = ['programs', 'games', 'benchmarks', 'Windows games', 'legacy apps', 'Steam games'];
+    const el = document.getElementById('word-rotator');
+    if (!el) return;
+
+    let i = 0, j = words[0].length, deleting = false;
+    const tick = () => {
+      const word = words[i];
+      el.textContent = word.slice(0, j);
+      if (!deleting && j < word.length) {
+        j++;
+        setTimeout(tick, 90);
+      } else if (!deleting) {
+        deleting = true;
+        setTimeout(tick, 1800);
+      } else if (j > 0) {
+        j--;
+        setTimeout(tick, 45);
+      } else {
+        deleting = false;
+        i = (i + 1) % words.length;
+        setTimeout(tick, 250);
+      }
+    };
+    setTimeout(tick, 1800);
+  })();
 </script>
 
 <script>
   document.querySelectorAll('.copy-btn').forEach(button => {
+    let resetTimer = null;
     button.addEventListener('click', () => {
-      const code = button.previousElementSibling.innerText;
+      const code = button.parentElement.querySelector('code').innerText;
       navigator.clipboard.writeText(code);
-      button.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12">
-        <path d="M13.485 1.929a1.5 1.5 0 0 1 0 2.122L7.061 10.475a.75.75 0 0 1-1.06 0L2.515 7a1.5 1.5 0 1 1 2.122-2.122l1.848 1.848 5.303-5.303a1.5 1.5 0 0 1 2.122 0z"/>
-      </svg>
-    `;
+      const icon = button.querySelector('i');
+      icon.classList.remove('fa-clipboard');
+      icon.classList.add('fa-check');
       button.classList.add('copied');
-      setTimeout(() => {
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        icon.classList.remove('fa-check');
+        icon.classList.add('fa-clipboard');
         button.classList.remove('copied');
-        button.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M10 1.5a.5.5 0 0 1 .5.5v1H4a1 1 0 0 0-1 1v9H2a1 1 0 0 1-1-1V2.5A1.5 1.5 0 0 1 2.5 1h7.5z"/>
-          <path d="M4.5 4A1.5 1.5 0 0 0 3 5.5v8A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 11.5 4h-7z"/>
-        </svg>
-      `;
       }, 1000);
     });
   });
