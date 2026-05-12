@@ -1120,18 +1120,24 @@
   <h1>Thunking</h1>
 
 <p>Thunking in felix86 is using the host version of some libraries in place of the guest library.</p>
-<p>This has a few benefits:
-- Better performance, since code in host library is compiled with a compiler
-- Better compatibility, since now the userspace driver (USD) has the same memory model as the kernelspace driver (KSD)
-- Less stuttering, as the host library doesn&rsquo;t need to be recompiled
-- More space in code cache before it needs to be cleared</p>
-<p>But also a few considerations:
-- Functions almost always have the same signature across architectures, but may have different struct alignment or packing
-- Functions that return pointers need to return them in the 32-bit address space for 32-bit apps
-- Functions that have variadic arguments need special handling
-- If a library uses another library, in many cases both need to be thunked
-    - This may require some workarounds, for example libGLX depends on libX11, but libX11 is difficult to thunk
-- Callbacks need to be translated to RISC-V code</p>
+<p>This has a few benefits:</p>
+<ul>
+<li>Better performance, since code in host library is compiled with a compiler</li>
+<li>Better compatibility, since now the userspace driver has the same memory model as the kernelspace driver</li>
+<li>Less stuttering, as the host library doesn&rsquo;t need to be recompiled</li>
+<li>More space in code cache before it needs to be cleared</li>
+</ul>
+<p>But also a few considerations:</p>
+<ul>
+<li>Functions almost always have the same signature across architectures, but may have different struct alignment or packing</li>
+<li>Functions that return pointers need to return them in the 32-bit address space for 32-bit apps</li>
+<li>Functions that have variadic arguments need special handling</li>
+<li>If a library uses another library, in many cases both need to be thunked<ul>
+<li>This may require some workarounds, for example libGLX depends on libX11, but libX11 is difficult to thunk</li>
+</ul>
+</li>
+<li>Callbacks need to be translated to RISC-V code</li>
+</ul>
 <h2 id="how-its-done-in-felix86">How it&rsquo;s done in felix86</h2>
 <p>In felix86, when a thunked library is <code>open</code>ed, the <code>open</code> is redirected to a special x86 <strong>overlay</strong> library. This library defines the same functions as the original library, but has special code that tells our emulator to call into host code.</p>
 <p>Here&rsquo;s an example function:

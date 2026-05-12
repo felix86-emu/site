@@ -237,6 +237,15 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="https://github.com/user-attachments/assets/75ab2d2a-ef72-4128-9fd3-b8c47ec3ebd5" alt="FlatOut 2" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/132">FlatOut 2</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="https://github.com/user-attachments/assets/d3545bc2-48b5-4698-b969-0fff027cd524" alt="WeChat" class="game-image">
   </div>
   <div class="game-info">
@@ -514,13 +523,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Noita" class="game-image">
+    <img loading="lazy" src="https://github.com/user-attachments/assets/04b74cb1-ce94-4ce0-8200-d558825e5f75" alt="Noita" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/100">Noita</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="working">
