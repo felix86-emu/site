@@ -1166,16 +1166,16 @@
 <p>Debugging is inherently more difficult than most apps, as most of the time you are trying to debug the guest application that is running through an emulator.</p>
 <h2 id="important-info">Important info</h2>
 <p>The emulated state of each process exists in the struct <code>ThreadState</code>. &ldquo;Process&rdquo; here refers to all cloned/forked processes, whether they are an actual &ldquo;thread&rdquo; or not.</p>
-<p>This state is statically allocated in the GPR <code>s11</code>.</p>
+<p>This state is statically allocated in the GPR <code>gp</code>. This register is disabled for use by the compiler with <code>-mno-relax</code>, and shared libraries don&rsquo;t use it either, so we place the <code>ThreadState</code> there so it is accessible at all times and even from host debuggers.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To inspect the current thread&rsquo;s ThreadState object, you can run <code>p/x *ThreadState::Get()</code>.</p>
+<p>To inspect the current thread&rsquo;s <code>ThreadState</code> object, you can run <code>p/x *ThreadState::Get()</code> or <code>p/x *(ThreadState*)$gp</code></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The register state in this struct may not be fully up to date, if the currently executing code is recompiled code. Some data may be modified in their respective RISC-V registers. To get their value you&rsquo;d have to inspect the corresponding statically allocated host register. See <a href="../allocations/">allocations</a>.</p>
 </div>
-<p>When in JIT code, the current block <code>rip</code> is stored in <code>gp</code> register, viewed as <code>p/x $gp</code>. When not in JIT code, it can be viewed as <code>p/x ThreadState::Get()-&gt;rip</code>.</p>
+<p>When in JIT code, the current block <code>rip</code> is stored in <code>s11</code> register, viewed as <code>p/x $s11</code>. When not in JIT code, it can be viewed as <code>p/x ThreadState::Get()-&gt;rip</code>.</p>
 <p>Logs for every run are stored in <code>/tmp</code>. If felix86 is started with <code>FELIX86_QUIET</code> or through <code>felix86 --shell</code>, no logs will be generated. You can enter a shell with <code>felix86 /path/to/rootfs/bin/bash</code> to enable logging.</p>
 <h2 id="useful-functions">Useful functions</h2>
 <p>When built as <code>RelWithDebInfo</code>, some functions can be called from gdb to assist with debugging.</p>
