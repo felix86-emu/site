@@ -237,6 +237,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/137.jpg" alt="Mina the Hollower" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/137">Mina the Hollower</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/136.jpg" alt="The Elder Scrolls V: Skyrim Special Edition" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/136">The Elder Scrolls V: Skyrim Special Edition</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/135.jpg" alt="Parkitect" class="game-image">
   </div>
   <div class="game-info">

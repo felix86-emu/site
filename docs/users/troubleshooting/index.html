@@ -779,6 +779,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-can-i-use-my-igpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I use my iGPU?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1119,6 +1130,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-can-i-use-my-igpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I use my iGPU?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1146,6 +1168,13 @@
 <p>Either enable thunking (<code>FELIX86_ENABLED_THUNKS=glx,vk</code>), or, if running into issues with that, enable TSO with <code>FELIX86_ALWAYS_TSO=1</code>.</p>
 <h2 id="sub-process-apt-key-exited-unexpectedly">Sub-process apt-key exited unexpectedly</h2>
 <p>Ensure the rootfs is installed in a path accessible by every user. For example, <code>/home/myuser/rootfs</code> is not such a path, as <code>/home/myuser</code> is only accessible to <code>myuser</code>. Programs like <code>apt</code> will switch uid/gid and try to open <code>apt-key</code>, which will try to get a file descriptor to the rootfs and fail. Recommended rootfs install directory: <code>/opt/felix86/rootfs</code>, default by the install script.</p>
+<h2 id="how-can-i-use-my-igpu">How can I use my iGPU?</h2>
+<p>The iGPUs in current RISC-V hardware aren&rsquo;t great, so you are likely to run into issues. If you&rsquo;re not afraid of tinkering you can try installing the open source drivers for the PowerVR GPU (likely requires a custom kernel build) but your best bet is trying to get an AMD GPU to work until the iGPU support gets better.</p>
+<p>Installing a discrete GPU isn&rsquo;t plug-and-play on current RISC-V hardware.</p>
+<ul>
+<li>For SpacemiT K1, see this thread: <a href="https://community.milkv.io/t/amd-radeon-rx550-gpu-not-working/2869/23">https://community.milkv.io/t/amd-radeon-rx550-gpu-not-working/2869/23</a></li>
+<li>For SpacemiT K3, see this post: <a href="https://www.reddit.com/r/RISCV/comments/1tkrrmo/crysis_on_spacemit_k3_with_felix86/">https://www.reddit.com/r/RISCV/comments/1tkrrmo/crysis_on_spacemit_k3_with_felix86/</a></li>
+</ul>
 
 
 
