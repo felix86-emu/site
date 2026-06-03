@@ -712,13 +712,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="partial">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Heroes of Might and Magic 3" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/84">Heroes of Might and Magic 3</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status yellow">Partially Working</span>
   </div>
 </div>
 <div class="game-card" data-category="working">
@@ -1117,13 +1117,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/39.jpg" alt="Bridge Constructor Portal" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/39">Bridge Constructor Portal</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="working">
