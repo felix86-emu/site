@@ -1262,6 +1262,9 @@
 <p>If you understand the risk and want to run privileged executables through felix86, you can enable privileged executable execution:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo felix86 --binfmt-misc-setuid
 </span></code></pre></div></p>
+<p>Alternatively, if you just want to run a privileged command once, you can enter a privileged shell:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo felix86 --shell
+</span></code></pre></div></p>
 <h2 id="appimages-dont-work">AppImages don&rsquo;t work</h2>
 <p>See <a href="#privileged-executables-dont-work">Privileged executables don&rsquo;t work</a>, since AppImage uses <code>fusermount3</code> which is marked as setuid.</p>
 <h2 id="glitching-graphics-with-amd-gpus-and-the-amdgpu-module">Glitching graphics with AMD GPUs and the <code>amdgpu</code> module</h2>
