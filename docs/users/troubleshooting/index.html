@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#glitching-graphics-with-amd-gpus-and-the-amdgpu-module" class="md-skip">
+        <a href="#privileged-executables-dont-work" class="md-skip">
           Skip to content
         </a>
       
@@ -786,6 +786,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#privileged-executables-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Privileged executables don&rsquo;t work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appimages-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AppImages don&rsquo;t work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#glitching-graphics-with-amd-gpus-and-the-amdgpu-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1148,6 +1170,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#privileged-executables-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Privileged executables don&rsquo;t work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appimages-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AppImages don&rsquo;t work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#glitching-graphics-with-amd-gpus-and-the-amdgpu-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1213,18 +1257,21 @@
 
   <h1>Troubleshooting</h1>
 
+<h2 id="privileged-executables-dont-work">Privileged executables don&rsquo;t work</h2>
+<p>By default since felix86 26.07, binfmt_misc installation through the script is done without the <code>C</code> flag. The <code>C</code> flag allows for passing the permissions from a privileged executable (like <code>sudo</code>) to felix86. If a vulnerability exists in felix86, an attacker could perform privilege escalation by exploiting felix86. This type of attack would require either you or an attacker with access to your computer to run malicious code. </p>
+<p>If you understand the risk and want to run privileged executables through felix86, you can enable privileged executable execution:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo felix86 --binfmt-misc-setuid
+</span></code></pre></div></p>
+<h2 id="appimages-dont-work">AppImages don&rsquo;t work</h2>
+<p>See <a href="#privileged-executables-dont-work">Privileged executables don&rsquo;t work</a>, since AppImage uses <code>fusermount3</code> which is marked as setuid.</p>
 <h2 id="glitching-graphics-with-amd-gpus-and-the-amdgpu-module">Glitching graphics with AMD GPUs and the <code>amdgpu</code> module</h2>
 <p>There may be problems due to differences in memory models in userspace and kernel drivers, in particular with 64-bit OpenGL applications running with AMD GPUs that use the <code>amdgpu</code> kernel module.</p>
 <p>Either enable thunking (<code>FELIX86_ENABLED_THUNKS=glx,vk</code>), or, if running into issues with that, enable TSO with <code>FELIX86_ALWAYS_TSO=1</code>.</p>
 <h2 id="sub-process-apt-key-exited-unexpectedly">Sub-process apt-key exited unexpectedly</h2>
 <p>Ensure the rootfs is installed in a path accessible by every user. For example, <code>/home/myuser/rootfs</code> is not such a path, as <code>/home/myuser</code> is only accessible to <code>myuser</code>. Programs like <code>apt</code> will switch uid/gid and try to open <code>apt-key</code>, which will try to get a file descriptor to the rootfs and fail. Recommended rootfs install directory: <code>/opt/felix86/rootfs</code>, default by the install script.</p>
 <h2 id="how-can-i-use-my-igpu">How can I use my iGPU?</h2>
-<p>The iGPUs in current RISC-V hardware aren&rsquo;t great, so you are likely to run into issues. If you&rsquo;re not afraid of tinkering you can try installing the open source drivers for the PowerVR GPU (likely requires a custom kernel build) but your best bet is trying to get an AMD GPU to work until the iGPU support gets better.</p>
-<p>Installing a discrete GPU isn&rsquo;t plug-and-play on current RISC-V hardware.</p>
-<ul>
-<li>For SpacemiT K1, see this thread: <a href="https://community.milkv.io/t/amd-radeon-rx550-gpu-not-working/2869/23">https://community.milkv.io/t/amd-radeon-rx550-gpu-not-working/2869/23</a></li>
-<li>For SpacemiT K3, see this post: <a href="https://www.reddit.com/r/RISCV/comments/1tkrrmo/crysis_on_spacemit_k3_with_felix86/">https://www.reddit.com/r/RISCV/comments/1tkrrmo/crysis_on_spacemit_k3_with_felix86/</a></li>
-</ul>
+<p>The iGPUs in current RISC-V hardware aren&rsquo;t great, so you are likely to run into issues. If you&rsquo;re not afraid of tinkering you can try installing the open source drivers for the PowerVR GPU (likely requires a custom kernel build) but your best bet is trying to get an AMD GPU to work until the iGPU support gets better. <a href="https://felix86.com/docs/users/usage-guide/#gl4es">gl4es can be used</a> to run some games.</p>
+<p>Installing a discrete GPU isn&rsquo;t plug-and-play on current RISC-V hardware. For some help, <a href="https://felix86.com/docs/users/amdgpu/">check out the amdgpu page</a>.</p>
 <h2 id="unity-games-exit-without-doing-anything">Unity games exit without doing anything</h2>
 <p>Make sure you don&rsquo;t have <code>SDL_VIDEODRIVER=wayland</code>, set it to <code>SDL_VIDEODRIVER=x11</code> or <code>SDL_VIDEODRIVER=wayland,x11</code>. This isn&rsquo;t a felix86 problem, some RISC-V boards define this in <code>/etc/environment</code>.</p>
 
