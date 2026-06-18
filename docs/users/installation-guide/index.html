@@ -1399,7 +1399,7 @@ There&rsquo;s many ways to create an x86 rootfs. The felix86 project uses Docker
 <p>Copy these to the rootfs while retaining the host permissions.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo cp -rp /etc/mtab $ROOTFS/etc/mtab
 </span></code></pre></div></p>
-<p>It is recommended you also create a home directory for your user: <code>sudo mkdir "$ROOTFS/home/$USER" &amp;&amp; sudo chown $USER:$USER "$ROOTFS/home/$USER"</code></p>
+<p>It is recommended you also create a home directory <code>sudo mkdir -p "$ROOTFS/home"</code></p>
 </div>
 </div>
 </div>
@@ -1407,7 +1407,6 @@ There&rsquo;s many ways to create an x86 rootfs. The felix86 project uses Docker
 <p class="admonition-title">Tip</p>
 <p>Install the rootfs in a path accessible by root, such as the default <code>/opt/felix86/rootfs</code>. Installing the rootfs in the home directory may lead to problems.</p>
 </div>
-<p>After installation you can run 32-bit and 64-bit x86 apps inside the rootfs, or outside the rootfs if the directory is trusted.</p>
 <p>Consult the <a href="../usage-guide/">usage guide</a> for further info.</p>
 
 

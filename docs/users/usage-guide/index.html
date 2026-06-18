@@ -1304,10 +1304,7 @@
 <p>If installed in binfmt_misc (handled by install script, or with <code>sudo -E felix86 -b</code>) you can simply run x86 programs that are inside the rootfs:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/path/to/rootfs/MyGame.AppImage
 </span></code></pre></div></p>
-<p>If you want to run a program outside the rootfs, you will be prompted to trust the parent directory:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/path/to/some/dir/MyGame.AppImage
-</span></code></pre></div></p>
-<p>If not prompted for whatever reason, create <code>$HOME/.config/felix86/trusted.txt</code> and add the absolute path to the trusted directory.</p>
+<p>By default <code>/home</code> will be mounted inside the rootfs.</p>
 <h2 id="compatibility">Compatibility</h2>
 <p>There&rsquo;s a compatibility list:</p>
 <p><a href="https://felix86.com/compat/">https://felix86.com/compat/</a></p>
@@ -1318,7 +1315,7 @@
 <h2 id="profiles">Profiles</h2>
 <p>You can use different execution profiles that set multiple configurations at once.</p>
 <p>Usage:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>FELIX86_PROFILE=extreme felix86 --shell
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>FELIX86_PROFILE=extreme felix86 --shell
 </span></code></pre></div></p>
 <p>There&rsquo;s currently the following profiles:    </p>
 <ul>
@@ -1330,28 +1327,28 @@
 <p>Each profile is a .toml file in <code>$HOME/.config/felix86/profiles</code>. Each profile is a partial or full version of the <code>$HOME/.config/felix86/config.toml</code> file, with some configurations changed.</p>
 <h2 id="dxvk">DXVK</h2>
 <p>Installing DXVK is as simple as installing it on your host system:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Set $ROOTFS to the rootfs absolute path for convenience</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ROOTFS</span><span class="o">=</span><span class="k">$(</span>felix86<span class="w"> </span>-g<span class="k">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Copy DXVK release inside rootfs</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>cp<span class="w"> </span>-r<span class="w"> </span>/path/to/dxvk-release<span class="w"> </span><span class="nv">$ROOTFS</span>/tmp/
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Enter felix86 shell</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>felix86<span class="w"> </span>--shell
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>winecfg
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Set $ROOTFS to the rootfs absolute path for convenience</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ROOTFS</span><span class="o">=</span><span class="k">$(</span>felix86<span class="w"> </span>-g<span class="k">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Copy DXVK release inside rootfs</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>cp<span class="w"> </span>-r<span class="w"> </span>/path/to/dxvk-release<span class="w"> </span><span class="nv">$ROOTFS</span>/tmp/
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Enter felix86 shell</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>felix86<span class="w"> </span>--shell
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>winecfg
 </span></code></pre></div></p>
 <p>Make sure to enable Vulkan thunking for better performance:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Needs to be exported before entering felix86 shell</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>vk
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>felix86<span class="w"> </span>--shell
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Needs to be exported before entering felix86 shell</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>vk
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>felix86<span class="w"> </span>--shell
 </span></code></pre></div></p>
 <h2 id="gl4es">gl4es</h2>
 <p><a href="https://github.com/ptitSeb/gl4es">gl4es</a> allows for using OpenGL on iGPUs in RISC-V boards, as those GPUs don&rsquo;t support desktop OpenGL.</p>
@@ -1366,12 +1363,12 @@
 </div>
 <div class="tabbed-block">
 <p>To build gl4es from source, follow the instructions below.
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libx11-dev
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ptitSeb/gl4es
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">cd</span><span class="w"> </span>gl4es
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libx11-dev
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ptitSeb/gl4es
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">cd</span><span class="w"> </span>gl4es
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div></p>
 </div>
 </div>
@@ -1379,21 +1376,21 @@
 <h3 id="installation">Installation</h3>
 <p>Install the library to a known host location, such as <code>/opt/felix86/gl4es/</code>.
 From the directory that contains the unzipped/built <code>libGL.so.1</code>, run the following:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./libGL.so.1<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./libGL.so.1<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
 </span></code></pre></div></p>
 <p>Make sure to symlink <code>libGLX.so.0</code>, as gl4es exports the libGLX symbols:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>libGL.so.1<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">/libGLX.so.0&quot;</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>libGL.so.1<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">/libGLX.so.0&quot;</span>
 </span></code></pre></div></p>
 <h3 id="usage">Usage</h3>
 <p>In order to use gl4es you need to set <code>LD_LIBRARY_PATH</code> and enable thunking:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SDL_VIDEODRIVER</span><span class="o">=</span>x11<span class="w"> </span><span class="c1"># may be required for some games</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>glx,egl
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_NOBANNER</span><span class="o">=</span><span class="m">1</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>felix86<span class="w"> </span>--shell
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SDL_VIDEODRIVER</span><span class="o">=</span>x11<span class="w"> </span><span class="c1"># may be required for some games</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>glx,egl
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_NOBANNER</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>felix86<span class="w"> </span>--shell
 </span></code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

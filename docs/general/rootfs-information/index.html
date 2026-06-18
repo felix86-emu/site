@@ -1219,7 +1219,7 @@
 <p>You can easily install new packages inside the rootfs. Once inside a privileged felix86 shell (run <code>sudo felix86 --shell</code>) you can use the package manager as normal. For example, if you installed the Ubuntu rootfs, <code>apt</code> can be used.</p>
 <p>The <a href="../../users/installation-guide/">installation guide</a> provides info on automatic and manual rootfs installation.</p>
 <h2 id="does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs">Does this mean I can only run applications that are inside the rootfs?</h2>
-<p>No. Recent versions of felix86 implement the concept of &ldquo;trusted directories&rdquo;. The first time you run an application outside the rootfs you will be prompted to trust the parent directory. Doing so will allow you to run the application and any subdirectories and files will be visible to the application. Since guest programs can truly only see inside the rootfs, the fake mount mechanism used for <code>/dev</code> &amp; co is used for trusted directories as well.</p>
+<p>Yes, or ones in $HOME if <code>FELIX86_MOUNT_HOME</code> is enabled, which it is by default.</p>
 <h2 id="how-can-i-change-my-rootfs">How can I change my rootfs?</h2>
 <p>As with most configurations, there&rsquo;s two options:</p>
 <ul>
