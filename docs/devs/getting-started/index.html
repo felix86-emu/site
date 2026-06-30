@@ -424,14 +424,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../general/rootfs-information/" class="md-nav__link">
+      <a href="../../general/faq/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    What is a rootfs?
+    FAQ
   
 
     
@@ -1235,7 +1235,7 @@
 
   <h1>Getting started</h1>
 
-<p>felix86 is an emulator, and emulators have endless amount of work to be done.</p>
+<p>felix86 is an emulator, and emulators have endless amounts of work to be done.</p>
 <p>If you&rsquo;ve never used felix86 before, I recommend starting by testing it out. <a href="../../users/installation-guide/">Use the installation script</a> or <a href="../../users/installation-guide/#manual">check out the building instructions</a> and try to run a simple program such as <code>glxgears</code>.</p>
 <p>There&rsquo;s multiple ways to contribute.</p>
 <h2 id="communication">Communication</h2>
@@ -1253,8 +1253,9 @@
 </span></code></pre></div></p>
 <p>Try to find a non-optimal instruction sequence and optimize it!</p>
 <h2 id="debugging-tips">Debugging tips</h2>
-<p>As of right now, felix86 cannot emulate programs that use <code>ptrace</code>, such as <code>gdb</code> or <code>strace</code>. As such, you need to use the host versions of these commands. <a href="../debugging/">There&rsquo;s some tips to make your life easier</a>.</p>
-<p>Sometimes the host <code>strace</code> is useful when chasing bugs in the emulator itself, or want a more complete trace. Make sure to filter out some syscalls that are frequently use and spammy, such as <code>riscv_flush_icache</code> and <code>rt_sigprocmask</code>. Make sure to capture all processes, using the <code>-f</code> argument in <code>strace</code>.</p>
+<p><a href="../debugging/">There&rsquo;s some tips to make your life easier</a>.</p>
+<p>Some guest-side debuggers like winedbg can be useful.</p>
+<p>Many times the host <code>strace</code> is useful when chasing bugs in the emulator itself, or want a more complete trace. Make sure to filter out some syscalls that are frequently use and spammy, such as <code>riscv_flush_icache</code> and <code>rt_sigprocmask</code>. Make sure to capture all processes, using the <code>-f</code> argument in <code>strace</code>.</p>
 <h2 id="profiling-games">Profiling games</h2>
 <p>You can make felix86 emit metadata for <code>perf</code> using <code>FELIX86_PERF_BLOCKS=1</code>.</p>
 

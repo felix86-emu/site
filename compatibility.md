@@ -237,6 +237,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/139.jpg" alt="SUPERHOT" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/139">SUPERHOT</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/138.jpg" alt="Split/Second" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/138">Split/Second</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/137.jpg" alt="Mina the Hollower" class="game-image">
   </div>
   <div class="game-info">
@@ -1270,13 +1288,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Terraria" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/22.jpg" alt="Terraria" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/22">Terraria</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="working">

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://felix86.com/docs/general/rootfs-information/">
+        <link rel="canonical" href="https://felix86.com/docs/general/faq/">
       
       
         <link rel="prev" href="../socials/">
@@ -25,7 +25,7 @@
     
     
       
-        <title>Rootfs information - felix86 Documentation</title>
+        <title>Frequently Asked Questions - felix86 Documentation</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rootfs information
+              Frequently Asked Questions
             
           </span>
         </div>
@@ -432,6 +432,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -440,7 +442,7 @@
   <span class="md-ellipsis">
     
   
-    What is a rootfs?
+    FAQ
   
 
     
@@ -458,7 +460,7 @@
   <span class="md-ellipsis">
     
   
-    What is a rootfs?
+    FAQ
   
 
     
@@ -474,23 +476,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is a rootfs and how is it used?
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
@@ -1140,23 +1133,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-rootfs-and-how-is-it-used" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is a rootfs and how is it used?
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#does-this-mean-i-can-only-run-applications-that-are-inside-the-rootfs" class="md-nav__link">
@@ -1211,9 +1195,7 @@
   
 
 
-  <h1>What is a rootfs?</h1>
-
-<h2 id="what-is-a-rootfs-and-how-is-it-used">What is a rootfs and how is it used?</h2>
+<h1 id="what-is-a-rootfs-and-how-is-it-used">What is a rootfs and how is it used?</h1>
 <p>In order to use felix86, you need a rootfs &ndash; a directory that contains all the x86 libraries that your programs may need. Upon running, felix86 will perform a fake, <strong>rootless</strong> mount of folders such as <code>/dev</code>, <code>/proc</code>, <code>/sys</code> and others inside the rootfs. Any guest application will solely exist inside the rootfs. For example, if your rootfs is at <code>/opt/felix86/rootfs</code> and a program accesses <code>/home/ubuntu/myfile</code>, this access will be translated to <code>/opt/felix86/rootfs/home/ubuntu/myfile</code> inside the rootfs. This is accomplished by doing full path resolution in userspace, before passing the final resolved and symlink-free path to the kernel. As a consequence, filesystem accesses such as <code>/..</code>, or symlinks that point backwards will not escape the rootfs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> From the prespective of the application, it is equivalent to being chrooted inside the rootfs.</p>
 <p>This means that the rootfs will also contain all the data that applications produce. For example, if a game normally saves to <code>/home/ubuntu/.config/MyGame/data.toml</code>, when ran through felix86 the actual location will be at <code>/opt/felix86/rootfs/home/ubuntu/.config/MyGame/data.toml</code>.</p>
 <p>You can easily install new packages inside the rootfs. Once inside a privileged felix86 shell (run <code>sudo felix86 --shell</code>) you can use the package manager as normal. For example, if you installed the Ubuntu rootfs, <code>apt</code> can be used.</p>
@@ -1234,11 +1216,19 @@
 <p>While applications that <code>chroot</code>/<code>pivot_root</code> are rare, <code>bwrap</code> which is used by Steam is one of them, and we want to support it by default.</p>
 <p>Additionally, we think that isolation of the x86 and RISC-V environments is neat, especially features such as being able to update your x86 rootfs via <code>apt</code> or similar, without risk of changing stuff in your host system. Without a rootfs, this is harder to do as you need to ensure the x86 binaries get installed in a different directory to not mess with your host binaries.</p>
 <p>There&rsquo;s ways to use felix86 <a href="../../users/no-rootfs/">without a rootfs</a>.</p>
+<h1 id="why-does-the-installer-script-install-a-custom-glibc-fork">Why does the installer script install a custom glibc fork?</h1>
+<p>For some libraries, felix86 will call the host version of a guest function. This improves performance and was a feature for a long time. An issue with this is that these host libraries almost always rely on libc. When a library calls into a libc function, for example <code>malloc</code>, that function assumes a valid TLS is present at the architecture&rsquo;s thread pointer. This means that we can&rsquo;t <strong>not</strong> use libc, and since most distros rely on glibc, we use glibc.</p>
+<p>But what happens when a process is cloned with the <code>CLONE_VM</code> flag? On the guest side, the guest will prepare a new TLS and pass it to the clone arguments. But the host now needs to run the equivalent clone syscall. Problem is, the host hasn&rsquo;t prepared a TLS, or a stack. There is no function like <code>allocateStackAndTLS</code> in glibc, so we&rsquo;d have to create the TLS ourselves from within felix86. However, the TLS details are internal to libc and would require us looking into the internal implementation and rewriting it. If the internal structs, which weren&rsquo;t meant to be recreated from outside, were to add or remove members, our implementation would suddenly become incompatible with those versions of glibc. In regular programs, the TLS is either created on initialization code or during <code>pthread_create</code>.</p>
+<p>The majority of clone syscalls called will either not have <code>CLONE_VM</code>, which means we don&rsquo;t need to care about the TLS as the new process will be on its own address space, or their flags will match up exactly with the flags used by <code>pthread_create</code>. Since the vast majority of <code>clone</code> syscalls with the <code>CLONE_VM</code> flag are from <code>pthread_create</code>, we can just the host side <code>pthread_create</code> with no modification. But we do care about supporting the rare cases of the flags not matching up perfectly. Previously we would run a <code>clone</code> with the correct flags and a <code>pthread_create</code> inside the <code>clone</code> to create the TLS. The original process would then die and from the guest point of view the cloned process is the one created by the host <code>pthread_create</code>. This can lead to issues though, as the thread created inside the clone is not a thread group leader as it was supposed to be if <code>CLONE_THREAD</code> wasn&rsquo;t passed.</p>
+<p>For this reason, felix86 26.07 can make use of a custom pthread attribute that exists in <a href="https://github.com/felix86-emu/glibc">the glibc fork</a>. The pthread attribute allows for specifying custom flags to pass to the <code>clone</code> syscall called by <code>pthread_create</code>. This fork is automatically installed with the installer script, but the emulator will continue to work without it. If the custom attribute is not present the old method of supporting rare clone flags is used.</p>
+<p>Instead of forking glibc, other options were considered. As mentioned, creating the TLS ourselves is not worth pursuing. Binary patching was considered as a way of capturing the clone syscall called from the <code>pthread_create</code> handler. This would be theoretically possible, however it is difficult. You would want to replace the <code>ECALL</code> with a jump to a handler. It would need to be a <code>C.LD</code> + <code>C.JALR</code>. However, <code>C.LD</code> can&rsquo;t load from <code>$gp</code>, which holds our <code>ThreadState</code>. We can&rsquo;t <code>C.LD</code> from the stack like we do in <code>invalidate_caller_thunk</code> because we don&rsquo;t control the stack at that point since we aren&rsquo;t in JIT code. A faulting instruction could be used to handle the syscall in a signal handler. However, <code>pthread_create</code> will block all signals before calling clone, which means we&rsquo;d need to patch the <code>sigprocmask</code> too, and it gets too hacky. It&rsquo;s possible the syscall user dispatch feature could be used, but it doesn&rsquo;t exist on RISC-V. And we can&rsquo;t <code>LD_PRELOAD</code> the <code>clone</code> function, because <code>pthread_create</code> tries a raw <code>clone3</code> first, which can&rsquo;t be preloaded. For these reasons, forking glibc was the decision.</p>
+<h2 id="does-that-mean-that-felix86-will-not-work-with-upstream-glibc">Does that mean that felix86 will not work with upstream glibc?</h2>
+<p>Felix86 will <strong>always work</strong> with an upstream glibc, and &gt;99% of programs will not care. It is rare that a program uses <code>CLONE_VM</code> without <code>CLONE_VFORK</code> and without the flags being the exact same as the ones used by <code>pthread_create</code>, because 99% of cases a process calls <code>clone</code> with <code>CLONE_VM</code>, it is creating a thread, or using <code>CLONE_VFORK</code> which is handled differently.</p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>That being said, felix86 is not a security application. Only run applications you trust, not malware. VM escapes are possible.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>That being said, felix86 is not a security application. Only run applications you trust, not malware. Escapes are possible.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

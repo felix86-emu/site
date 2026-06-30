@@ -424,14 +424,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../general/rootfs-information/" class="md-nav__link">
+      <a href="../../general/faq/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    What is a rootfs?
+    FAQ
   
 
     
@@ -1295,8 +1295,8 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>felix86<span class="w"> </span>--shell
 </span></code></pre></div></p>
 <p>This will disable logging and start a bash or zsh shell with a custom prompt.</p>
-<p>If you want logging to be enabled, execute the shell manually:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>felix86<span class="w"> </span>/path/to/rootfs/bin/bash
+<p>If you want logging to be enabled, use this command:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>felix86<span class="w"> </span>--shell-debug
 </span></code></pre></div></p>
 <p>If you don&rsquo;t want a shell, you can just run the program directly:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>felix86<span class="w"> </span>/path/to/rootfs/usr/bin/nano
@@ -1304,7 +1304,7 @@
 <p>If installed in binfmt_misc (handled by install script, or with <code>sudo -E felix86 -b</code>) you can simply run x86 programs that are inside the rootfs:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/path/to/rootfs/MyGame.AppImage
 </span></code></pre></div></p>
-<p>By default <code>/home</code> will be mounted inside the rootfs.</p>
+<p>By default <code>/home</code> will be mounted inside the rootfs, so you can also run x86 programs from <code>$HOME</code>.</p>
 <h2 id="compatibility">Compatibility</h2>
 <p>There&rsquo;s a compatibility list:</p>
 <p><a href="https://felix86.com/compat/">https://felix86.com/compat/</a></p>
@@ -1336,14 +1336,15 @@
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Enter felix86 shell</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>felix86<span class="w"> </span>--shell
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>winecfg
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Usually export WINEPREFIX=&quot;$HOME/.wine&quot;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">WINEPREFIX</span><span class="o">=</span>/path/to/wineprefix
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nb">cd</span><span class="w"> </span>/tmp/dxvk-release
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>cp<span class="w"> </span>x64/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/system32
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>cp<span class="w"> </span>x32/*.dll<span class="w"> </span><span class="nv">$WINEPREFIX</span>/drive_c/windows/syswow64
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># Run winecfg from inside felix86 shell and add native DLL overrides for</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1"># d3d8, d3d9, d3d10core, d3d11, dxgi.</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>winecfg
 </span></code></pre></div></p>
 <p>Make sure to enable Vulkan thunking for better performance:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Needs to be exported before entering felix86 shell</span>
