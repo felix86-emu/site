@@ -1294,11 +1294,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="archlinux" name="__tabbed_2" type="radio" /><input id="ubuntudebian" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="archlinux">Archlinux</label><label for="ubuntudebian">Ubuntu/Debian</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo pacman -S --needed base-devel cmake pkgconf libx11 mesa vulkan-devel wayland
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo pacman -S --needed base-devel cmake pkgconf libx11 mesa vulkan-devel wayland nasm
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo apt install build-essential cmake pkg-config libx11-dev libgl1-mesa-dev libglx-dev libvulkan-dev libwayland-dev
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo apt install build-essential cmake pkg-config libx11-dev libgl1-mesa-dev libglx-dev libvulkan-dev libwayland-dev nasm
 </span></code></pre></div>
 </div>
 </div>
@@ -1316,99 +1316,128 @@
 </div>
 </div>
 </div>
+<p>If compiling on RISC-V hardware, you&rsquo;ll need x86-64 binutils to build the x86-64 VDSO.</p>
+<p>If your package manager provides x86-64 binutils, simply install them. Otherwise, you can follow the steps below. This is a one-time installation:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>bison<span class="w"> </span>flex<span class="w"> </span>texinfo<span class="w"> </span>libgmp-dev<span class="w"> </span>libmpfr-dev<span class="w"> </span>libmpc-dev<span class="w"> </span>libisl-dev<span class="w"> </span>wget
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/binutils
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>/tmp/binutils
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>wget<span class="w"> </span>https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.xz
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>tar<span class="w"> </span>xf<span class="w"> </span>binutils-2.42.tar.xz
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/binutils/build
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">cd</span><span class="w"> </span>/tmp/binutils/build
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>../binutils-2.42/configure<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span>--target<span class="o">=</span>x86_64-linux-gnu<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span>--prefix<span class="o">=</span>/opt/x86_64-linux-gnu<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span>--with-sysroot<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span>--disable-nls<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span>--disable-werror
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+</span></code></pre></div></p>
+<p>If you want to manually build the thunk libraries you&rsquo;ll need an x86 compiler too. Check out the build.yml workflow to get an idea on how to build them, or install them once using the installation script.</p>
 <h2 id="configuring">Configuring</h2>
-<p>If you&rsquo;re building on a RISC-V machine, the default configuration is good enough.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cmake -B build
+<p>If you&rsquo;re building on a RISC-V machine, make sure to set the path to the x86-64 binutils:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cmake -B build -DFELIX86_X86_CROSS=&quot;/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-&quot;
 </span></code></pre></div>
-If you&rsquo;re cross-compiling, you need to use the RISC-V CMake toolchain.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cmake -B build -DCMAKE_TOOLCHAIN_FILE=riscv.cmake
+If you&rsquo;re cross-compiling, you just need to use the RISC-V CMake toolchain and host binutils can be used.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cmake -B build -DCMAKE_TOOLCHAIN_FILE=riscv.cmake
 </span></code></pre></div></p>
 <h2 id="building">Building</h2>
 <p>Just like any other CMake project.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cmake --build build -j$(nproc)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cmake --build build -j$(nproc)
 </span></code></pre></div></p>
 <h2 id="binfmt_misc-installation">binfmt_misc installation</h2>
-<p>Installing in binfmt_misc allows running privileged applications, such as <code>sudo</code>, through the emulator, so it is recommended.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo ./build/felix86 -b
+<p>You should also install in binfmt_misc with <code>--binfmt-misc</code>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo ./build/felix86 --binfmt-misc
+</span></code></pre></div>
+Each new compilation needs a reinstallation in binfmt_misc.</p>
+<p>Installing with binfmt-misc-setuid allows running privileged applications, such as <code>sudo</code>, through the emulator.</p>
+<p>This has some security implications, see <a href="../troubleshooting/#privileged-executables-dont-work">this troubleshooting entry</a> to learn more.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo ./build/felix86 --binfmt-misc-setuid
 </span></code></pre></div></p>
 <h2 id="rootfs">Rootfs</h2>
 <p>You can download a ready-made rootfs using the installation script.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bash &lt;(curl -s https://install.felix86.com/rootfs.sh)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>bash &lt;(curl -s https://install.felix86.com/rootfs.sh)
 </span></code></pre></div>
 There&rsquo;s many ways to create an x86 rootfs. The felix86 project uses Docker, but you can also use <a href="https://wiki.debian.org/Debootstrap">Debootstrap</a> or other similar tools.</p>
 <p>For Docker, you can start by using the example files below.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="dockerfile" name="__tabbed_4" type="radio" /><input id="ubuntush" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="dockerfile">Dockerfile</label><label for="ubuntush">Ubuntu.sh</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-Dockerfile highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">COPY</span><span class="w"> </span>Ubuntu.sh<span class="w"> </span>/tmp/Ubuntu.sh
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">RUN</span><span class="w"> </span>bash<span class="w"> </span>/tmp/Ubuntu.sh
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">]</span>
+<div class="language-Dockerfile highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">COPY</span><span class="w"> </span>Ubuntu.sh<span class="w"> </span>/tmp/Ubuntu.sh
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">RUN</span><span class="w"> </span>bash<span class="w"> </span>/tmp/Ubuntu.sh
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">]</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">set</span><span class="w"> </span>-e
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>dpkg<span class="w"> </span>--add-architecture<span class="w"> </span>i386
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>apt<span class="w"> </span>update
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Install packages you want inside your rootfs</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>sudo
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">set</span><span class="w"> </span>-e
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>dpkg<span class="w"> </span>--add-architecture<span class="w"> </span>i386
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>apt<span class="w"> </span>update
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># Install packages you want inside your rootfs</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>sudo
 </span></code></pre></div>
 </div>
 </div>
 </div>
 <p>Then, run the following commands to extract your rootfs into an archive.
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bsdtar<span class="w"> </span>-czf<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>--exclude<span class="o">=</span>media<span class="w"> </span>--exclude<span class="o">=</span>mnt<span class="w"> </span>--exclude<span class="o">=</span>root<span class="w"> </span>--exclude<span class="o">=</span>srv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span>--exclude<span class="o">=</span>boot<span class="w"> </span>--exclude<span class="o">=</span>home<span class="w"> </span>--exclude<span class="o">=</span>run<span class="w"> </span>--exclude<span class="o">=</span>proc<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span>--exclude<span class="o">=</span>sys<span class="w"> </span>--exclude<span class="o">=</span>dev<span class="w"> </span>--exclude<span class="o">=</span>tmp<span class="w"> </span>--exclude<span class="o">=</span>.dockerenv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span>@-<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;felix86-rootfs.tar.gz&quot;</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bsdtar<span class="w"> </span>-czf<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span>--exclude<span class="o">=</span>media<span class="w"> </span>--exclude<span class="o">=</span>mnt<span class="w"> </span>--exclude<span class="o">=</span>root<span class="w"> </span>--exclude<span class="o">=</span>srv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span>--exclude<span class="o">=</span>boot<span class="w"> </span>--exclude<span class="o">=</span>home<span class="w"> </span>--exclude<span class="o">=</span>run<span class="w"> </span>--exclude<span class="o">=</span>proc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span>--exclude<span class="o">=</span>sys<span class="w"> </span>--exclude<span class="o">=</span>dev<span class="w"> </span>--exclude<span class="o">=</span>tmp<span class="w"> </span>--exclude<span class="o">=</span>.dockerenv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span>@-<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;felix86-rootfs.tar.gz&quot;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>sudo<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span><span class="s2">&quot;felix86-rootfs&quot;</span>
 </span></code></pre></div></p>
 <p>Unzip this rootfs to your target directory on your RISC-V machine, and set it using <code>felix86 --set-rootfs /path/to/rootfs</code></p>
 <p>Create the directories that will get mounted inside the rootfs:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo mkdir -p $ROOTFS/dev
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo mkdir -p $ROOTFS/proc
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo mkdir -p $ROOTFS/sys
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sudo mkdir -p $ROOTFS/run
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>sudo mkdir -p $ROOTFS/tmp
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>sudo mkdir -p $ROOTFS/home
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo mkdir -p $ROOTFS/dev
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo mkdir -p $ROOTFS/proc
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>sudo mkdir -p $ROOTFS/sys
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>sudo mkdir -p $ROOTFS/run
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>sudo mkdir -p $ROOTFS/tmp
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>sudo mkdir -p $ROOTFS/home
 </span></code></pre></div></p>
 <h3 id="important-files">Important files</h3>
 <p>During rootfs installation, some important files are copied to the rootfs. Currently, these are the following:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>/etc/mtab
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>/etc/passwd
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>/etc/passwd-
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>/etc/group
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>/etc/group-
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>/etc/shadow
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>/etc/shadow-
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>/etc/gshadow
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>/etc/gshadow-
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>/etc/hosts
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>/etc/hostname
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>/etc/timezone
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>/etc/localtime
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>/etc/fstab
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>/etc/subuid
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>/etc/subgid
-</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>/etc/machine-id
-</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>/etc/resolv.conf
-</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>/etc/sudoers
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>/etc/mtab
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>/etc/passwd
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>/etc/passwd-
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>/etc/group
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>/etc/group-
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>/etc/shadow
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>/etc/shadow-
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>/etc/gshadow
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>/etc/gshadow-
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>/etc/hosts
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>/etc/hostname
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>/etc/timezone
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>/etc/localtime
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>/etc/fstab
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>/etc/subuid
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>/etc/subgid
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>/etc/machine-id
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>/etc/resolv.conf
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>/etc/sudoers
 </span></code></pre></div></p>
 <p>Copy these to the rootfs while retaining the host permissions.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo cp -rp /etc/mtab $ROOTFS/etc/mtab
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo cp -rp /etc/mtab $ROOTFS/etc/mtab
 </span></code></pre></div></p>
 </div>
 </div>
