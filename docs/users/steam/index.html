@@ -1192,6 +1192,9 @@
 <p class="admonition-title">Tip</p>
 <p>Since felix86 can use <code>apt</code>, it may be possible to install Steam through the package manager. This is untested.</p>
 </div>
+<p>You may also want to make the desktop entry work, this command will make it run with felix86:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/^Exec=(.*)$/Exec=felix86 --shell=&quot;\1&quot;/&#39;</span><span class="w"> </span>~/Desktop/steam.desktop
+</span></code></pre></div></p>
 
 
 

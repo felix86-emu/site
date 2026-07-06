@@ -1236,7 +1236,7 @@
 </span></code></pre></div></p>
 <p>Afterwards I restore the Bianbu sources, as some packages from the Ubuntu sources will conflict with versions downloaded from Bianbu sources. If you want to tinker further you may remove the Bianbu packages and install Ubuntu packages.
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/etc/apt/sources.list.d/bianbu.bak<span class="w"> </span>/etc/apt/sources.list.d/bianbu.sources
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/etc/apt/sources.list.d/ubuntu.source<span class="w"> </span>/etc/apt/sources.list.d/ubuntu.bak
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/etc/apt/sources.list.d/ubuntu.sources<span class="w"> </span>/etc/apt/sources.list.d/ubuntu.bak
 </span></code></pre></div></p>
 <p>Finally, update the initramfs:
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>update-initramfs<span class="w"> </span>-c<span class="w"> </span>-k<span class="w"> </span><span class="si">${</span><span class="nv">KVER</span><span class="si">}</span>

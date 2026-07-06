@@ -1317,7 +1317,7 @@
 </div>
 </div>
 <p>If compiling on RISC-V hardware, you&rsquo;ll need x86-64 binutils to build the x86-64 VDSO.</p>
-<p>If your package manager provides x86-64 binutils, simply install them. Otherwise, you can follow the steps below. This is a one-time installation:
+<p>If your package manager provides x86-64 binutils, simply install it. Otherwise, you can follow the steps below. This is a one-time installation:
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>bison<span class="w"> </span>flex<span class="w"> </span>texinfo<span class="w"> </span>libgmp-dev<span class="w"> </span>libmpfr-dev<span class="w"> </span>libmpc-dev<span class="w"> </span>libisl-dev<span class="w"> </span>wget
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -1344,7 +1344,7 @@
 <p>If you&rsquo;re building on a RISC-V machine, make sure to set the path to the x86-64 binutils:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cmake -B build -DFELIX86_X86_CROSS=&quot;/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-&quot;
 </span></code></pre></div>
-If you&rsquo;re cross-compiling, you just need to use the RISC-V CMake toolchain and host binutils can be used.
+If you&rsquo;re cross-compiling on x86 hardware, you just need to use the RISC-V CMake toolchain and host binutils can be used.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cmake -B build -DCMAKE_TOOLCHAIN_FILE=riscv.cmake
 </span></code></pre></div></p>
 <h2 id="building">Building</h2>
