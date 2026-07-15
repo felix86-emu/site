@@ -1258,18 +1258,21 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/path/to/rootfs
 </span></code></pre></div></p>
 <h2 id="deleting-configuration-files">Deleting configuration files</h2>
-<p>The felix86 configuration files are stored in <code>$HOME/.config/felix86</code>
+<p>The felix86 profile files are stored in <code>$HOME/.config/felix86</code>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/.config/felix86
+</span></code></pre></div></p>
+<p>The global configuration file is stored in <code>/etc/opt/felix86/config.toml</code>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/opt/felix86/config.toml
 </span></code></pre></div></p>
 <h2 id="deleting-optfelix86">Deleting /opt/felix86</h2>
 <p>The felix86 binary itself and thunks exist in <code>/opt/felix86</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
 </span></code></pre></div></p>
 <h2 id="deleting-symlinks-in-usrbin">Deleting symlinks in /usr/bin</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo rm /usr/bin/felix86
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo rm /usr/bin/felix86
 </span></code></pre></div>
 <p>In older versions of felix86 (25.11 and prior) you also need to remove <code>felix86-mounter</code>:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo rm /usr/bin/felix86-mounter
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo rm /usr/bin/felix86-mounter
 </span></code></pre></div></p>
 
 

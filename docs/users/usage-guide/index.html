@@ -766,6 +766,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1234,6 +1245,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1350,6 +1372,12 @@
 <p>Here&rsquo;s a <code>sed</code> one-liner that makes a desktop entry run with felix86:
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/^Exec=(.*)$/Exec=felix86 --shell=&quot;\1&quot;/&#39;</span><span class="w"> </span>myshortcut.desktop
 </span></code></pre></div></p>
+<h2 id="configuration">Configuration</h2>
+<p>The configuration file exists at <code>/etc/opt/felix86/config.toml</code>.</p>
+<p>You can get a specific config by specifying its group and value, for example: <code>ROOTFS=$(felix86 --get-config general.rootfs_path)</code></p>
+<p>You can set a specific config in a similar fashion, but it requires administrator privileges: <code>felix86 --set-config logging.print_signals=true</code></p>
+<p>To list all configs, use the <code>-c</code> option.</p>
+<p>Each configuration has a respective environment variable. These can be discovered by reading the configuration file.</p>
 <h2 id="profiles">Profiles</h2>
 <p>You can use different execution profiles that set multiple configurations at once.</p>
 <p>Usage:
@@ -1362,7 +1390,7 @@
 <li><code>paranoid</code> - Disable almost all optimizations and enable some slow safety checks.</li>
 <li><code>zink</code> - Enables Vulkan thunking and Zink usage in Mesa.</li>
 </ul>
-<p>Each profile is a .toml file in <code>$HOME/.config/felix86/profiles</code>. Each profile is a partial or full version of the config file, with some configurations changed.</p>
+<p>Each profile is a .toml file in <code>$HOME/.config/felix86/profiles</code>. Each profile is a partial or full version of the config file, with some configurations changed. You may create new profiles and pass them to <code>FELIX86_PROFILE</code> as a name (which will look relative to the profile directory) or as an absolute path.</p>
 <h2 id="dxvk">DXVK</h2>
 <p>Installing DXVK is as simple as installing it on your host system:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Set $ROOTFS to the rootfs absolute path for convenience</span>
