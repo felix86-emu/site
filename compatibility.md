@@ -237,6 +237,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/146.jpg" alt="Werewolf: The Apocalypse – Earthblood" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/146">Werewolf: The Apocalypse – Earthblood</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/145.jpg" alt="Yu-Gi-Oh! Master Duel" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/145">Yu-Gi-Oh! Master Duel</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/144.jpg" alt="Brawlhalla" class="game-image">
   </div>
   <div class="game-info">
@@ -406,13 +424,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="partial">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Heroic Games Launcher" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/125">Heroic Games Launcher</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status yellow">Partially Working</span>
   </div>
 </div>
 <div class="game-card" data-category="partial">
