@@ -237,6 +237,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/148.jpg" alt="SPORE™ Collection" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/148">SPORE™ Collection</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/147.jpg" alt="Path of Titans" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/147">Path of Titans</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/146.jpg" alt="Werewolf: The Apocalypse – Earthblood" class="game-image">
   </div>
   <div class="game-info">
@@ -424,13 +442,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="partial">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Heroic Games Launcher" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/125.jpg" alt="Heroic Games Launcher" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/125">Heroic Games Launcher</a></h3>
-    <span class="status yellow">Partially Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="partial">
@@ -559,13 +577,13 @@ permalink: /compat/
     <span class="status green">Working</span>
   </div>
 </div>
-<div class="game-card" data-category="not-working">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="RimWorld" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/110.jpg" alt="RimWorld" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/110">RimWorld</a></h3>
-    <span class="status red">Not Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="partial">
