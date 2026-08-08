@@ -235,6 +235,24 @@ permalink: /compat/
   <div class="pagination" id="pagination"></div>
 
   <div id="all-games" style="display: none">
+<div class="game-card" data-category="partial">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Disco Elysium" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/150">Disco Elysium</a></h3>
+    <span class="status yellow">Partially Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/149.jpg" alt="Half-Life 2" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/149">Half-Life 2</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
 <div class="game-card" data-category="working">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/148.jpg" alt="SPORE™ Collection" class="game-image">
