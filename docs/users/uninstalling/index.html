@@ -889,10 +889,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deleting-symlinks-in-usrbin" class="md-nav__link">
+  <a href="#deleting-symlinks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deleting symlinks in /usr/bin
+        Deleting symlinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-vulkan-layer-if-felix86-mangohud-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deleting Vulkan layer, if felix86 MangoHud is installed
       
     </span>
   </a>
@@ -1206,10 +1217,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deleting-symlinks-in-usrbin" class="md-nav__link">
+  <a href="#deleting-symlinks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deleting symlinks in /usr/bin
+        Deleting symlinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-vulkan-layer-if-felix86-mangohud-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deleting Vulkan layer, if felix86 MangoHud is installed
       
     </span>
   </a>
@@ -1265,14 +1287,15 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/opt/felix86/config.toml
 </span></code></pre></div></p>
 <h2 id="deleting-optfelix86">Deleting /opt/felix86</h2>
-<p>The felix86 binary itself and thunks exist in <code>/opt/felix86</code>:
+<p>The felix86 binary itself, thunks, and any other tools exist in <code>/opt/felix86</code>:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
 </span></code></pre></div></p>
-<h2 id="deleting-symlinks-in-usrbin">Deleting symlinks in /usr/bin</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo rm /usr/bin/felix86
+<h2 id="deleting-symlinks">Deleting symlinks</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo rm /usr/local/bin/felix86
 </span></code></pre></div>
-<p>In older versions of felix86 (25.11 and prior) you also need to remove <code>felix86-mounter</code>:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo rm /usr/bin/felix86-mounter
+<h2 id="deleting-vulkan-layer-if-felix86-mangohud-is-installed">Deleting Vulkan layer, if felix86 MangoHud is installed</h2>
+<p>If you installed the felix86 MangoHud fork using <a href="https://install.felix86.com/mangohud.sh">https://install.felix86.com/mangohud.sh</a>, you will need to remove the installed Vulkan layer:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo rm /usr/local/share/vulkan/implicit_layer.d/felix86-MangoHud.riscv64.json
 </span></code></pre></div></p>
 
 

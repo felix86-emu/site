@@ -837,6 +837,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mangohud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MangoHud
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MangoHud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1316,6 +1355,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mangohud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MangoHud
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MangoHud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1465,6 +1543,17 @@ From the directory that contains the unzipped/built <code>libGL.so.1</code>, run
 <p class="admonition-title">Warning</p>
 <p>There&rsquo;s currently no 32-bit thunking, so you need to try 64-bit games if you want to use the iGPU. A discrete GPU, like an AMD one, will be able to use the x86 drivers and not require thunking, so 32-bit games will work fine with a discrete GPU. </p>
 </div>
+<h2 id="mangohud">MangoHud</h2>
+<p>felix86 has a custom MangoHud fork that shows some JIT-related information. It may be useful for profiling games.</p>
+<p>It is based on the MangoHud FEX integration.</p>
+<h3 id="installation_1">Installation</h3>
+<p>You can use this script to install it:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.felix86.com/mangohud.sh<span class="o">)</span>
+</span></code></pre></div></p>
+<h3 id="usage_1">Usage</h3>
+<p>You will need to enable thunking: <code>export FELIX86_ENABLED_THUNKS=vk,wl,glx</code></p>
+<p>Enable the options via <code>MANGOHUD_CONFIG=fex_stats=status+hotthreads+jitload+smc+softfloat</code>.</p>
+<p>Set <code>FELIX86_MANGOHUD=1</code> for Vulkan apps, or use <code>/opt/felix86/bin/mangohud</code> for both OpenGL and Vulkan apps.</p>
 
 
 
