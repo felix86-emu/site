@@ -307,13 +307,13 @@ permalink: /compat/
     <span class="status red">Not Working</span>
   </div>
 </div>
-<div class="game-card" data-category="partial">
+<div class="game-card" data-category="working">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/142.jpg" alt="Garfield Kart" class="game-image">
   </div>
   <div class="game-info">
     <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/142">Garfield Kart</a></h3>
-    <span class="status yellow">Partially Working</span>
+    <span class="status green">Working</span>
   </div>
 </div>
 <div class="game-card" data-category="working">
