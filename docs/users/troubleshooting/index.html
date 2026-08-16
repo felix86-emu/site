@@ -797,6 +797,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Privileged executables don’t work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-still-have-issues-running-privileged-executables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I still have issues running privileged executables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1181,6 +1198,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Privileged executables don’t work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-still-have-issues-running-privileged-executables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I still have issues running privileged executables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1268,6 +1302,8 @@
 <p>Alternatively, if you just want to run a privileged command once, you can enter a privileged shell:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo felix86 --shell
 </span></code></pre></div></p>
+<h4 id="i-still-have-issues-running-privileged-executables">I still have issues running privileged executables</h4>
+<p>Is felix86 on a FUSE filesystem, like sshfs, squashfs or overlayfs? binfmt_misc emulators can&rsquo;t run privileged binaries when on FUSE filesystems.</p>
 <h2 id="appimages-dont-work">AppImages don&rsquo;t work</h2>
 <p>See <a href="#privileged-executables-dont-work">Privileged executables don&rsquo;t work</a>, since AppImage uses <code>fusermount3</code> which is marked as setuid.</p>
 <h2 id="glitching-graphics-with-amd-gpus-and-the-amdgpu-module">Glitching graphics with AMD GPUs and the <code>amdgpu</code> module</h2>

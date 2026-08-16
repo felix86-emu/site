@@ -1552,7 +1552,10 @@ From the directory that contains the unzipped/built <code>libGL.so.1</code>, run
 </span></code></pre></div></p>
 <h3 id="usage_1">Usage</h3>
 <p>You will need to enable thunking: <code>export FELIX86_ENABLED_THUNKS=vk,wl,glx</code></p>
-<p>Enable the options via <code>MANGOHUD_CONFIG=fex_stats=status+hotthreads+jitload+smc+softfloat</code>.</p>
+<p>Enable the stats in the MangoHud and felix86 side:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MANGOHUD_CONFIG</span><span class="o">=</span><span class="nv">fex_stats</span><span class="o">=</span>status+hotthreads+jitload+smc+softfloat
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_STATS_ENABLED</span><span class="o">=</span><span class="m">1</span>
+</span></code></pre></div></p>
 <p>Set <code>FELIX86_MANGOHUD=1</code> for Vulkan apps, or use <code>/opt/felix86/bin/mangohud</code> for both OpenGL and Vulkan apps.</p>
 
 

@@ -900,6 +900,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deleting-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deleting icons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deleting-vulkan-layer-if-felix86-mangohud-is-installed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1228,6 +1239,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deleting-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deleting icons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deleting-vulkan-layer-if-felix86-mangohud-is-installed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1291,11 +1313,16 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
 </span></code></pre></div></p>
 <h2 id="deleting-symlinks">Deleting symlinks</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo rm /usr/local/bin/felix86
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/bin/felix86
+</span></code></pre></div>
+<h2 id="deleting-icons">Deleting icons</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span><span class="w"> </span>size<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">48</span><span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">128</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>xdg-icon-resource<span class="w"> </span>uninstall<span class="w"> </span>--mode<span class="w"> </span>user<span class="w"> </span>--context<span class="w"> </span>apps<span class="w"> </span>--size<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$size</span><span class="s2">&quot;</span><span class="w"> </span>offtkp-felix86
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">done</span>
 </span></code></pre></div>
 <h2 id="deleting-vulkan-layer-if-felix86-mangohud-is-installed">Deleting Vulkan layer, if felix86 MangoHud is installed</h2>
 <p>If you installed the felix86 MangoHud fork using <a href="https://install.felix86.com/mangohud.sh">https://install.felix86.com/mangohud.sh</a>, you will need to remove the installed Vulkan layer:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo rm /usr/local/share/vulkan/implicit_layer.d/felix86-MangoHud.riscv64.json
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/share/vulkan/implicit_layer.d/felix86-MangoHud.riscv64.json
 </span></code></pre></div></p>
 
 
