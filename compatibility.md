@@ -237,6 +237,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="partial">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/152.jpg" alt="Crysis 3 Remastered" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/152">Crysis 3 Remastered</a></h3>
+    <span class="status yellow">Partially Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/151.jpg" alt="Crysis Remastered" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/151">Crysis Remastered</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="partial">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Disco Elysium" class="game-image">
   </div>
   <div class="game-info">
