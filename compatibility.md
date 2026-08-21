@@ -235,6 +235,33 @@ permalink: /compat/
   <div class="pagination" id="pagination"></div>
 
   <div id="all-games" style="display: none">
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/155.jpg" alt="Umamusume: Pretty Derby" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/155">Umamusume: Pretty Derby</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/154.jpg" alt="Yakuza 0" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/154">Yakuza 0</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/153.jpg" alt="DiRT 3: Complete Edition" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/153">DiRT 3: Complete Edition</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
 <div class="game-card" data-category="partial">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/152.jpg" alt="Crysis 3 Remastered" class="game-image">

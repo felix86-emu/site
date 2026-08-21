@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spacemit-k1" class="md-skip">
+        <a href="#spacemit-k1-k3" class="md-skip">
           Skip to content
         </a>
       
@@ -705,10 +705,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#spacemit-k1" class="md-nav__link">
+  <a href="#spacemit-k1-k3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SpacemiT K1
+        SpacemiT K1 &amp; K3
       
     </span>
   </a>
@@ -716,10 +716,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spacemit-k3" class="md-nav__link">
+  <a href="#outdated-guides-for-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SpacemiT K3
+        Outdated guides, for reference
       
     </span>
   </a>
@@ -1129,10 +1129,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#spacemit-k1" class="md-nav__link">
+  <a href="#spacemit-k1-k3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SpacemiT K1
+        SpacemiT K1 &amp; K3
       
     </span>
   </a>
@@ -1140,10 +1140,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spacemit-k3" class="md-nav__link">
+  <a href="#outdated-guides-for-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SpacemiT K3
+        Outdated guides, for reference
       
     </span>
   </a>
@@ -1172,12 +1172,18 @@
 
   <h1>AMDGPU installation guide</h1>
 
-<p>Current RISC-V distros don&rsquo;t usually come with AMDGPU driver enabled and may need custom patches to work.</p>
-<p><strong>Make sure to backup any important data that exists on your RISC-V boards.</strong></p>
-<h2 id="spacemit-k1">SpacemiT K1</h2>
+<h2 id="spacemit-k1-k3">SpacemiT K1 &amp; K3</h2>
+<p>Newer Bianbu versions have the kernel patches that allow AMD GPUs to work, so minimal configuration is necessary.</p>
+<p>Refer to the official guide:</p>
+<p><a href="https://www.spacemit.com/community/document/info?lang=en&amp;nodepath=software/SDK/bianbu/development/amd.md">https://www.spacemit.com/community/document/info?lang=en&amp;nodepath=software/SDK/bianbu/development/amd.md</a></p>
+<h2 id="outdated-guides-for-reference">Outdated guides, for reference</h2>
+<details class="note">
+<summary>SpacemiT K1</summary>
 <p>Bianbu wiki has <a href="https://bianbu.spacemit.com/en/development/r600">a guide for getting an old AMD HD 7350 GPU</a> to work. This reply in Milk-V wiki has <a href="https://community.milkv.io/t/amd-radeon-rx550-gpu-not-working/2869/23">a guide for getting an AMD RX 550</a> to work.</p>
 <p>Both were confirmed to work.</p>
-<h2 id="spacemit-k3">SpacemiT K3</h2>
+</details>
+<details class="note">
+<summary>SpacemiT K3</summary>
 <p>You will need an M.2 M-Key riser. </p>
 <p>Starting with <code>Bianbu-LXQt-K3-v4.0-20260430170328.tar.gz</code> from <a href="https://archive.spacemit.com/image/k3/version/bianbu/v4.0/">https://archive.spacemit.com/image/k3/version/bianbu/v4.0/</a> as a base, we need to install a custom kernel.</p>
 <p>Flashed it to the board using the SpacemiT TitanTools utility. Make sure to finish the initial distro setup and connect to Wi-Fi, as we are going to use ssh. Also take note of the board local IP.</p>
@@ -1246,6 +1252,7 @@
 </span></code></pre></div></p>
 <p>Connect your GPU through the riser (make sure to use the right M-Key port), mine was an AMD RX 550, connect the HDMI cable to the GPU and shutdown. Power on the GPU and then power on the system.</p>
 <p>The system should start normally. Confirm the GPU is used with <code>glxgears -info</code> showing your GPU name.</p>
+</details>
 
 
 
