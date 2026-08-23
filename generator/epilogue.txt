@@ -52,10 +52,15 @@
       gamesToShow.forEach(game => {
         gameContainer.appendChild(game.cloneNode(true));
       });
-      renderPagination();
-      if (currentPage > 1) {
-        document.querySelector('.controls').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      for (let i = gamesToShow.length; i < gamesPerPage; i++) {
+        const filler = document.createElement('div');
+        filler.className = 'game-card placeholder';
+        filler.setAttribute('aria-hidden', 'true');
+        filler.innerHTML = '<div class="game-image-container"></div><div class="game-info"><h3 class="game-title">&nbsp;</h3><span class="status">&nbsp;</span></div>';
+        gameContainer.appendChild(filler);
       }
+      renderPagination();
     }
 
     function renderPagination() {
@@ -72,20 +77,18 @@
         startPage = Math.max(1, endPage - maxVisibleButtons + 1);
       }
 
-      if (currentPage > 1) {
-        const prevBtn = createPageButton('←', () => goToPage(currentPage - 1));
-        paginationContainer.appendChild(prevBtn);
-      }
+      const prevBtn = createPageButton('←', () => goToPage(currentPage - 1));
+      prevBtn.disabled = currentPage === 1;
+      paginationContainer.appendChild(prevBtn);
 
       for (let i = startPage; i <= endPage; i++) {
         const btn = createPageButton(i, () => goToPage(i), i === currentPage);
         paginationContainer.appendChild(btn);
       }
 
-      if (currentPage < totalPages) {
-        const nextBtn = createPageButton('→', () => goToPage(currentPage + 1));
-        paginationContainer.appendChild(nextBtn);
-      }
+      const nextBtn = createPageButton('→', () => goToPage(currentPage + 1));
+      nextBtn.disabled = currentPage === totalPages;
+      paginationContainer.appendChild(nextBtn);
     }
 
     function createPageButton(text, onClick, isActive = false) {
