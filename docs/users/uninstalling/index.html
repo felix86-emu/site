@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uninstalling-from-binfmt_misc" class="md-skip">
+        <a href="#manual-uninstallation" class="md-skip">
           Skip to content
         </a>
       
@@ -795,6 +795,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -836,6 +838,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1176,6 +1180,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1280,49 +1286,57 @@
   
 
 
-  <h1>Uninstalling</h1>
-
-<p>To properly uninstall felix86, you need to remove the felix86 binary, the rootfs, and potential binfmt_misc installations.</p>
+<p>To properly uninstall felix86, you need to remove the felix86 binary, the rootfs, and potential binfmt_misc installations, among other things.</p>
+<p>The uninstallation script can handle all this for you:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://install.felix86.com/uninstall.sh<span class="o">)</span>
+</span></code></pre></div></p>
+<h1 id="manual-uninstallation">Manual uninstallation</h1>
 <h2 id="uninstalling-from-binfmt_misc">Uninstalling from binfmt_misc</h2>
 <p>The <code>felix86 -u</code> command should uninstall from binfmt_misc:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>felix86<span class="w"> </span>-u
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>felix86<span class="w"> </span>-u
 </span></code></pre></div></p>
 <p>Or, if you prefer doing it manually:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/binfmt.d/felix86-*
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/lib/binfmt.d/felix86-*
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/lib/binfmt.d/felix86-*
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/run/binfmt.d/felix86-*
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/binfmt.d/felix86-*
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/lib/binfmt.d/felix86-*
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/lib/binfmt.d/felix86-*
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/run/binfmt.d/felix86-*
 </span></code></pre></div></p>
 <p>Restart systemd-binfmt to finalize in the current session:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-binfmt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-binfmt
 </span></code></pre></div></p>
 <h2 id="deleting-the-rootfs">Deleting the rootfs</h2>
 <p>If you don&rsquo;t remember the rootfs path, it can be obtained with <code>felix86 --get-config general.rootfs_path</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/path/to/rootfs
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>felix86<span class="w"> </span>--get-config<span class="w"> </span>general.rootfs_path
+</span></code></pre></div></p>
+<p>If the rootfs lives inside <code>/opt/felix86</code> you can skip this step.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo rm -rf /path/to/my/rootfs
 </span></code></pre></div></p>
 <h2 id="deleting-configuration-files">Deleting configuration files</h2>
 <p>The felix86 profile files are stored in <code>$HOME/.config/felix86</code>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/.config/felix86
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/.config/felix86
+</span></code></pre></div></p>
+<p>By default, felix86 will have its own history file that should be removed:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rm<span class="w"> </span>-f<span class="w"> </span>~/.felix86_history
 </span></code></pre></div></p>
 <p>The global configuration file is stored in <code>/etc/opt/felix86/config.toml</code>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/opt/felix86/config.toml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/opt/felix86
 </span></code></pre></div></p>
 <h2 id="deleting-optfelix86">Deleting /opt/felix86</h2>
 <p>The felix86 binary itself, thunks, and any other tools exist in <code>/opt/felix86</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/opt/felix86
 </span></code></pre></div></p>
 <h2 id="deleting-symlinks">Deleting symlinks</h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/bin/felix86
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/bin/felix86
 </span></code></pre></div>
 <h2 id="deleting-icons">Deleting icons</h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span><span class="w"> </span>size<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">48</span><span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">128</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>xdg-icon-resource<span class="w"> </span>uninstall<span class="w"> </span>--mode<span class="w"> </span>user<span class="w"> </span>--context<span class="w"> </span>apps<span class="w"> </span>--size<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$size</span><span class="s2">&quot;</span><span class="w"> </span>offtkp-felix86
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">done</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">for</span><span class="w"> </span>size<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">48</span><span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">128</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>xdg-icon-resource<span class="w"> </span>uninstall<span class="w"> </span>--mode<span class="w"> </span>user<span class="w"> </span>--context<span class="w"> </span>apps<span class="w"> </span>--size<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$size</span><span class="s2">&quot;</span><span class="w"> </span>offtkp-felix86
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">done</span>
 </span></code></pre></div>
 <h2 id="deleting-vulkan-layer-if-felix86-mangohud-is-installed">Deleting Vulkan layer, if felix86 MangoHud is installed</h2>
 <p>If you installed the felix86 MangoHud fork using <a href="https://install.felix86.com/mangohud.sh">https://install.felix86.com/mangohud.sh</a>, you will need to remove the installed Vulkan layer:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/share/vulkan/implicit_layer.d/felix86-MangoHud.riscv64.json
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/usr/local/share/vulkan/implicit_layer.d/felix86-MangoHud.riscv64.json
 </span></code></pre></div></p>
 
 
