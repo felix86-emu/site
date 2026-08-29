@@ -16,5 +16,8 @@
 {% if page.title %}
 <meta property="og:title" content="{{ page.title }}" />
 <meta property="twitter:title" content="{{ page.title }}" />
-<meta property="og:image" content="{{ site.baseurl }}/images/cropped_logo.png?v=2">
+<meta property="og:image" content="{{ site.baseurl }}{{ page.image | default: '/images/cropped_logo.png?v=2' }}">
+{% if page.image %}
+<meta name="twitter:card" content="summary_large_image" />
+{% endif %}
 {% endif %}
