@@ -1,0 +1,18 @@
+{%- assign bn = include.n | plus: 0.0 -%}
+{%- assign bi = bn | round -%}
+{%- if include.dec == 1 and bn < 1000 -%}
+{{ bn | round: 1 }}
+{%- elsif bn < 1000 and bn != bi -%}
+{{ bn | round: 1 }}
+{%- elsif bi >= 1000000 -%}
+{%- assign bm = bi | divided_by: 1000000 -%}
+{%- assign bk = bi | modulo: 1000000 | divided_by: 1000 | prepend: '00' | slice: -3, 3 -%}
+{%- assign br = bi | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}
+{{ bm }},{{ bk }},{{ br }}
+{%- elsif bi >= 1000 -%}
+{%- assign bt = bi | divided_by: 1000 -%}
+{%- assign br = bi | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}
+{{ bt }},{{ br }}
+{%- else -%}
+{{ bi }}
+{%- endif -%}

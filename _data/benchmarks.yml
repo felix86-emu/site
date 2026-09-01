@@ -1,0 +1,187 @@
+cpu:
+  labels: ["felix86 26.08", "felix86 26.09"]
+  native_label: "Native"
+  items:
+    - name: 7-Zip compression
+      unit: MIPS
+      version: "26.02"
+      values: [1204, 1688]
+      native: 3040
+    - name: 7-Zip decompression
+      unit: MIPS
+      version: "26.02"
+      values: [1012, 1626]
+      native: 3123
+    - name: Coremark
+      unit: iter/s
+      version: "v1.01"
+      values: [4121, 5713]
+      native: 15074
+    - name: Dhrystone 2.1
+      unit: DMIPS
+      version: "2.1"
+      values: [2591, 2645]
+      native: 6618
+    - name: OpenSSL SHA-256
+      unit: MB/s
+      version: "4.0.1"
+      values: [48.0, 62.2]
+      native: 163
+    - name: SQLite speedtest1
+      unit: runs/min
+      version: "3.53.4"
+      values: [1.3, 1.8]
+      native: 5.8
+    - name: Stockfish
+      unit: knodes/s
+      version: "sf_18"
+      values: [37.0, 41.9]
+      native: 91.5
+    - name: x264 encode
+      unit: fps
+      version: "b35605ac"
+      values: [2.5, 3.6]
+      native: 9.2
+    - name: zstd -3 compression
+      unit: MB/s
+      version: "v1.5.7"
+      values: [74.8, 92.5]
+      native: 111
+    - name: zstd -3 decompression
+      unit: MB/s
+      version: "v1.5.7"
+      values: [204, 239]
+      native: 445
+tso:
+  labels: ["QEMU 10.2", "felix86 26.09"]
+  native_label: "Native"
+  items:
+    - name: 7-Zip compression
+      unit: MIPS
+      version: "26.02"
+      values: [697, 1599]
+      native: 3040
+    - name: 7-Zip decompression
+      unit: MIPS
+      version: "26.02"
+      values: [494, 1617]
+      native: 3123
+    - name: Coremark
+      unit: iter/s
+      version: "v1.01"
+      values: [2412, 5318]
+      native: 15074
+    - name: Dhrystone 2.1
+      unit: DMIPS
+      version: "2.1"
+      values: [467, 2200]
+      native: 6618
+    - name: OpenSSL SHA-256
+      unit: MB/s
+      version: "4.0.1"
+      values: [31.6, 61.9]
+      native: 163
+    - name: SQLite speedtest1
+      unit: runs/min
+      version: "3.53.4"
+      values: [0.8, 1.6]
+      native: 5.8
+    - name: Stockfish
+      unit: knodes/s
+      version: "sf_18"
+      values: [3.6, 6.2]
+      native: 91.5
+    - name: x264 encode
+      unit: fps
+      version: "b35605ac"
+      values: [null, 3.4]
+      status: ["crashed", "ok"]
+      native: 9.2
+    - name: zstd -3 compression
+      unit: MB/s
+      version: "v1.5.7"
+      values: [22.9, 91.1]
+      native: 111
+    - name: zstd -3 decompression
+      unit: MB/s
+      version: "v1.5.7"
+      values: [54.5, 237]
+      native: 445
+builds:
+  common_flags: "-O2 -static -fno-strict-aliasing -pipe"
+  targets:
+    - arch: "x86_64"
+      gcc: "14.3.0"
+      libc: "glibc 2.41"
+      binutils: "2.43.1"
+      flags: "-march=x86-64-v3 -mtune=generic"
+    - arch: "riscv64"
+      gcc: "14.3.0"
+      libc: "glibc 2.41"
+      binutils: "2.43.1"
+      flags: "-march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d"
+  items:
+    - name: "7zip"
+      version: "26.02"
+      source: "https://www.7-zip.org/a/7z2602-src.tar.xz"
+      commands:
+        - arch: "x86_64"
+          cmd: "make -C src/7zip-26.02/CPP/7zip/Bundles/Alone2 -f ../../cmpl_gcc.mak -j22 CROSS_COMPILE=toolchains/x86_64/bin/x86_64-buildroot-linux-gnu- 'MY_ARCH=-march=x86-64-v3 -mtune=generic' LDFLAGS=-static"
+        - arch: "riscv64"
+          cmd: "make -C src/7zip-26.02/CPP/7zip/Bundles/Alone2 -f ../../cmpl_gcc.mak -j22 CROSS_COMPILE=toolchains/riscv64/bin/riscv64-buildroot-linux-gnu- 'MY_ARCH=-march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d' LDFLAGS=-static"
+    - name: "coremark"
+      version: "v1.01"
+      source: "https://github.com/eembc/coremark/archive/refs/tags/v1.01.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "make -C src/coremark-v1.01 clean PORT_DIR=linux64\nmake -C src/coremark-v1.01 link PORT_DIR=linux64 CC=toolchains/x86_64/bin/x86_64-buildroot-linux-gnu-gcc 'XCFLAGS=-O2 -static -fno-strict-aliasing -pipe -march=x86-64-v3 -mtune=generic -DMULTITHREAD=1 -DPERFORMANCE_RUN=1' 'LFLAGS_END=-static -lrt'"
+        - arch: "riscv64"
+          cmd: "make -C src/coremark-v1.01 clean PORT_DIR=linux64\nmake -C src/coremark-v1.01 link PORT_DIR=linux64 CC=toolchains/riscv64/bin/riscv64-buildroot-linux-gnu-gcc 'XCFLAGS=-O2 -static -fno-strict-aliasing -pipe -march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d -DMULTITHREAD=1 -DPERFORMANCE_RUN=1' 'LFLAGS_END=-static -lrt'"
+    - name: "dhrystone"
+      version: "2.1"
+      source: "https://github.com/Keith-S-Thompson/dhrystone/archive/66bb9df1a5dea67f33437b856bf68ae52bd5c90f.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "toolchains/x86_64/bin/x86_64-buildroot-linux-gnu-gcc -O2 -static -fno-strict-aliasing -pipe -march=x86-64-v3 -mtune=generic -static -std=gnu89 -DTIMES -DHZ=100 -fno-inline -fno-builtin -Isrc/dhrystone-2.1/patched -o bundle/bin/x86_64/dhrystone src/dhrystone-2.1/patched/dhry_1.c src/dhrystone-2.1/patched/dhry_2.c"
+        - arch: "riscv64"
+          cmd: "toolchains/riscv64/bin/riscv64-buildroot-linux-gnu-gcc -O2 -static -fno-strict-aliasing -pipe -march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d -static -std=gnu89 -DTIMES -DHZ=100 -fno-inline -fno-builtin -Isrc/dhrystone-2.1/patched -o bundle/bin/riscv64/dhrystone src/dhrystone-2.1/patched/dhry_1.c src/dhrystone-2.1/patched/dhry_2.c"
+    - name: "openssl"
+      version: "4.0.1"
+      source: "https://github.com/openssl/openssl/releases/download/openssl-4.0.1/openssl-4.0.1.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "src/openssl-4.0.1/Configure linux-x86_64 no-shared no-asm no-threads no-tests no-docs no-legacy -static -march=x86-64-v3 -mtune=generic\nmake -C src/openssl-4.0.1/build-x86_64 CROSS_COMPILE= -j22 build_programs"
+        - arch: "riscv64"
+          cmd: "src/openssl-4.0.1/Configure linux64-riscv64 no-shared no-asm no-threads no-tests no-docs no-legacy -static -march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d\nmake -C src/openssl-4.0.1/build-riscv64 CROSS_COMPILE= -j22 build_programs"
+    - name: "sqlite"
+      version: "3.53.4"
+      source: "https://sqlite.org/2026/sqlite-src-3530400.zip"
+      commands:
+        - arch: "x86_64"
+          cmd: "toolchains/x86_64/bin/x86_64-buildroot-linux-gnu-gcc -O2 -static -fno-strict-aliasing -pipe -march=x86-64-v3 -mtune=generic -static -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_TEMP_STORE=2 -Isrc/sqlite-3.53.4/sqlite-amalgamation-3530400 -o bundle/bin/x86_64/speedtest1 src/sqlite-3.53.4/sqlite-src-3530400/test/speedtest1.c src/sqlite-3.53.4/sqlite-amalgamation-3530400/sqlite3.c -lm"
+        - arch: "riscv64"
+          cmd: "toolchains/riscv64/bin/riscv64-buildroot-linux-gnu-gcc -O2 -static -fno-strict-aliasing -pipe -march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d -static -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_TEMP_STORE=2 -Isrc/sqlite-3.53.4/sqlite-amalgamation-3530400 -o bundle/bin/riscv64/speedtest1 src/sqlite-3.53.4/sqlite-src-3530400/test/speedtest1.c src/sqlite-3.53.4/sqlite-amalgamation-3530400/sqlite3.c -lm"
+    - name: "stockfish"
+      version: "sf_18"
+      source: "https://github.com/official-stockfish/Stockfish/archive/refs/tags/sf_18.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "make -C src/stockfish-sf_18/src clean\nmake -C src/stockfish-sf_18/src net\nmake -C src/stockfish-sf_18/src -j22 build ARCH=general-64 COMP=gcc CXX=toolchains/x86_64/bin/x86_64-buildroot-linux-gnu-g++ 'EXTRACXXFLAGS=-march=x86-64-v3 -mtune=generic' EXTRALDFLAGS=-static"
+        - arch: "riscv64"
+          cmd: "make -C src/stockfish-sf_18/src clean\nmake -C src/stockfish-sf_18/src net\nmake -C src/stockfish-sf_18/src -j22 build ARCH=riscv64 COMP=gcc CXX=toolchains/riscv64/bin/riscv64-buildroot-linux-gnu-g++ 'EXTRACXXFLAGS=-march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d' EXTRALDFLAGS=-static"
+    - name: "x264"
+      version: "b35605ac"
+      source: "https://code.videolan.org/videolan/x264/-/archive/b35605ace3ddf7c1a5d67a2eb553f034aef41d55/x264-b35605ace3ddf7c1a5d67a2eb553f034aef41d55.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "make distclean\n./configure --host=x86_64-unknown-linux-gnu --cross-prefix=toolchains/x86_64/bin/x86_64-buildroot-linux-gnu- --enable-static --disable-asm --disable-thread --disable-opencl --disable-avs --disable-swscale --disable-lavf --disable-ffms --disable-gpac --disable-lsmash '--extra-cflags=-march=x86-64-v3 -mtune=generic' --extra-ldflags=-static\nmake -C src/x264-b35605ac -j22 x264"
+        - arch: "riscv64"
+          cmd: "make distclean\n./configure --host=riscv64-unknown-linux-gnu --cross-prefix=toolchains/riscv64/bin/riscv64-buildroot-linux-gnu- --enable-static --disable-asm --disable-thread --disable-opencl --disable-avs --disable-swscale --disable-lavf --disable-ffms --disable-gpac --disable-lsmash '--extra-cflags=-march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d' --extra-ldflags=-static\nmake -C src/x264-b35605ac -j22 x264"
+    - name: "zstd"
+      version: "v1.5.7"
+      source: "https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz"
+      commands:
+        - arch: "x86_64"
+          cmd: "make -C src/zstd-v1.5.7/programs clean\nmake -C src/zstd-v1.5.7/programs zstd -j22 CC=toolchains/x86_64/bin/x86_64-buildroot-linux-gnu-gcc 'CFLAGS=-O2 -static -fno-strict-aliasing -pipe -march=x86-64-v3 -mtune=generic -DZSTD_NO_INTRINSICS' LDFLAGS=-static HAVE_ZLIB=0 HAVE_LZMA=0 HAVE_LZ4=0 HAVE_THREAD=0 ZSTD_NO_ASM=1"
+        - arch: "riscv64"
+          cmd: "make -C src/zstd-v1.5.7/programs clean\nmake -C src/zstd-v1.5.7/programs zstd -j22 CC=toolchains/riscv64/bin/riscv64-buildroot-linux-gnu-gcc 'CFLAGS=-O2 -static -fno-strict-aliasing -pipe -march=rv64gcv_zba_zbb_zbs_zicond -mabi=lp64d -DZSTD_NO_INTRINSICS' LDFLAGS=-static HAVE_ZLIB=0 HAVE_LZMA=0 HAVE_LZ4=0 HAVE_THREAD=0 ZSTD_NO_ASM=1"

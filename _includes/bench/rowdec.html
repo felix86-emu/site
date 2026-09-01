@@ -1,0 +1,9 @@
+{%- assign rowmax = 0 -%}
+{%- assign rowfrac = false -%}
+{%- for v in include.item.values -%}{%- if v -%}
+{%- if v > rowmax %}{% assign rowmax = v %}{% endif %}{% assign rv = v | round %}{% if v != rv %}{% assign rowfrac = true %}{% endif -%}
+{%- endif -%}{%- endfor -%}
+{%- assign n = include.item.native -%}
+{%- if n -%}{%- if n > rowmax %}{% assign rowmax = n %}{% endif %}{% assign rn = n | round %}{% if n != rn %}{% assign rowfrac = true %}{% endif -%}{%- endif -%}
+{%- assign dec = 0 -%}
+{%- if rowfrac and rowmax < 1000 %}{% assign dec = 1 %}{% endif -%}

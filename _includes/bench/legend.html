@@ -1,0 +1,12 @@
+{%- assign g = include.group -%}
+<div class="bench-legend">
+  {%- for lbl in g.labels -%}
+  {%- assign si = forloop.index0 -%}
+  {%- if include.colors != "" -%}{%- assign si = include.colors[forloop.index0] | plus: 0 -%}{%- endif -%}
+  {%- if si > 2 -%}{%- assign si = 2 -%}{%- endif -%}
+  <span class="bench-legend-item"><span class="bench-key bench-key--s{{ si }}"></span>{{ lbl }}</span>
+  {%- endfor -%}
+  {%- if g.native_label -%}
+  <span class="bench-legend-item"><span class="bench-key bench-key--native"></span>{{ g.native_label }}</span>
+  {%- endif -%}
+</div>

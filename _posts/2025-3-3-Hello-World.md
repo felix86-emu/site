@@ -1,7 +1,6 @@
 ---
 layout: post
 title: A new x86-64 emulator is on the horizon
-image: /images/banner2609.png
 ---
 
 felix86 is a new x86-64 userspace emulator for RISC-V devices.

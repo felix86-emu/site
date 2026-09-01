@@ -1,0 +1,56 @@
+{%- assign g = include.group -%}
+{%- assign bidx = include.bidx -%}
+{%- assign hidx = include.hidx -%}
+<details class="bench-table">
+  <summary>Table view</summary>
+  <table>
+    <thead>
+      <tr>
+        <th>Benchmark</th>
+        <th>Version</th>
+        <th class="bench-col-sep">Unit</th>
+        {%- for lbl in g.labels %}<th>{{ lbl }}</th>{% endfor -%}
+        {%- if g.native_label %}<th class="bench-col-sep">{{ g.native_label }}</th>{% endif -%}
+        {%- if include.hide_change != true %}<th>{{ include.change_label | default: "Change" }} {{ include.compare_word
+          }} {{ g.labels[bidx] | remove: "felix86 " }}</th>{% endif -%}
+        {%- if g.native_label and include.hide_pct != true %}<th>% of native</th>{% endif -%}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for it in g.items -%}
+      {%- assign base = it.values[bidx] -%}
+      {%- assign last = it.values[hidx] -%}
+      {% include bench/rowdec.html item=it %}
+      <tr>
+        <th scope="row">{{ it.name }}</th>
+        <td class="bench-cell--meta">{{ it.version }}</td>
+        <td class="bench-cell--meta bench-col-sep">{{ it.unit }}</td>
+        {%- for v in it.values -%}
+        {%- assign st = "ok" -%}
+        {%- if it.status -%}{%- assign st = it.status[forloop.index0] -%}{%- endif -%}
+        {%- if v %}<td>{% include bench/num.html n=v dec=dec %}</td>
+        {%- elsif st == "crashed" %}<td class="bench-cell--crashed">Crashed</td>
+        {%- else %}<td class="bench-cell--absent">not run</td>{% endif -%}
+        {%- endfor -%}
+        {%- if g.native_label %}<td class="bench-col-sep">{% include bench/num.html n=it.native dec=dec %}</td>{% endif
+        -%}
+        {%- if include.hide_change != true -%}
+        {%- if base == nil or last == nil %}<td class="bench-cell--crashed">-</td>
+        {%- else -%}
+        {%- assign gain = last | minus: base | times: 100.0 | divided_by: base -%}
+        <td>{% if gain >= 0 %}+{% endif %}{{ gain | round: 1 }}%</td>
+        {%- endif -%}
+        {%- endif -%}
+        {%- if g.native_label and include.hide_pct != true -%}
+        {%- if base == nil or last == nil %}<td>-</td>
+        {%- else -%}
+        {%- assign pb = base | times: 100.0 | divided_by: it.native -%}
+        {%- assign pl = last | times: 100.0 | divided_by: it.native -%}
+        <td>{{ pb | round }}% &rarr; {{ pl | round }}%</td>
+        {%- endif -%}
+        {%- endif -%}
+      </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</details>

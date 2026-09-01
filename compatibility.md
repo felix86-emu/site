@@ -327,6 +327,51 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/163.jpg" alt="Tomb Raider GOTY" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/163">Tomb Raider GOTY</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/162.jpg" alt="Starbound" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/162">Starbound</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/161.jpg" alt="Spirit of the North" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/161">Spirit of the North</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/160.jpg" alt="Counter-Strike 2" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/160">Counter-Strike 2</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/159.jpg" alt="Blue Archive" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/159">Blue Archive</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/158.jpg" alt="Slay The Spire 2" class="game-image">
   </div>
   <div class="game-info">

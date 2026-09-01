@@ -1,0 +1,58 @@
+{%- assign b = site.data.benchmarks.builds -%}
+{%- if b -%}
+<figure class="bench bench--builds">
+  <figcaption class="bench-head">
+    {%- if include.title %}<span class="bench-title">{{ include.title }}</span>{% endif -%}
+    {%- if include.subtitle %}<span class="bench-sub">{{ include.subtitle }}</span>{% endif -%}
+  </figcaption>
+
+  <details class="bench-builds-details">
+    <summary>Toolchain and build commands</summary>
+    <table class="bench-flags">
+      <thead>
+        <tr>
+          <th>Architecture</th>
+          <th>gcc</th>
+          <th>C library</th>
+          <th>binutils</th>
+          <th>Compiler flags</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for t in b.targets -%}
+        <tr>
+          <th scope="row">{{ t.arch }}</th>
+          <td>{{ t.gcc }}</td>
+          <td>{{ t.libc }}</td>
+          <td>{{ t.binutils }}</td>
+          <td><code>{{ b.common_flags }} {{ t.flags }}</code></td>
+        </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+
+    <table class="bench-builds">
+      <thead>
+        <tr>
+          <th>Benchmark</th>
+          <th>Version</th>
+          <th>Architecture</th>
+          <th>Build command</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for it in b.items -%}
+        {%- for c in it.commands -%}
+        <tr>
+          {%- if forloop.first %}<th scope="row" rowspan="{{ it.commands.size }}">{{ it.name }}</th>
+          <td class="bench-cell--meta" rowspan="{{ it.commands.size }}">{{ it.version }}</td>{% endif -%}
+          <td class="bench-cell--meta">{{ c.arch }}</td>
+          <td class="bench-cmd"><code>{{ c.cmd }}</code></td>
+        </tr>
+        {%- endfor -%}
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </details>
+</figure>
+{%- endif -%}

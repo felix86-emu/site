@@ -1,0 +1,80 @@
+{%- assign g = site.data.benchmarks[include.set] -%}
+{%- if g.items and g.items != empty -%}
+{%- assign compare_word = include.compare_word | default: "since" -%}
+{%- assign colors = "" -%}
+{%- if include.colors -%}{%- assign colors = include.colors | split: "," -%}{%- endif -%}
+{%- assign bidx = 0 -%}
+{%- assign hidx = g.labels.size | minus: 1 -%}
+{%- for lbl in g.labels -%}
+{%- if lbl == include.baseline -%}{%- assign bidx = forloop.index0 -%}{%- endif -%}
+{%- if lbl == include.headline -%}{%- assign hidx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign gmax = 0 -%}
+{%- for it in g.items -%}{%- for v in it.values -%}{%- if v > gmax -%}{%- assign gmax = v -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+<figure class="bench bench--grouped-bars">
+  <figcaption class="bench-head">
+    {%- if include.title %}<span class="bench-title">{{ include.title }}</span>{% endif -%}
+    {%- if include.subtitle %}<span class="bench-sub">{{ include.subtitle }}</span>{% endif -%}
+  </figcaption>
+  {% include bench/legend.html group=g colors=colors %}
+  <div class="bench-rows">
+    {%- for it in g.items -%}
+    {%- assign scale = it.native | default: gmax -%}
+    {%- assign base = it.values[bidx] -%}
+    {%- assign last = it.values[hidx] -%}
+    {% include bench/rowdec.html item=it %}
+    <div class="bench-row">
+      <div class="bench-row-head">
+        <span class="bench-name">{{ it.name }}</span>
+        {%- if include.hide_change != true -%}
+        <span class="bench-note">
+          {%- if base == nil or last == nil -%}
+            <b class="bench-crashed-note">no comparison</b>
+          {%- else -%}
+            {%- assign gain = last | minus: base | times: 100.0 | divided_by: base | round: 1 -%}
+            <b>{% if gain >= 0 %}+{% endif %}{{ gain }}%</b> {{ compare_word }} {{ g.labels[bidx] | remove: "felix86 " }}
+          {%- endif -%}
+        </span>
+        {%- endif -%}
+      </div>
+      <div class="bench-cluster">
+        {%- for v in it.values -%}
+        {%- assign si = forloop.index0 -%}
+        {%- if colors != "" -%}{%- assign si = colors[forloop.index0] | plus: 0 -%}{%- endif -%}
+        {%- if si > 2 -%}{%- assign si = 2 -%}{%- endif -%}
+        {%- assign lbl = g.labels[forloop.index0] -%}
+        {%- assign st = "ok" -%}
+        {%- if it.status -%}{%- assign st = it.status[forloop.index0] -%}{%- endif -%}
+        {%- if v -%}
+        {%- assign w = v | times: 100.0 | divided_by: scale -%}
+        {%- assign pct = nil -%}
+        {%- if it.native -%}{%- assign pct = v | times: 100.0 | divided_by: it.native | round -%}{%- endif -%}
+        <div class="bench-line" tabindex="0">
+          <span class="bench-slabel">{{ lbl }}</span>
+          <span class="bench-track"><span class="bench-groove" data-tip="{{ lbl }} &middot; {% include bench/num.html n=v dec=dec %} {{ it.unit }}{% if pct %} &middot; {{ pct }}% of {{ g.native_label | downcase }}{% endif %}"><span class="bench-fill bench-fill--s{{ si }}" style="width:{{ w }}%"></span></span><span class="bench-val{% if forloop.last %} bench-val--latest{% endif %}">{% include bench/num.html n=v dec=dec %}</span>{% if pct %}<span class="bench-pct">{{ pct }}%</span>{% endif %}</span>
+        </div>
+        {%- elsif st == "crashed" -%}
+        <div class="bench-line" tabindex="0">
+          <span class="bench-slabel">{{ lbl }}</span>
+          <span class="bench-track"><span class="bench-groove" data-tip="{{ lbl }} &middot; crashed, no result"><span class="bench-fill bench-fill--crashed"></span></span><span class="bench-val bench-val--crashed">Crashed</span></span>
+        </div>
+        {%- else -%}
+        <div class="bench-line" tabindex="0">
+          <span class="bench-slabel">{{ lbl }}</span>
+          <span class="bench-track"><span class="bench-groove" data-tip="{{ lbl }} &middot; not run"><span class="bench-fill bench-fill--absent"></span></span><span class="bench-val bench-val--absent">not run</span></span>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+        {%- if it.native -%}
+        <div class="bench-line" tabindex="0">
+          <span class="bench-slabel">{{ g.native_label }}</span>
+          <span class="bench-track"><span class="bench-groove" data-tip="{{ g.native_label }} &middot; {% include bench/num.html n=it.native dec=dec %} {{ it.unit }}"><span class="bench-fill bench-fill--native" style="width:100%"></span></span><span class="bench-val">{% include bench/num.html n=it.native dec=dec %}</span><span class="bench-pct">{{ it.unit }}</span></span>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- endfor -%}
+  </div>
+  {% include bench/table.html group=g bidx=bidx hidx=hidx compare_word=compare_word hide_pct=include.hide_pct change_label=include.change_label hide_change=include.hide_change %}
+</figure>
+{%- endif -%}
