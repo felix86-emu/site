@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1196,6 +1196,9 @@
 
 <p>Debugging is inherently more difficult than most apps, as most of the time you are trying to debug the guest application that is running through an emulator.</p>
 <h2 id="important-info">Important info</h2>
+<p>If you&rsquo;re going to be debugging, it is recommended you turn off <code>/proc/self/auxv</code> emulation as it will mess up the debugger&rsquo;s ability to find symbols. You can do this with:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo felix86 --set-config debugging.proc_self_auxv=false
+</span></code></pre></div></p>
 <p>The emulated state of each process exists in the struct <code>ThreadState</code>. &ldquo;Process&rdquo; here refers to all cloned/forked processes, whether they are an actual &ldquo;thread&rdquo; or not.</p>
 <p>This state is statically allocated in the GPR <code>gp</code>. This register is disabled for use by the compiler with <code>-mno-relax</code>, and shared libraries don&rsquo;t use it either, so we place the <code>ThreadState</code> there so it is accessible at all times and even from host debuggers.</p>
 <div class="admonition tip">
@@ -1274,7 +1277,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

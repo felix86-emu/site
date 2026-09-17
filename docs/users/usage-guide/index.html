@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1421,10 +1421,10 @@
 </span></code></pre></div></p>
 <p>This will disable logging and start a bash or zsh shell with a custom prompt.</p>
 <p>In felix86 26.08 and later, you can start a program with the &ndash;shell command, which runs it via <code>bash -c</code> or <code>zsh -c</code>, which means it can find your binary in <code>PATH</code>:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>felix86 --shell=&quot;steam -no-cef-sandbox&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>felix86 --shell="steam -no-cef-sandbox"
 </span></code></pre></div></p>
 <p>In older verions you can achieve the same like so:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>felix86 /path/to/rootfs/bin/bash -c &quot;steam -no-cef-sandbox&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>felix86 /path/to/rootfs/bin/bash -c "steam -no-cef-sandbox"
 </span></code></pre></div></p>
 <p>If you want logging to be enabled, use this command:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>felix86<span class="w"> </span>--shell-debug
@@ -1448,7 +1448,7 @@
 <p>The shorcuts usually exist in the host desktop, since the host $HOME is mounted in the guest $HOME, but the binary usually exists inside the rootfs, not the host filesystem. Even if it does exist in the host filesystem, it may be a script that needs to be explicitly run with the x86 bash, so that filesystem accesses are resolved relative to the rootfs.</p>
 <p>In order to be able to use it like a normal shortcut, we need to wrap the executable with <code>felix86 --shell="..."</code>.</p>
 <p>Here&rsquo;s a <code>sed</code> one-liner that makes a desktop entry run with felix86:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/^Exec=(.*)$/Exec=felix86 --shell=&quot;\1&quot;/&#39;</span><span class="w"> </span>myshortcut.desktop
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">'s/^Exec=(.*)$/Exec=felix86 --shell="\1"/'</span><span class="w"> </span>myshortcut.desktop
 </span></code></pre></div></p>
 <h2 id="configuration">Configuration</h2>
 <p>The configuration file exists at <code>/etc/opt/felix86/config.toml</code>.</p>
@@ -1523,20 +1523,20 @@
 <h3 id="installation">Installation</h3>
 <p>Install the library to a known host location, such as <code>/opt/felix86/gl4es/</code>.
 From the directory that contains the unzipped/built <code>libGL.so.1</code>, run the following:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">"/opt/felix86/gl4es"</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./libGL.so.1<span class="w"> </span><span class="nv">$INSTALLATION_DIR</span>
 </span></code></pre></div></p>
 <p>Make sure to symlink <code>libGLX.so.0</code>, as gl4es exports the libGLX symbols:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>libGL.so.1<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">/libGLX.so.0&quot;</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>libGL.so.1<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">/libGLX.so.0"</span>
 </span></code></pre></div></p>
 <h3 id="usage">Usage</h3>
 <p>In order to use gl4es you need to set <code>LD_LIBRARY_PATH</code> and enable thunking:
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">&quot;/opt/felix86/gl4es&quot;</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">INSTALLATION_DIR</span><span class="o">=</span><span class="s2">"/opt/felix86/gl4es"</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SDL_VIDEODRIVER</span><span class="o">=</span>x11<span class="w"> </span><span class="c1"># may be required for some games</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FELIX86_ENABLED_THUNKS</span><span class="o">=</span>glx,egl
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_NOBANNER</span><span class="o">=</span><span class="m">1</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALLATION_DIR</span><span class="s2">:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">"</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>felix86<span class="w"> </span>--shell
 </span></code></pre></div></p>
 <div class="admonition warning">
@@ -1609,7 +1609,7 @@ From the directory that contains the unzipped/built <code>libGL.so.1</code>, run
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
