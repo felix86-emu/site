@@ -327,6 +327,24 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/168.jpg" alt="Devil May Cry 5" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/168">Devil May Cry 5</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/167.jpg" alt="Marvel's Spider-Man" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/167">Marvel's Spider-Man</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/166.jpg" alt="TEKKEN 7" class="game-image">
   </div>
   <div class="game-info">
@@ -336,10 +354,10 @@ permalink: /compat/
 </div>
 <div class="game-card" data-category="working">
   <div class="game-image-container">
-    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/165.jpg" alt="TEKKEN 8 - DEMO" class="game-image">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/165.jpg" alt="TEKKEN 8" class="game-image">
   </div>
   <div class="game-info">
-    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/165">TEKKEN 8 - DEMO</a></h3>
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/165">TEKKEN 8</a></h3>
     <span class="status green">Working</span>
   </div>
 </div>
