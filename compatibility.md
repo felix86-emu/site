@@ -76,6 +76,39 @@ permalink: /compat/
       color: white;
     }
 
+    .controls-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .add-game-button {
+      padding: 10px 20px;
+      background: #28a745;
+      color: white !important;
+      border: 1px solid #218838;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration: none !important;
+      white-space: nowrap;
+      margin-left: auto;
+      transition: background var(--transition-fast);
+    }
+
+    .add-game-button:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+
+    @media (hover: hover) {
+      .add-game-button:hover {
+        background: #218838;
+      }
+    }
+
     .search-container {
       position: relative;
       width: 100%;
@@ -310,11 +343,14 @@ permalink: /compat/
   </style>
 
   <div class="controls">
-    <div class="tabs">
-      <button class="tab active" onclick="filterCategory('all', this)">All</button>
-      <button class="tab" onclick="filterCategory('working', this)">Working</button>
-      <button class="tab" onclick="filterCategory('partial', this)">Partial</button>
-      <button class="tab" onclick="filterCategory('not-working', this)">Broken</button>
+    <div class="controls-top">
+      <div class="tabs">
+        <button class="tab active" onclick="filterCategory('all', this)">All</button>
+        <button class="tab" onclick="filterCategory('working', this)">Working</button>
+        <button class="tab" onclick="filterCategory('partial', this)">Partial</button>
+        <button class="tab" onclick="filterCategory('not-working', this)">Broken</button>
+      </div>
+      <a class="add-game-button" href="https://github.com/felix86-emu/compatibility-list/issues/new?template=compatibility.yml" target="_blank" rel="noopener">Add game</a>
     </div>
     <div class="search-container">
       <input class="search-input" type="text" placeholder="Search games..." onkeyup="applyFilters()">
@@ -325,6 +361,60 @@ permalink: /compat/
   <div class="pagination" id="pagination"></div>
 
   <div id="all-games" style="display: none">
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/175.jpg" alt="Call Of Duty: Black Ops II - Zombies" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/175">Call Of Duty: Black Ops II - Zombies</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/174.jpg" alt="Rain World" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/174">Rain World</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="partial">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/173.jpg" alt="Black Myth: Wukong" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/173">Black Myth: Wukong</a></h3>
+    <span class="status yellow">Partially Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="partial">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/172.jpg" alt="Sekiro: Shadows Die Twice" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/172">Sekiro: Shadows Die Twice</a></h3>
+    <span class="status yellow">Partially Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/171.jpg" alt="The Sims 4" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/171">The Sims 4</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="not-working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="DEATH STRANDING DIRECTOR'S CUT" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/170">DEATH STRANDING DIRECTOR'S CUT</a></h3>
+    <span class="status red">Not Working</span>
+  </div>
+</div>
 <div class="game-card" data-category="working">
   <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/169.jpg" alt="Need for Speed Heat" class="game-image">

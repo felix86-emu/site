@@ -76,6 +76,39 @@ permalink: /compat/
       color: white;
     }
 
+    .controls-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .add-game-button {
+      padding: 10px 20px;
+      background: #28a745;
+      color: white !important;
+      border: 1px solid #218838;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration: none !important;
+      white-space: nowrap;
+      margin-left: auto;
+      transition: background var(--transition-fast);
+    }
+
+    .add-game-button:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+
+    @media (hover: hover) {
+      .add-game-button:hover {
+        background: #218838;
+      }
+    }
+
     .search-container {
       position: relative;
       width: 100%;
@@ -310,11 +343,14 @@ permalink: /compat/
   </style>
 
   <div class="controls">
-    <div class="tabs">
-      <button class="tab active" onclick="filterCategory('all', this)">All</button>
-      <button class="tab" onclick="filterCategory('working', this)">Working</button>
-      <button class="tab" onclick="filterCategory('partial', this)">Partial</button>
-      <button class="tab" onclick="filterCategory('not-working', this)">Broken</button>
+    <div class="controls-top">
+      <div class="tabs">
+        <button class="tab active" onclick="filterCategory('all', this)">All</button>
+        <button class="tab" onclick="filterCategory('working', this)">Working</button>
+        <button class="tab" onclick="filterCategory('partial', this)">Partial</button>
+        <button class="tab" onclick="filterCategory('not-working', this)">Broken</button>
+      </div>
+      <a class="add-game-button" href="https://github.com/felix86-emu/compatibility-list/issues/new?template=compatibility.yml" target="_blank" rel="noopener">Add game</a>
     </div>
     <div class="search-container">
       <input class="search-input" type="text" placeholder="Search games..." onkeyup="applyFilters()">
