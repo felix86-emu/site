@@ -791,10 +791,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -802,11 +801,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1187,10 +1181,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1198,11 +1191,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1257,10 +1245,18 @@ You would run <code>vim ~/.config/felix86/profiles/steam/728880.toml</code> and 
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>reduced_precision = 1
 </span></code></pre></div></p>
 <p>The next time you run the game through Steam the profile will automatically be loaded. Steam <strong>doesn&rsquo;t need to be restarted</strong>, the game will pick up on the file.</p>
-<h4 id="troubleshooting">Troubleshooting</h4>
+<h3 id="troubleshooting">Troubleshooting</h3>
 <p>It shouldn&rsquo;t have any issues, but if it does, try with <code>-no-cef-sandbox</code>.</p>
 <p>If you&rsquo;re having GPU issues, you can also disable the GPU with <code>-cef-disable-gpu</code>.</p>
 <p>If you&rsquo;re having issues on Wayland, you may need <code>SDL_VIDEODRIVER=x11</code>.</p>
+<p><strong>No Steam icon on taskbar in Bianbu:</strong></p>
+<p>Make a file in <code>~/.local/share/applications/steamwebhelper.desktop</code> to match <code>steamwebhelper</code> to the Steam icon.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[Desktop Entry]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Type=Application
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Name=Steam
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Icon=steam
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>NoDisplay=true
+</span></code></pre></div></p>
 
 
 

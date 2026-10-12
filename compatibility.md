@@ -363,6 +363,69 @@ permalink: /compat/
   <div id="all-games" style="display: none">
 <div class="game-card" data-category="working">
   <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/190.jpg" alt="Steam" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/190">Steam</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/189.jpg" alt="art of rally" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/189">art of rally</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/188.jpg" alt="CarX Drift Racing Online" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/188">CarX Drift Racing Online</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/187.jpg" alt="Assetto Corsa" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/187">Assetto Corsa</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/186.jpg" alt="BeamNG.drive" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/186">BeamNG.drive</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/185.jpg" alt="NIGHT-RUNNERS™ PROLOGUE" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/185">NIGHT-RUNNERS™ PROLOGUE</a></h3>
+    <span class="status green">Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="not-working">
+  <div class="game-image-container">
+    <img loading="lazy" src="{{ site.baseurl }}/images/felix86NoThoughts.png" alt="Grand Theft Auto V Enhanced" class="game-image">
+  </div>
+  <div class="game-info">
+    <h3 class="game-title"><a href="https://github.com/felix86-emu/compatibility-list/issues/184">Grand Theft Auto V Enhanced</a></h3>
+    <span class="status red">Not Working</span>
+  </div>
+</div>
+<div class="game-card" data-category="working">
+  <div class="game-image-container">
     <img loading="lazy" src="{{ site.baseurl }}/images/compatibility/183.jpg" alt="Doom Eternal" class="game-image">
   </div>
   <div class="game-info">
